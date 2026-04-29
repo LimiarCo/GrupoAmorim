@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesquisa Rápida: Distribuição e varejo corporativo de TI no Brasil</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#1a1a1a;background:#fff}
+.W{max-width:1140px;margin:0 auto;padding:2.5rem 2rem 4rem}
+h1{font-size:26px;font-weight:700;line-height:1.2;margin-bottom:6px;letter-spacing:-.5px}
+h2{font-size:19px;font-weight:700;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0}
+h3{font-size:15px;font-weight:700;margin:16px 0 6px}
+.lbl{font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:2px}
+.meta{font-family:system-ui,sans-serif;font-size:12px;color:#999;margin-bottom:24px}
+a{color:#1a5276;text-decoration:none}a:hover{text-decoration:underline}
+.red{color:#b71c1c}
+.accent{border-left:3px solid #b71c1c;padding-left:12px;margin:10px 0}
+.num{font-family:system-ui,sans-serif;font-size:30px;font-weight:700;color:#b71c1c;display:block;line-height:1.1;margin:4px 0}
+.src{font-family:system-ui,sans-serif;font-size:11px;color:#999}
+.tabs{display:flex;overflow-x:auto;border-bottom:2px solid #1a1a1a;margin-bottom:28px;gap:0;scrollbar-width:none;position:sticky;top:0;background:#fff;z-index:10;padding-top:8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font-family:system-ui,sans-serif;font-size:13px;font-weight:500;padding:8px 14px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;color:#999;transition:.15s}
+.tab:hover{color:#1a1a1a}
+.tab.on{color:#1a1a1a;border-bottom-color:#b71c1c;font-weight:700}
+.pane{display:none}.pane.on{display:block}
+.card{background:#f9f9f9;border:1px solid #e8e8e8;border-radius:4px;padding:10px 14px;margin-bottom:8px}
+.card-sm{background:#f9f9f9;border:1px solid #e8e8e8;border-radius:4px;padding:8px 12px;margin-bottom:6px;font-size:14px}
+.bar-row{display:flex;align-items:center;margin-bottom:8px;font-family:system-ui,sans-serif;font-size:13px}
+.bar-label{width:140px;text-align:right;padding-right:10px;font-weight:600;flex-shrink:0}
+.bar-track{flex:1;background:#eee;border-radius:3px;height:18px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;background:#b71c1c}
+.bar-val{position:absolute;right:6px;top:1px;font-size:11px;font-weight:700;color:#1a1a1a}
+.bar-val-out{margin-left:6px;font-weight:600;color:#666}
+.dot{display:inline-block;width:8px;height:8px;border-radius:4px;margin-right:4px;vertical-align:middle}
+details{margin-top:6px}
+summary{font-family:system-ui,sans-serif;font-size:12px;font-weight:600;color:#1a5276;cursor:pointer}
+summary:hover{text-decoration:underline}
+details[open] summary{margin-bottom:6px}
+.filters{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.fbtn{font-family:system-ui,sans-serif;font-size:12px;padding:4px 12px;border:1px solid #ddd;border-radius:3px;background:#fff;cursor:pointer;color:#666}
+.fbtn.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.tl{position:relative;padding-left:24px;margin:16px 0}
+.tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:#ddd}
+.tl-item{position:relative;margin-bottom:10px;padding-left:4px}
+.tl-dot{position:absolute;left:-21px;top:8px;width:12px;height:12px;border-radius:6px;background:#b71c1c;border:2px solid #fff;box-shadow:0 0 0 1px #ddd}
+.tl-dot.done{background:#2e7d32}
+.tl-dot.now{background:#e65100}
+.tl-dot.wait{background:#999}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
+.g5{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:10px;margin:16px 0;text-align:center}
+@media(max-width:600px){.g2,.g3,.g5{grid-template-columns:1fr}}
+blockquote{border-left:3px solid #ddd;padding:8px 16px;margin:12px 0;color:#444;font-style:italic;font-size:14px}
+.loop{max-width:420px;margin:16px auto}
+.loop-step{background:#f9f9f9;border:1px solid #ddd;border-radius:6px;padding:10px 14px;text-align:center;margin-bottom:4px;font-size:13px}
+.loop-step strong{display:block;font-size:14px}
+.loop-arrow{text-align:center;font-size:20px;color:#999;line-height:1}
+.loop-return{background:#b71c1c;color:#fff;border-radius:6px;padding:8px;text-align:center;font-family:system-ui,sans-serif;font-size:13px;font-weight:700}
+.qbox{background:#f9f9f9;border-left:3px solid #b71c1c;padding:8px 12px;margin:10px 0;font-style:italic;font-size:14px;color:#333}
+.libox{background:#f9f9f9;border:1px solid #ddd;border-radius:4px;padding:12px 14px;font-size:14px;line-height:1.7;white-space:pre-wrap}
+.cpbtn{display:block;width:100%;margin-top:12px;padding:12px;font-family:system-ui,sans-serif;font-size:14px;font-weight:700;background:#1a1a1a;color:#fff;border:none;border-radius:6px;cursor:pointer}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e0e0e0;font-family:system-ui,sans-serif;font-size:11px;color:#999;text-align:center}
+ul{padding-left:1.3rem;margin-bottom:10px}
+li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="W">
+
+<p class="lbl">PESQUISA RÁPIDA · SETOR</p>
+<h1>Distribuição e varejo corporativo de TI no Brasil: o setor que cresce 18,5% e ainda assim parece estar mudando de pele</h1>
+<p class="meta">29 de abril de 2026 · 18 fontes verificadas · Horizonte: 12 a 36 meses</p>
+
+<nav class="tabs">
+<button class="tab on" onclick="P('dest')">Destaque</button>
+<button class="tab" onclick="P('entenda')">Entenda</button>
+<button class="tab" onclick="P('perfis')">Perfis</button>
+<button class="tab" onclick="P('cobertura')">Cobertura</button>
+<button class="tab" onclick="P('fontes')">Fontes</button>
+<button class="tab" onclick="P('atores')">Atores</button>
+<button class="tab" onclick="P('regulatorio')">Regulatório</button>
+<button class="tab" onclick="P('steeple')">Forças</button>
+<button class="tab" onclick="P('motor')">Mudanças</button>
+<button class="tab" onclick="P('analise')">Análise</button>
+<button class="tab" onclick="P('reclamacoes')">Reclamações</button>
+<button class="tab" onclick="P('futuro')">Futuro</button>
+<button class="tab" onclick="P('check')">Check</button>
+<button class="tab" onclick="P('glossario')">Glossário</button>
+</nav>
+
+<!-- ============ DESTAQUE ============ -->
+<section id="dest" class="pane on">
+<p class="lbl">REPORTAGEM</p>
+<h2 style="font-size:24px;border:none;margin:0 0 8px">A maior virada do canal de TI brasileiro em vinte anos acontece silenciosamente, escondida dentro do contrato de venda</h2>
+<p style="font-size:16px;font-style:italic;color:#555;margin-bottom:18px">O hardware que durante décadas saiu da nota fiscal de uma só vez agora começa a sair em parcelas mensais, com gestão embutida; quem só vende caixa começa a perder a conversa antes do pedido.</p>
+
+<p>O mercado brasileiro de Tecnologia da Informação fechou 2025 em US$ 67,8 bilhões, com crescimento de 18,5% sobre 2024 e o Brasil concentrando 38% do mercado de TI da América Latina. Hardware respondeu por 47,9% desse total, ou US$ 32,5 bilhões, com salto de 20,6%, puxado por servidores para IA, renovação corporativa pós-pandemia e fim do suporte ao Windows 10.</p>
+
+<div class="accent">
+<span class="num">US$ 32,5 bi</span>
+<p class="src">Hardware no mercado brasileiro de TI em 2025; 47,9% do total. Fonte: ABES/IDC, 2025.</p>
+</div>
+
+<div class="accent">
+<span class="num">7,9 milhões</span>
+<p class="src">PCs corporativos brasileiros que precisarão ser substituídos por causa do fim do suporte ao Windows 10 em outubro de 2025. Fonte: IDC Brasil/IT Forum, 2025.</p>
+</div>
+
+<div class="accent">
+<span class="num">10%</span>
+<p class="src">Parcela do parque corporativo brasileiro de PCs hoje atendida via outsourcing (DaaS/HaaS); o restante segue na compra direta. Fonte: IT Forum, 2025.</p>
+</div>
+
+<h3>O hardware ainda manda, mas o serviço dita o ritmo</h3>
+<div class="bar-row"><span class="bar-label">Hardware</span><div class="bar-track"><div class="bar-fill" style="width:96%"><span class="bar-val">47,9%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Serviços</span><div class="bar-track"><div class="bar-fill" style="width:48%;background:#666"><span class="bar-val">23,8%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Software</span><div class="bar-track"><div class="bar-fill" style="width:36%;background:#666"><span class="bar-val">17,9%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Telecom</span><div class="bar-track"><div class="bar-fill" style="width:21%;background:#666"><span class="bar-val">10,4%</span></div></div></div>
+<p class="src">Composição do mercado brasileiro de TI em 2025. Hardware ainda lidera, mas serviços crescem em margem e em recorrência. Fonte: <a href="https://abes.org.br/en/brasil-mantem-lideranca-em-ti-na-america-latina-cresce-acima-da-expectativa-em-2025-mas-desacelera-ritmo-de-crescimento-neste-ano-e-consolida-nova-fase-do-mercado-aponta-estudo-da-abes/" target="_blank">ABES/IDC, 2025</a>.</p>
+
+<h3>O que cresce mais rápido dentro do hardware</h3>
+<div class="bar-row"><span class="bar-label">Notebook receita</span><div class="bar-track"><div class="bar-fill" style="width:82%"><span class="bar-val">+24,6%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">PC com IA</span><div class="bar-track"><div class="bar-fill" style="width:74%"><span class="bar-val">5%→22%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Seg. eletrônica</span><div class="bar-track"><div class="bar-fill" style="width:54%"><span class="bar-val">+16,1%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Notebook volume</span><div class="bar-track"><div class="bar-fill" style="width:31%"><span class="bar-val">+9,4%</span></div></div></div>
+<p class="src">Variação anual em 2025. PCs com Neural Processing Unit pularam de 5% para 22% das unidades vendidas. Fonte: <a href="https://itforum.com.br/noticias/idc-13-crescimento-mercado-ti-2025" target="_blank">IDC Predictions Brazil 2025</a>; <a href="https://itforum.com.br/noticias/setor-seguranca-eletronica-brasil/" target="_blank">ABESE Panorama 2024/2025</a>.</p>
+
+<h3>O setor está pegando carona em quatro ondas ao mesmo tempo</h3>
+<p>A primeira onda é de reposição: equipamentos comprados na pandemia chegam ao fim do ciclo de cinco anos justamente quando a Microsoft encerra o Windows 10. A segunda é de IA na ponta, com NPUs em notebooks e câmeras com analítica embarcada (64% dos produtos de segurança eletrônica fabricados no Brasil já trazem IA). A terceira é de modelo: Hardware como Serviço (HaaS/DaaS) sai dos slides e entra em RFPs. A quarta é regulatória: a reforma tributária preserva a Zona Franca de Manaus para o IPI até 2027 e redesenha o cálculo de margem em todo o canal.</p>
+
+<div class="accent">
+<h3 style="margin-top:0">O que está em jogo</h3>
+<p>Por trás do crescimento de dois dígitos esconde-se uma reconfiguração de quem captura valor. O distribuidor que só compra-e-vende caixa enfrenta margens cada vez mais espremidas pelo marketplace e pela compra direta de fabricante. O integrador que oferece projeto, financiamento, gestão e segurança defende o ticket. Quem fica entre os dois mundos sofre.</p>
+</div>
+
+<div class="qbox">Se hardware continua sendo metade do mercado, por que tantos players estão correndo para se transformar em prestadores de serviço?</div>
+</section>
+
+<!-- ============ ENTENDA ============ -->
+<section id="entenda" class="pane">
+<h2>Entenda como funciona o setor</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">Imagine que o computador da empresa é como o carro de uma frota de táxi. Alguém precisa fabricar, alguém precisa comprar em grande quantidade para revender mais barato, alguém precisa entregar e instalar, e alguém precisa cuidar quando quebra. Aqui está cada um desses papéis.</p>
+
+<div class="g2">
+<div class="card"><h3>Quem fabrica</h3><p>Marcas globais como Lenovo, Dell, HP, Apple, Cisco, Aruba; fabricantes brasileiros como Positivo, Multilaser, Intelbras. Em CFTV e segurança, brasileiras dominam: Intelbras, JFL, Hikvision e Dahua produzidas localmente sob regimes de ZFM ou Lei de Informática.</p></div>
+<div class="card"><h3>Quem distribui</h3><p>O distribuidor compra contêineres, estoca, financia o canal e revende para milhares de revendas e integradores. Os grandes globais no Brasil: TD SYNNEX, Ingram Micro. Os fortes locais: Allnations, Officer, Network1, Aldo Solar (na ponta solar e elétrica). Não vendem direto ao consumidor final.</p></div>
+<div class="card"><h3>Quem revende e integra</h3><p>Lojas físicas e online, varejistas B2B (Kabum Empresas, Kalunga, Fast Shop Pro), integradores que montam projetos completos (rede, servidor, segurança, suporte) e MSPs que cuidam do parque mensalmente. É aqui que o cliente final compra.</p></div>
+<div class="card"><h3>Quem opera o serviço</h3><p>MSPs e integradores: Sonda, Stefanini, TIVIT, Atos, Kyndryl, DXC, Unisys, NTT Data, Lanlink, Logicalis. Cuidam do dia-a-dia (rollout, suporte N1/N2/N3, manutenção, gestão de garantia, monitoramento de rede e segurança).</p></div>
+</div>
+
+<h3>O que mudou nos últimos cinco anos</h3>
+<div class="card"><strong>Antes:</strong> a maior parte dos contratos era venda pura. A revenda comprava do distribuidor, vendia com margem ao cliente, instalava, emitia nota e seguia para o próximo pedido.</div>
+<div class="card"><strong>Agora:</strong> o pedido vem com expectativa de financiamento, contrato de serviço gerenciado, política de troca, garantia estendida e dashboard de uso. Quem sabe vender só a caixa entrega o cliente para o concorrente que vende a operação.</div>
+<div class="card"><strong>Em 2025:</strong> 7,9 milhões de PCs corporativos brasileiros entram em ciclo de troca por causa do fim do Windows 10; só 10% do parque hoje está em modelo DaaS. A janela de conversão é curta e disputada.</div>
+
+<h3>Em números acessíveis</h3>
+<div class="g2">
+<div class="card-sm"><strong>R$ 270,8 bilhões</strong><br><span class="src">faturamento da indústria eletroeletrônica brasileira em 2025 (ABINEE), +4% real</span></div>
+<div class="card-sm"><strong>R$ 762,4 bilhões</strong><br><span class="src">produção do macrossetor de TIC brasileiro em 2024; 6,5% do PIB (Brasscom)</span></div>
+<div class="card-sm"><strong>US$ 67,8 bilhões</strong><br><span class="src">mercado de TI brasileiro em 2025; 38% da América Latina (ABES/IDC)</span></div>
+<div class="card-sm"><strong>R$ 14 bilhões</strong><br><span class="src">faturamento da segurança eletrônica brasileira em 2024; +16,1% (ABESE)</span></div>
+</div>
+
+<div class="qbox">Se a empresa cresce 18,5% ao ano em receita de hardware, mas o serviço cresce mais em margem, em que lado da curva o canal precisa estar daqui a três anos?</div>
+</section>
+
+<!-- ============ PERFIS ============ -->
+<section id="perfis" class="pane">
+<h2>Perfis de comprador no canal de TI corporativo</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">Quem compra equipamento e serviço de TI no Brasil não é uma só pessoa. São perfis distintos com bolsos, urgências e tolerâncias muito diferentes. Conhecer cada um decide a estratégia comercial.</p>
+
+<h3>Panorama do comprador corporativo brasileiro</h3>
+<div class="bar-row"><span class="bar-label">Microempresa</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1565c0"><span class="bar-val" style="color:#fff">~6,5 mi</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Pequena</span><div class="bar-track"><div class="bar-fill" style="width:42%;background:#2e7d32"><span class="bar-val" style="color:#fff">~700 mil</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Média</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#e65100"><span class="bar-val" style="color:#fff">~45 mil</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Grande</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#b71c1c"><span class="bar-val">~13 mil</span></div></div></div>
+<p class="src">Distribuição estimada do universo CNPJ brasileiro por porte; cada perfil tem necessidade e canal de compra distintos. Fontes: <a href="https://sebrae.com.br/sites/PortalSebrae/artigos/confira-oportunidades-de-negocios-disponiveis-nos-marketplaces-b2b,66410499f7036810VgnVCM1000001b00320aRCRD" target="_blank">Sebrae</a>; IBGE.</p>
+
+<h3>Quatro perfis comportamentais que coexistem no balcão</h3>
+
+<div class="card" style="border-left:3px solid #1565c0">
+<strong>O comprador-emergencial (microempresa, profissional liberal)</strong>
+<p>Notebook quebrou, impressora pifou na sexta-feira, precisa imprimir boleto. Valoriza disponibilidade física, prazo de entrega ágil e cartão de crédito parcelado. Compra em marketplace, em lojista físico de bairro ou em revendas regionais. Pouca lealdade; procura preço e disponibilidade.</p>
+<p class="src">Onde compra: Mercado Livre, Amazon, KaBuM, Kalunga, Magalu Empresas, lojas físicas regionais.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #2e7d32">
+<strong>O comprador-projeto (pequenas e médias empresas)</strong>
+<p>Vai abrir um escritório novo, montar uma sala de reunião com videoconferência, expandir um CFTV. Precisa de orientação técnica, pacote completo (hardware + cabeamento + instalação) e garantia consolidada. Aqui o integrador local ainda manda.</p>
+<p class="src">Onde compra: integrador regional, revenda especializada, serviço autorizado de fabricante.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #e65100">
+<strong>O comprador-frota (média empresa em escala)</strong>
+<p>Precisa renovar 200 a 2.000 estações de trabalho. Já entendeu DaaS, faz cotação por TCO em 36 meses, exige SLA, descarte certificado e pegada ESG. Não compra de marketplace; quer contrato e fatura única.</p>
+<p class="src">Onde compra: integradores médios, MSPs regionais, marcas via canal estruturado (Lenovo Pro, Dell ProSupport, HP DaaS).</p>
+</div>
+
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>O comprador-corporação (grandes empresas, setor público)</strong>
+<p>RFP formal, banca técnica, exigência de Lei das Estatais ou pregão eletrônico, contrato plurianual, certificações de segurança, redundância geográfica. Pacote DaaS de 5 mil a 50 mil dispositivos com gestão integrada. Aqui jogam Sonda, Stefanini, TIVIT, Atos, DXC, Kyndryl, Unisys.</p>
+<p class="src">Onde compra: licitação pública, RFP corporativo, contrato master com integrador top-3.</p>
+</div>
+
+<div class="accent">
+<h3 style="margin-top:0">O que acontece quando aperta</h3>
+<p>Em ciclo de juros alto e dólar pressionado, o comprador-emergencial atrasa a troca e remenda. O comprador-projeto fatia a obra. O comprador-frota negocia OPEX em vez de CAPEX e descobre o DaaS. O comprador-corporação fecha contratos mais longos para travar preço. Cada movimento muda o canal que ganha o pedido.</p>
+</div>
+
+<h3>Recorte por classe econômica do comprador-final (PME)</h3>
+<div class="g3">
+<div class="card"><strong>Faixa A (faturamento >R$ 50 mi)</strong><p>Aceita modelo OPEX, pede SLA, valoriza marca, usa integrador top-3. Compra ticket alto, ciclo longo.</p></div>
+<div class="card"><strong>Faixa B (R$ 5 mi a R$ 50 mi)</strong><p>Usa integrador regional ou marketplace B2B premium. Procura financiamento e garantia estendida.</p></div>
+<div class="card"><strong>Faixa C/D (até R$ 5 mi)</strong><p>Compra por marketplace, lojista físico, indicação. Sensível a preço, parcelamento e prazo.</p></div>
+</div>
+
+<h3>Cenário 2x2: urgência x escala</h3>
+<div class="g2">
+<div class="card"><strong>Alta urgência + baixa escala</strong><p>Marketplace ganha. Quem entrega amanhã com cartão parcelado fecha o pedido. Margem baixa, volume alto.</p><p class="src">Exemplo: 5 notebooks para um escritório novo abrindo na segunda.</p></div>
+<div class="card"><strong>Alta urgência + alta escala</strong><p>Integrador com estoque local e linha de crédito. Distribuidor que tem produto pronto e financiamento ganha.</p><p class="src">Exemplo: rollout de 800 estações em três filiais com SLA de 30 dias.</p></div>
+<div class="card"><strong>Baixa urgência + baixa escala</strong><p>Compra programada, comparativa, por preço. KaBuM, Mercado Livre, Magalu ganham. Pouca diferenciação.</p><p class="src">Exemplo: troca anual de impressora.</p></div>
+<div class="card"><strong>Baixa urgência + alta escala</strong><p>RFP formal. Aqui ganha quem oferece TCO, ESG, certificações e contrato plurianual. Sonda, Stefanini, TIVIT, DXC, Kyndryl jogam aqui.</p><p class="src">Exemplo: contrato master de DaaS com 10 mil endpoints em 60 meses.</p></div>
+</div>
+
+<h3>Como cada perfil reage à crise (série temporal)</h3>
+<div class="bar-row"><span class="bar-label">Micro 2023</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:#1565c0"><span class="bar-val" style="color:#fff">retração</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Micro 2024</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#1565c0"><span class="bar-val" style="color:#fff">estável</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Micro 2025</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:#1565c0"><span class="bar-val" style="color:#fff">retomada</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Corp 2023</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:#b71c1c"><span class="bar-val">cauteloso</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Corp 2024</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#b71c1c"><span class="bar-val">acelera</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Corp 2025</span><div class="bar-track"><div class="bar-fill" style="width:96%;background:#b71c1c"><span class="bar-val">recorde</span></div></div></div>
+<p class="src">Padrão de comportamento por porte. Microempresas seguem o ciclo do consumo doméstico; grandes companhias antecipam ciclos por capex programado e licitação. Fonte: análise sobre dados <a href="https://www.cnnbrasil.com.br/economia/mercado/setor-eletroeletronico-cresce-receita-em-11-em-2024-mas-desacelera-em-2025-diz-abinee/" target="_blank">ABINEE</a> e <a href="https://itforum.com.br/noticias/mercado-ti-brasil-cresce-185-2025/" target="_blank">ABES/IDC</a>.</p>
+
+<div class="accent">
+<h3 style="margin-top:0">Conexão que ninguém faz</h3>
+<p>O microempreendedor que compra no marketplace hoje é potencial cliente de DaaS amanhã, quando crescer; mas o canal tradicional de distribuição perde esse cliente cedo demais para reconquistá-lo no momento em que ele se torna comprador-frota. Quem captura o micro hoje constrói a base do corporativo de cinco anos.</p>
+</div>
+</section>
+
+<!-- ============ COBERTURA ============ -->
+<section id="cobertura" class="pane">
+<h2>Mapa das fontes</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">Como diferentes vozes do mercado enquadram o setor: regulador foca em arrecadação e PPB, instituições falam de PIB e emprego, jornalismo de negócios destaca players, mídia de centro fala de consumidor, mídia de mercado fala de M&A.</p>
+
+<div class="g5">
+<div class="card" style="border-left:3px solid #00695c">
+<p class="lbl" style="color:#00695c">REGULATÓRIO</p>
+<p style="font-size:13px"><a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2025/11/lei-do-bem-completa-20-anos-como-principal-instrumento-de-incentivo-a-inovacao" target="_blank">MCTI</a><br><a href="https://www.gov.br/pt-br/servicos/obter-beneficios-fiscais-da-lei-da-informatica" target="_blank">Lei Informática</a><br><a href="https://www.suframa.gov.br/download/publicacoes/marco-regulatorio-incentivos-fiscais-zfm-ao-alcs.pdf" target="_blank">Suframa</a></p>
+</div>
+<div class="card" style="border-left:3px solid #2e7d32">
+<p class="lbl" style="color:#2e7d32">INSTITUCIONAL</p>
+<p style="font-size:13px"><a href="https://abes.org.br/en/dados-do-setor/" target="_blank">ABES</a><br><a href="https://brasscom.org.br/inteligencia/relatorio-setorial/" target="_blank">Brasscom</a><br><a href="https://www.abinee.org.br/" target="_blank">ABINEE</a><br><a href="https://www.abese.org.br/" target="_blank">ABESE</a></p>
+</div>
+<div class="card" style="border-left:3px solid #c62828">
+<p class="lbl" style="color:#c62828">ESQUERDA</p>
+<p style="font-size:13px"><a href="https://www.cartacapital.com.br/" target="_blank">CartaCapital</a><br><a href="https://convergenciadigital.com.br/" target="_blank">ConvergênciaDigital</a></p>
+</div>
+<div class="card" style="border-left:3px solid #888">
+<p class="lbl" style="color:#888">CENTRO</p>
+<p style="font-size:13px"><a href="https://itforum.com.br/" target="_blank">IT Forum</a><br><a href="https://tiinside.com.br/" target="_blank">TI Inside</a><br><a href="https://www.cnnbrasil.com.br/" target="_blank">CNN Brasil</a></p>
+</div>
+<div class="card" style="border-left:3px solid #1565c0">
+<p class="lbl" style="color:#1565c0">DIREITA</p>
+<p style="font-size:13px"><a href="https://neofeed.com.br/" target="_blank">NeoFeed</a><br><a href="https://timesbrasil.com.br/" target="_blank">Times Brasil/CNBC</a><br><a href="https://kpmg.com/br/" target="_blank">KPMG</a></p>
+</div>
+</div>
+
+<h3>Consenso entre todas as posições</h3>
+<div class="card">O setor cresce dois dígitos em 2025; o Brasil é o maior mercado de TI da América Latina; hardware ainda lidera, mas serviços ganham margem; M&A está em alta; o fim do Windows 10 cria janela de troca. Esses pontos aparecem em fontes de todas as cores.</div>
+
+<h3>O que a esquerda cobre e a direita não</h3>
+<div class="card">Concentração do mercado em poucos players globais (TD SYNNEX, Ingram Micro), assimetria entre incentivos fiscais à ZFM e ausência de política industrial para o canal local pequeno, condições de trabalho em call center de suporte, e descarte eletrônico (e-waste) gerado pela troca acelerada de hardware.</div>
+
+<h3>O que a direita cobre e a esquerda não</h3>
+<div class="card">Volume de M&A, valuation de techs, performance de companhias listadas, eficiência tributária via ZFM, oportunidades para private equity em integradores médios, e o ônus fiscal do PPB para fabricantes nacionais.</div>
+
+<h3>Blindspot total: o que ninguém cobre</h3>
+<div class="card" style="border-left:3px solid #b71c1c">O destino do hardware retornado de DaaS após 36 meses, o estoque parado de revendas que perdem o cliente para marketplace, o impacto da reforma tributária sobre o ICMS de operações triangulares Estado-Estado, e a transição forçada do canal pequeno (até R$ 10 milhões em receita) que não consegue se transformar em MSP. Esse último é o que mais afeta empresas como a do contexto da pesquisa.</div>
+</section>
+
+<!-- ============ FONTES ============ -->
+<section id="fontes" class="pane">
+<h2>18 fontes analisadas</h2>
+<div class="filters">
+<button class="fbtn on" onclick="FF('t')">Todas</button>
+<button class="fbtn" onclick="FF('r')"><span class="dot" style="background:#00695c"></span>Regulatório</button>
+<button class="fbtn" onclick="FF('i')"><span class="dot" style="background:#2e7d32"></span>Institucional</button>
+<button class="fbtn" onclick="FF('e')"><span class="dot" style="background:#c62828"></span>Esquerda</button>
+<button class="fbtn" onclick="FF('c')"><span class="dot" style="background:#888"></span>Centro</button>
+<button class="fbtn" onclick="FF('d')"><span class="dot" style="background:#1565c0"></span>Direita</button>
+</div>
+
+<div class="card fo" data-f="r"><span class="dot" style="background:#00695c"></span><strong><a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2025/11/lei-do-bem-completa-20-anos-como-principal-instrumento-de-incentivo-a-inovacao" target="_blank">Ministério da Ciência, Tecnologia e Inovação</a></strong> <span class="src">Regulatório · Oficial</span><p style="font-style:italic;color:#666;font-size:14px">Lei do Bem completa 20 anos como principal instrumento de incentivo à inovação</p><blockquote>Motor: o Estado mantém R$ 51,6 bi/ano em renúncia fiscal direcionada à inovação; o canal de TI captura indiretamente quando integra com fabricante.</blockquote></div>
+
+<div class="card fo" data-f="r"><span class="dot" style="background:#00695c"></span><strong><a href="https://www.gov.br/pt-br/servicos/obter-beneficios-fiscais-da-lei-da-informatica" target="_blank">Lei de Informática (Lei 8.248/91)</a></strong> <span class="src">Regulatório · Oficial</span><p style="font-style:italic;color:#666;font-size:14px">Benefícios fiscais para fabricantes de TI com PPB</p><blockquote>Motor: redução de IPI escalonada (80% até 2024, 75% em 2025-2026, 70% em 2027-2029); decide a competitividade de fabricante nacional contra importado.</blockquote></div>
+
+<div class="card fo" data-f="r"><span class="dot" style="background:#00695c"></span><strong><a href="https://www.suframa.gov.br/download/publicacoes/marco-regulatorio-incentivos-fiscais-zfm-ao-alcs.pdf" target="_blank">SUFRAMA</a></strong> <span class="src">Regulatório · Oficial</span><p style="font-style:italic;color:#666;font-size:14px">Marco regulatório dos incentivos fiscais da Zona Franca de Manaus</p><blockquote>Motor: a ZFM segue ativa para IPI mesmo após a reforma tributária (LC 214/2025), preservando vantagem fiscal de quem fabrica em Manaus.</blockquote></div>
+
+<div class="card fo" data-f="i"><span class="dot" style="background:#2e7d32"></span><strong><a href="https://abes.org.br/en/brasil-mantem-lideranca-em-ti-na-america-latina-cresce-acima-da-expectativa-em-2025-mas-desacelera-ritmo-de-crescimento-neste-ano-e-consolida-nova-fase-do-mercado-aponta-estudo-da-abes/" target="_blank">ABES (Associação Brasileira das Empresas de Software)</a></strong> <span class="src">Institucional · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Brasil mantém liderança em TI na América Latina, cresce 18,5% em 2025</p><blockquote>Motor: o estudo ABES/IDC é a fotografia oficial do tamanho do bolo; quem disputa share decide a estratégia em cima desse número.</blockquote></div>
+
+<div class="card fo" data-f="i"><span class="dot" style="background:#2e7d32"></span><strong><a href="https://brasscom.org.br/relatorio-inedito-da-brasscom-aponta-crescimento-do-setor-de-tic-que-representa-65-do-pib-brasileiro/" target="_blank">Brasscom</a></strong> <span class="src">Institucional · Alta</span><p style="font-style:italic;color:#666;font-size:14px">TIC representa 6,5% do PIB brasileiro</p><blockquote>Motor: dimensiona o macrossetor (R$ 762,4 bi em 2024) e mostra que TI deixou de ser nicho para ser política industrial.</blockquote></div>
+
+<div class="card fo" data-f="i"><span class="dot" style="background:#2e7d32"></span><strong><a href="https://www.abinee.org.br/" target="_blank">ABINEE</a></strong> <span class="src">Institucional · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Setor eletroeletrônico fecha 2025 com avanço real de 4%</p><blockquote>Motor: faturamento de R$ 270,8 bi e projeção de R$ 289 bi para 2026 (+3%) sinaliza desaceleração relativa após o boom pós-pandemia.</blockquote></div>
+
+<div class="card fo" data-f="i"><span class="dot" style="background:#2e7d32"></span><strong><a href="https://itforum.com.br/noticias/setor-seguranca-eletronica-brasil/" target="_blank">ABESE</a></strong> <span class="src">Institucional · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Segurança eletrônica fatura R$ 14 bi em 2024</p><blockquote>Motor: 64% dos produtos com IA embarcada e crescimento de 16,1% mostram que CFTV virou negócio de software, não só de câmera.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://itforum.com.br/noticias/idc-13-crescimento-mercado-ti-2025" target="_blank">IT Forum / IDC Predictions Brazil 2025</a></strong> <span class="src">Centro · Alta</span><p style="font-style:italic;color:#666;font-size:14px">IDC prevê 13% de crescimento para o mercado de TI brasileiro em 2025</p><blockquote>Motor: previsão setorial detalhada por subcategoria (PCs, servidores, data center, educação) que orienta planejamento de canal.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://tiinside.com.br/09/06/2025/seguranca-eletronica-faturou-r-14-bilhoes-em-2024/" target="_blank">TI Inside</a></strong> <span class="src">Centro · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Segurança eletrônica faturou R$ 14 bilhões em 2024</p><blockquote>Motor: cobertura especializada da convergência entre TI corporativa e segurança eletrônica, antes mercados separados.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://www.cnnbrasil.com.br/economia/mercado/setor-eletroeletronico-cresce-receita-em-11-em-2024-mas-desacelera-em-2025-diz-abinee/" target="_blank">CNN Brasil</a></strong> <span class="src">Centro · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Setor eletroeletrônico cresce receita em 11% em 2024, mas desacelera em 2025</p><blockquote>Motor: enquadra o tema na narrativa econômica geral, conectando hardware com câmbio, juros e consumo.</blockquote></div>
+
+<div class="card fo" data-f="e"><span class="dot" style="background:#c62828"></span><strong><a href="https://convergenciadigital.com.br/mercado/ti-brasileira-cresce-185-em-2025-bate-recorde-impulsionada-pela-forte-demanda-de-hardware-para-ia/" target="_blank">Convergência Digital</a></strong> <span class="src">Esquerda · Alta</span><p style="font-style:italic;color:#666;font-size:14px">TI brasileira cresce 18,5% em 2025; bate recorde impulsionada pela forte demanda de hardware para IA</p><blockquote>Motor: cobertura crítica do papel da política pública e do impacto social do crescimento concentrado em poucos players.</blockquote></div>
+
+<div class="card fo" data-f="e"><span class="dot" style="background:#c62828"></span><strong><a href="https://www.cartacapital.com.br/sociedade/cinco-familias-controlam-50-dos-principais-veiculos-de-midia-do-pais-indica-relatorio/" target="_blank">CartaCapital</a></strong> <span class="src">Esquerda · Moderada</span><p style="font-style:italic;color:#666;font-size:14px">Concentração de mídia e implicações para narrativa de mercado</p><blockquote>Motor: lembra que a cobertura de M&A e do canal de TI é majoritariamente feita por veículos com proprietários comuns.</blockquote></div>
+
+<div class="card fo" data-f="d"><span class="dot" style="background:#1565c0"></span><strong><a href="https://neofeed.com.br/negocios/kabum-do-magazine-luiza-prepara-entrada-no-b2b-e-se-aproxima-dos-r-5-bilhoes-de-faturamento/" target="_blank">NeoFeed</a></strong> <span class="src">Direita · Alta</span><p style="font-style:italic;color:#666;font-size:14px">KaBuM, do Magazine Luiza, prepara entrada no B2B</p><blockquote>Motor: cobertura de business angle, foco em estratégia, capital e competição corporativa, com viés pró-mercado.</blockquote></div>
+
+<div class="card fo" data-f="d"><span class="dot" style="background:#1565c0"></span><strong><a href="https://timesbrasil.com.br/empresas-e-negocios/ma/brasil-lidera-fusoes-e-aquisicoes-na-america-latina-com-alta-de-15-no-valor-das-operacoes/" target="_blank">Times Brasil/CNBC</a></strong> <span class="src">Direita · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Brasil lidera fusões e aquisições na América Latina</p><blockquote>Motor: 1.877 transações e US$ 56,4 bi em 2025; o setor de software/internet/TI lidera com 340 deals.</blockquote></div>
+
+<div class="card fo" data-f="d"><span class="dot" style="background:#1565c0"></span><strong><a href="https://kpmg.com/br/pt/home/insights/2025/02/pesquisa-fusoes-aquisicoes-2024-4-trimestre.html" target="_blank">KPMG Brasil</a></strong> <span class="src">Direita · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Pesquisa Fusões e Aquisições 2024 e 2025</p><blockquote>Motor: dados estruturados de M&A por setor, base para análise de consolidação no canal.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://www.mobiletime.com.br/noticias/20/02/2026/simpress-2025/" target="_blank">Mobile Time</a></strong> <span class="src">Centro · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Smartphone como serviço cresce 30% em 2025 na Simpress</p><blockquote>Motor: caso concreto de player local de DaaS crescendo dois dígitos em modelo OPEX.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://news.mercadolibre.com/compras-B2B-no-brasil" target="_blank">Mercado Livre Negócios</a></strong> <span class="src">Centro · Alta</span><p style="font-style:italic;color:#666;font-size:14px">Compras B2B no Brasil: 4 milhões de usuários, 1,3 milhão de produtos</p><blockquote>Motor: marketplace generalista entrando agressivamente no B2B comprime margem do canal tradicional.</blockquote></div>
+
+<div class="card fo" data-f="c"><span class="dot" style="background:#888"></span><strong><a href="https://www.reclameaqui.com.br/empresa/distribuidores-e-fabricantes/lista-reclamacoes/" target="_blank">Reclame Aqui</a></strong> <span class="src">Centro · Moderada</span><p style="font-style:italic;color:#666;font-size:14px">Lista de reclamações de distribuidores e fabricantes</p><blockquote>Motor: termômetro do consumidor; sinaliza pontos cegos do setor em entrega, garantia e pós-venda.</blockquote></div>
+</section>
+
+<!-- ============ ATORES ============ -->
+<section id="atores" class="pane">
+<h2>Atores e movimentos do canal de TI corporativa</h2>
+
+<h3>Os maiores players globais com presença no Brasil</h3>
+<div class="bar-row"><span class="bar-label">TD SYNNEX</span><div class="bar-track"><div class="bar-fill" style="width:96%"><span class="bar-val" style="color:#fff">US$ 60 bi global</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Ingram Micro</span><div class="bar-track"><div class="bar-fill" style="width:78%;background:#666"><span class="bar-val" style="color:#fff">US$ 47 bi global</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Stefanini</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:#666"><span class="bar-val" style="color:#fff">~R$ 5,5 bi BR</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Sonda</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:#666"><span class="bar-val" style="color:#fff">~R$ 4 bi BR</span></div></div></div>
+<div class="bar-row"><span class="bar-label">TIVIT</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#666"><span class="bar-val">R$ 2,1 bi BR</span></div></div></div>
+<p class="src">Receita aproximada. Globais distribuem hardware/software para revendas; nacionais focam em integração e serviços gerenciados. Fontes: <a href="https://en.wikipedia.org/wiki/TD_Synnex" target="_blank">TD SYNNEX Wiki</a>; <a href="https://stefanini.com/pt-br" target="_blank">Stefanini</a>; <a href="https://tivit.com/" target="_blank">TIVIT</a>.</p>
+
+<h3>Quem está atacando</h3>
+<div class="card" style="border-left:3px solid #c62828">
+<strong>Marketplaces B2B (Mercado Livre Negócios, Amazon Business, KaBuM)</strong>
+<p>ML Negócios entrou em outubro/2024 e já tem 4 milhões de usuários autorizados na América Latina, com 1,3 milhão de produtos a preço B2B. KaBuM, do Magalu (faturamento perto de R$ 5 bi), prepara entrada B2B no primeiro trimestre de 2025 com IA para configurar PCs sob demanda.</p>
+<p class="src">Estratégia: comoditizar a parte de venda pura, ficar com a margem de plataforma e logística, deixar para o canal apenas a venda de serviço.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #c62828">
+<strong>Fabricantes vendendo direto via DaaS (HP, Dell, Lenovo)</strong>
+<p>Programas como Lenovo TruScale, HP DaaS e Dell APEX miram conta corporativa cortando o intermediário; oferecem hardware como assinatura mensal, com gestão integrada.</p>
+<p class="src">Estratégia: travar cliente em contrato plurianual, capturar receita recorrente que antes ia para o canal, e padronizar o suporte global.</p>
+</div>
+
+<h3>Quem está defendendo</h3>
+<div class="card" style="border-left:3px solid #2e7d32">
+<strong>Distribuidores tradicionais (TD SYNNEX, Ingram Micro, Allnations, Officer, Network1)</strong>
+<p>Defendem-se virando orquestradores: além de logística e crédito, oferecem serviços profissionais, marketplace para revendas, financiamento estruturado e nuvem multi-vendor. TD SYNNEX foi de 380 para 600 funcionários no Brasil, com três escritórios; Officer tem mais de 12 mil revendedores ativos.</p>
+<p class="src">Estratégia: tornar-se indispensável para a revenda média que não tem escala para vender direto ao corporativo grande.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #2e7d32">
+<strong>Integradores e MSPs nacionais (Sonda, Stefanini, TIVIT, Lanlink, Logicalis)</strong>
+<p>Stefanini destinou R$ 2 bi para aquisições focadas em IA; TIVIT cresceu 12,2% em 2025 com salto de 63% em cibersegurança gerenciada. ISG aponta DXC e Stefanini como líderes em todos os 6 quadrantes do estudo SAP Ecosystem 2025.</p>
+<p class="src">Estratégia: empilhar serviços (DaaS, segurança, SAP, cloud) para sair da lógica de hardware e travar contrato master.</p>
+</div>
+
+<h3>Quem está entrando</h3>
+<div class="card" style="border-left:3px solid #e65100">
+<strong>Positivo S+ (braço de serviços do Grupo Positivo)</strong>
+<p>Anunciou ambição de virar uma das três maiores em serviços gerenciados, hoje dominadas por Stefanini, Sonda e Kyndryl.</p>
+<p class="src">Estratégia: usar a base de hardware corporativo (Positivo é fabricante) como porta de entrada para serviço.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #e65100">
+<strong>Hyperscalers oferecendo edge e bare-metal (AWS Outposts, Azure Stack, Google Distributed Cloud)</strong>
+<p>Empurram parte do hardware corporativo para a borda como serviço; quem antes comprava servidor agora consome capacidade.</p>
+<p class="src">Estratégia: atacar a infraestrutura corporativa pelo software, capturando o orçamento que antes ia para data center próprio.</p>
+</div>
+
+<h3>O que esses movimentos revelam</h3>
+<div class="accent">
+<p>O canal de TI está deixando de ser uma cadeia linear (fábrica → distribuidor → revenda → cliente) para se tornar uma malha em que cada elo tenta capturar mais da cadeia de valor. Marketplace come a margem da revenda comoditizada; fabricante come a margem do distribuidor via DaaS; integrador come a margem do fabricante encapsulando serviço; hyperscaler come a margem do integrador via cloud. Quem não souber para onde se mover, fica no meio sem nada.</p>
+</div>
+
+<h3>Ecossistema: quem opera nos bastidores</h3>
+
+<div class="card">
+<strong>Bancos digitais e fintechs B2B (Nubank PJ, BTG Empresas, Stone, PagBank)</strong>
+<p>Oferecem antecipação de recebível e linha de crédito ao revendedor pequeno, função que o distribuidor tradicionalmente prestava.</p>
+<p style="font-style:italic;color:#666;font-size:13px">Curiosidade: parte do crédito subsidiado pelo BNDES e Finep que historicamente irrigava o canal de TI agora compete com fintechs que têm custo operacional menor e acesso direto via API.</p>
+</div>
+
+<div class="card">
+<strong>Operadores logísticos especializados em TI (Loggi B2B, Total Express Empresas, JadLog Tech)</strong>
+<p>Cuidam do last-mile B2B, que é diferente do varejo (precisa SLA por horário, recibo digital, instalação programada).</p>
+<p style="font-style:italic;color:#666;font-size:13px">Curiosidade: a logística reversa do DaaS (recolher equipamento ao final do contrato) virou negócio em si; uma camada inteira de prestadores cresceu para atender o ciclo de retorno.</p>
+</div>
+
+<div class="card">
+<strong>Recicladoras certificadas e gestores de e-waste (Reciclo, Sinctronics, Green Eletron)</strong>
+<p>O fim do ciclo (descarte certificado) virou exigência de RFP corporativa e ESG. Quem certifica o descarte fatura.</p>
+<p style="font-style:italic;color:#666;font-size:13px">Curiosidade: a Lei 12.305/2010 (Política Nacional de Resíduos Sólidos) obriga logística reversa, mas a fiscalização é frouxa; o e-waste corporativo brasileiro segue subdimensionado nas estatísticas oficiais.</p>
+</div>
+
+<div class="card">
+<strong>Certificadoras e auditores (TÜV, BSI, Bureau Veritas)</strong>
+<p>SOC 2, ISO 27001, ISO 14001 viraram pré-requisito para fechar contrato com banco, governo e multinacional. Quem não tem, perde RFP.</p>
+<p style="font-style:italic;color:#666;font-size:13px">Curiosidade: o custo médio anual de manter as certificações de uma média integradora chega a R$ 300 a 500 mil; é barreira de entrada implícita que protege o incumbente.</p>
+</div>
+
+<div class="card">
+<strong>Fundos de private equity setoriais (Pátria, Vinci, Crescera, Pipeline Capital)</strong>
+<p>Compram integradores médios para consolidar via roll-up. KPMG aponta que setor de Internet/Software/TI lidera M&A em 2025 com 340 transações.</p>
+<p style="font-style:italic;color:#666;font-size:13px">Curiosidade: a tese é comprar 3 a 5 integradores regionais, juntar back-office, vender o conjunto a um global por múltiplo maior; o canal vira ativo financeiro.</p>
+</div>
+
+<h3>Competição indireta</h3>
+<div class="g3">
+<div class="card"><strong>Rivais diretos</strong><p>Outras revendas/integradores da mesma região e porte. Disputam o mesmo cliente PME com base em preço, prazo e relacionamento.</p></div>
+<div class="card"><strong>Substitutos</strong><p>Marketplace B2B + cartão corporativo (compra direta sem revenda); cloud pública substituindo servidor; SaaS substituindo software pago.</p></div>
+<div class="card"><strong>Competidores pela atenção</strong><p>Time de TI interno do cliente que decide internalizar; consultoria estratégica (Accenture, Deloitte) que define stack antes do canal entrar; fabricante com programa direto.</p></div>
+</div>
+
+<h3>Produtos complementares possíveis (que ainda não existem em escala no Brasil)</h3>
+<div class="card-sm"><strong>Marketplace neutro de DaaS</strong> com comparador automático de TCO entre Lenovo TruScale, HP DaaS, Dell APEX e providers locais (não existe).</div>
+<div class="card-sm"><strong>Seguro de continuidade operacional</strong> para parque de TI (cobre downtime de hardware com indenização por hora parada).</div>
+<div class="card-sm"><strong>Plataforma aberta de gestão multi-vendor</strong> que reúne dispositivos de marcas diferentes em um único console (a oferta atual é fechada por fabricante).</div>
+<div class="card-sm"><strong>Pacote DaaS para microempreendedor</strong> (até 10 dispositivos), faixa hoje atendida só por compra à vista no marketplace.</div>
+<div class="card-sm"><strong>Linha de crédito setorial específica</strong> para revenda regional virar MSP (capacitação, ferramenta, certificação financiada).</div>
+
+<h3>Cadeia de valor: quem captura quanto em uma venda corporativa de R$ 100 mil</h3>
+<div class="card-sm"><strong>Fabricante:</strong> R$ 60 a 70 mil (60-70% do ticket; produto + frete internacional)</div>
+<div class="card-sm"><strong>Distribuidor:</strong> R$ 8 a 12 mil (8-12%; estoque, crédito, logística doméstica)</div>
+<div class="card-sm"><strong>Revenda/Integrador:</strong> R$ 10 a 18 mil (10-18%; venda, projeto, instalação)</div>
+<div class="card-sm"><strong>Logística e descarte:</strong> R$ 2 a 4 mil (2-4%)</div>
+<div class="card-sm"><strong>Impostos e tributos:</strong> ~R$ 8 a 12 mil dependendo de regime; recebem o que sobra de quem ficou no meio sem se mover.</div>
+<p class="src">Estimativa de margem em projeto típico de TI corporativa; varia conforme produto, prazo, regime tributário e modelo (compra ou DaaS). Fonte: análise sobre dados <a href="https://abes.org.br/en/dados-do-setor/" target="_blank">ABES</a> e práticas de mercado.</p>
+</section>
+
+<!-- ============ REGULATÓRIO ============ -->
+<section id="regulatorio" class="pane">
+<h2>Ecossistema regulatório que molda o canal de TI</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">O canal de TI é fortemente moldado por política industrial, regime tributário e regulação setorial. Quem ignora os reguladores precifica errado.</p>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/mcti/" target="_blank">MCTI (Ministério da Ciência, Tecnologia e Inovação)</a></strong>
+<p>Órgão central da política de incentivos à inovação e à indústria de TI. Administra a Lei do Bem (R$ 51,6 bi/2024) e supervisiona Lei de Informática.</p>
+<p class="src">Vinculação: governo federal · Base legal: Decreto 9.854/2019 e correlatos · Dados abertos: gov.br/mcti · Ponto crítico: timing de habilitação de PPB define quem vence licitação.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/suframa/" target="_blank">SUFRAMA (Superintendência da Zona Franca de Manaus)</a></strong>
+<p>Concede e fiscaliza incentivos à fabricação na ZFM. Decisivo para a competitividade de fabricantes nacionais (Positivo, Multilaser, Intelbras).</p>
+<p class="src">Vinculação: MDIC · Base legal: Decreto-Lei 288/1967, LC 214/2025 · Dados abertos: suframa.gov.br · Ponto crítico: a reforma tributária preserva o IPI da ZFM até 2027, mas redesenha CBS/IBS.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/anatel/" target="_blank">Anatel</a></strong>
+<p>Homologa equipamentos de telecomunicações (roteadores, switches, câmeras IP, access points). Sem selo Anatel, o produto não pode ser vendido.</p>
+<p class="src">Vinculação: governo federal · Base legal: Lei Geral de Telecomunicações 9.472/1997 · Dados abertos: dados.gov.br/anatel · Ponto crítico: prazo de homologação de novos equipamentos atrasa lançamentos.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/receitafederal/" target="_blank">Receita Federal</a></strong>
+<p>Regime de drawback, ex-tarifário, importação, retenção de tributos. Decisivo para o canal que importa diretamente.</p>
+<p class="src">Vinculação: Ministério da Fazenda · Base legal: Decreto-Lei 37/1966 e demais · Ponto crítico: a reforma tributária (CBS+IBS substituindo PIS/Cofins/ICMS/ISS) inicia transição em 2026, com período de duplicidade.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/anpd/" target="_blank">ANPD (Autoridade Nacional de Proteção de Dados)</a></strong>
+<p>Aplica a LGPD; afeta o canal que armazena dado de cliente (CRM, ERP, prontuário, logística). Multa pode chegar a 2% do faturamento.</p>
+<p class="src">Vinculação: governo federal · Base legal: Lei 13.709/2018 · Dados abertos: gov.br/anpd · Ponto crítico: 2025 trouxe primeiras multas significativas; canal que terceiriza serviço fica solidariamente responsável.</p>
+</div>
+
+<div class="card" style="border-left:3px solid #00695c">
+<strong><a href="https://www.gov.br/inmetro/" target="_blank">INMETRO</a></strong>
+<p>Certificação compulsória de produtos elétricos. Impacta direto fontes, no-breaks, baterias, cabos.</p>
+<p class="src">Vinculação: MDIC · Base legal: Lei 9.933/1999 · Ponto crítico: equipamento sem selo INMETRO é apreendido em fiscalização.</p>
+</div>
+
+<h3>Principais problemáticas regulatórias</h3>
+<ul>
+<li>Insegurança sobre ICMS interestadual em vendas DaaS (locação x circulação) e em operações triangulares Estado-Estado.</li>
+<li>Custo de habilitação de PPB para fabricante nacional encarece pequena escala.</li>
+<li>Ausência de marco específico para economia circular de hardware corporativo (descarte certificado de DaaS).</li>
+<li>Reforma tributária com período de transição até 2033 cria insegurança em precificação de contratos plurianuais.</li>
+<li>LGPD aplicada a MSP/integrador exige adequação custosa para canal pequeno.</li>
+<li>Lei das Estatais e Lei 14.133/2021 (nova lei de licitações) alteraram exigências de habilitação que afetam fornecedores.</li>
+</ul>
+
+<h3>Linha do tempo regulatória relevante para o canal</h3>
+<div class="tl">
+<div class="tl-item"><div class="tl-dot done"></div><strong>1991</strong> Lei de Informática (8.248) cria PPB e incentivo a fabricante nacional.</div>
+<div class="tl-item"><div class="tl-dot done"></div><strong>2005</strong> Lei do Bem (11.196) instaura subvenção a P&D.</div>
+<div class="tl-item"><div class="tl-dot done"></div><strong>2018</strong> LGPD (13.709) aprovada, em vigor desde 2020.</div>
+<div class="tl-item"><div class="tl-dot done"></div><strong>2021</strong> Nova Lei de Licitações (14.133) substitui 8.666; altera regras para fornecimento ao governo.</div>
+<div class="tl-item"><div class="tl-dot done"></div><strong>2023</strong> EC 132 promulga reforma tributária (criação CBS/IBS, fim PIS/Cofins/ICMS/ISS).</div>
+<div class="tl-item"><div class="tl-dot now"></div><strong>2025</strong> LC 214/2025 regulamenta reforma; preserva IPI da ZFM até 2027.</div>
+<div class="tl-item"><div class="tl-dot now"></div><strong>2026</strong> Início da fase de testes da CBS/IBS para empresas; canal precisa adequar ERP e nota fiscal.</div>
+<div class="tl-item"><div class="tl-dot wait"></div><strong>2027-2029</strong> Lei de Informática reduz IPI gradualmente (75% → 70%); ZFM perde IPI geral mas mantém regime especial.</div>
+<div class="tl-item"><div class="tl-dot wait"></div><strong>2033</strong> Conclusão da transição tributária; novo cenário definitivo.</div>
+</div>
+
+<div class="qbox">Se a reforma tributária está em duplicidade entre 2026 e 2032, qual integrador hoje sabe precificar um contrato de DaaS de 60 meses sem embutir prêmio de risco regulatório?</div>
+</section>
+
+<!-- ============ FORÇAS ============ -->
+<section id="steeple" class="pane">
+<h2>Sete forças que moldam o setor</h2>
+
+<h3>Social</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Trabalho híbrido consolidado:</strong> demanda por dispositivo portátil, dock, monitor secundário e ferramenta de colaboração em escala corporativa.</li>
+<li><strong>Cultura de assinatura:</strong> consumidor B2B passou a aceitar pagar pelo uso (Netflix, Spotify, AWS) e estende a expectativa para hardware.</li>
+<li><strong>Escassez de talento técnico:</strong> mais de 88 mil vagas previstas em TI em 2025 (Brasscom); MSP cresce porque cliente não tem time interno.</li>
+</ul>
+</div>
+
+<h3>Tecnológica</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>NPU em PC:</strong> de 5% para 22% em um ano; redesenha o ciclo de troca antes do usual.</li>
+<li><strong>IA em câmera:</strong> 64% dos produtos de segurança eletrônica fabricados no Brasil já têm IA embarcada (ABESE).</li>
+<li><strong>Cloud híbrida e edge:</strong> server bare-metal volta como serviço (Outposts, Azure Stack, GCP Distributed).</li>
+<li><strong>5G corporativo privado:</strong> redes privadas competem com cabeamento estruturado tradicional em fábrica e logística.</li>
+</ul>
+</div>
+
+<h3>Econômica</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Selic alta + dólar pressionado:</strong> encarece compra à vista, favorece OPEX/DaaS.</li>
+<li><strong>Mercado de TI BR cresceu 18,5% em 2025;</strong> hardware lidera com 47,9% e +20,6% (ABES/IDC).</li>
+<li><strong>M&A intenso:</strong> 1.877 transações em 2025 (+15% valor), com TI/Software/Internet liderando 340 deals (KPMG).</li>
+<li><strong>Concentração regional:</strong> Brasil = 38% do mercado de TI da América Latina.</li>
+</ul>
+</div>
+
+<h3>Ambiental</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Pressão ESG corporativa:</strong> RFPs grandes exigem descarte certificado, pegada de carbono do equipamento, plano de logística reversa.</li>
+<li><strong>Política Nacional de Resíduos Sólidos (Lei 12.305/2010):</strong> exige logística reversa de eletroeletrônicos, mas fiscalização é falha.</li>
+<li><strong>Data center verde:</strong> hyperscalers cobram cliente premium por contrato em DC com PUE menor que 1,4.</li>
+</ul>
+</div>
+
+<h3>Política</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Política industrial Nova Indústria Brasil (2024-2026):</strong> aposta em adensamento da cadeia de eletroeletrônica e semicondutores.</li>
+<li><strong>Compras públicas:</strong> margem de preferência para produto nacional fabricado com PPB segue ativa em pregões.</li>
+<li><strong>Tensão geopolítica EUA-China:</strong> pressão para diversificar fornecimento; Brasil aparece como ponto neutro de montagem (ZFM).</li>
+</ul>
+</div>
+
+<h3>Legal</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Reforma tributária (LC 214/2025):</strong> CBS+IBS em transição até 2033; canal precisa atualizar ERP e revisar contrato.</li>
+<li><strong>LGPD (Lei 13.709/2018):</strong> ANPD começou a multar em 2025; integrador é solidariamente responsável.</li>
+<li><strong>Marco Civil da Internet e PL 2630:</strong> impacta serviço de hosting e provedor de conectividade integrado.</li>
+</ul>
+</div>
+
+<h3>Ética</h3>
+<div class="card" style="border-left:3px solid #999">
+<ul>
+<li><strong>Reconhecimento facial em CFTV corporativo:</strong> debate ético crescente sobre uso interno em ambiente de trabalho.</li>
+<li><strong>Telemetria em DaaS:</strong> dispositivo gerenciado coleta dados de uso; LGPD exige base legal e transparência.</li>
+<li><strong>Trabalho terceirizado em rollout:</strong> condições do técnico de campo (instalador, ponteiro de cabo) seguem precarizadas.</li>
+</ul>
+</div>
+
+<h3>Junções (onde duas forças colidem)</h3>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Sócio-Tecnológica:</strong> trabalho híbrido pediu colaboração + segurança em endpoint; resposta é DaaS gerenciado com EDR/MDM, que vira o produto-veículo do canal.
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Político-Legal:</strong> reforma tributária + manutenção da ZFM até 2027 cria dois bolsões fiscais coexistindo; canal que entende navega; canal que ignora paga.
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Econômico-Ambiental:</strong> juros altos empurram para OPEX/DaaS; ESG exige descarte certificado; o ciclo curto de DaaS (24-36 meses) gera mais e-waste, não menos.
+</div>
+
+<h3>Quem é afetado / quem ganha / ganhos ocultos (versão resumida)</h3>
+<div class="card-sm"><strong>Quem é afetado:</strong> fabricante nacional (PPB), distribuidor médio, revenda regional, integrador local, MSP, RH (compra de equipamento de hire), gestor de TI corporativa, time de licitação pública.</div>
+<div class="card-sm"><strong>Quem ganha:</strong> globais com escala e financiamento (TD SYNNEX, Ingram), MSPs verticalizados (Stefanini, TIVIT), marketplace B2B com plataforma (ML Negócios, Amazon Business), fundo de PE consolidando integrador.</div>
+<div class="card-sm"><strong>Ganhos ocultos:</strong> certificadoras (ISO, SOC), recicladoras certificadas, escritórios de tributário especializados em ZFM/reforma, fintechs B2B com crédito ao revendedor, operadores logísticos especializados em B2B.</div>
+</section>
+
+<!-- ============ MUDANÇAS ============ -->
+<section id="motor" class="pane">
+<h2>Motor de mudança: o que se move e em que velocidade</h2>
+
+<h3>▲ O que cresce</h3>
+<div class="card" style="border-left:3px solid #999">
+<strong>Hardware como serviço (DaaS/HaaS):</strong> 10% de penetração no PC corporativo brasileiro hoje; expectativa de duplicação até 2026 com fim do Windows 10 (<a href="https://itforum.com.br/noticias/pc-as-a-service-ganha-forca-no-mercado-b2b/" target="_blank">IT Forum</a>).
+<p class="src">Traduzindo: empresas vão alugar computador em vez de comprar, como já fazem com carro e aplicativo.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Cibersegurança gerenciada:</strong> TIVIT cresceu 63% nesse vertical em 2025; Stefanini aposta R$ 2 bi em M&A com foco em IA e segurança.
+<p class="src">Traduzindo: empresas estão pagando para alguém vigiar a rede 24 horas por dia em vez de tentar fazer sozinhas.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Marketplace B2B:</strong> Mercado Livre Negócios chegou a 4 milhões de usuários autorizados em 12 meses (<a href="https://news.mercadolibre.com/compras-B2B-no-brasil" target="_blank">ML Negócios</a>).
+<p class="src">Traduzindo: empresa pequena agora compra notebook como compra produto pessoal: clica, parcela, recebe.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>IA na câmera e no PC:</strong> 64% dos produtos de segurança eletrônica fabricados no Brasil têm IA; PCs com NPU passaram de 5% para 22% (<a href="https://itforum.com.br/noticias/setor-seguranca-eletronica-brasil/" target="_blank">ABESE</a>).
+<p class="src">Traduzindo: a câmera reconhece quem entra, o computador resume reunião sozinho. Isso vira diferença de venda.</p>
+</div>
+
+<h3>▼ O que diminui</h3>
+<div class="card" style="border-left:3px solid #999">
+<strong>Margem de venda pura de hardware:</strong> revenda que só compra-e-vende caixa enfrenta margem cada vez menor (estimativa de queda de 2 a 3 pontos percentuais ao ano).
+<p class="src">Traduzindo: vender computador como mercadoria virou negócio de centavos; quem não acrescenta serviço perde.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Servidor on-premise puro:</strong> migração para nuvem e edge corrói a base instalada; cresce só onde regulação obriga (saúde, defesa, financeiro).
+<p class="src">Traduzindo: a sala de servidor da empresa está virando armário de equipamento mais simples ou desaparecendo.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Loja física pura de TI:</strong> sobra só onde tem assistência técnica e venda consultiva; ponto de venda sem serviço fecha.
+<p class="src">Traduzindo: lojinha de bairro que só vende notebook está sumindo; quem fica é quem cuida do equipamento depois.</p>
+</div>
+
+<h3>◆ Estável, mas frágil</h3>
+<div class="card" style="border-left:3px solid #999">
+<strong>Distribuidor tradicional médio:</strong> ainda relevante para a revenda de pequeno e médio porte, mas pressionado por compra direta e marketplace.
+<p class="src">Traduzindo: aguenta, mas o chão está se mexendo embaixo dos pés.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Cabeamento estruturado em obra nova:</strong> volume estável (escritório novo abre, fábrica expande), mas concorrência com Wi-Fi 6E/7 e 5G privado.
+<p class="src">Traduzindo: ainda passa cabo, mas em metros menos por metro quadrado.</p>
+</div>
+
+<h3>🔥 O que muda rápido (semanas a meses)</h3>
+<div class="card" style="border-left:3px solid #999">
+<strong>Janela de troca pós-Windows 10:</strong> 7,9 milhões de PCs corporativos brasileiros entram em ciclo até dezembro de 2026 (<a href="https://itforum.com.br/noticias/pc-as-a-service-ganha-forca-no-mercado-b2b/" target="_blank">IDC</a>).
+<p class="src">Traduzindo: tem uma corrida específica para empurrar máquina nova nos próximos 14 meses; quem tiver pronta a oferta certa, fatura.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Início da CBS/IBS:</strong> a partir de 2026 começa cobrança em duplicidade; canal precisa adequar sistema, contrato e ERP.
+<p class="src">Traduzindo: a forma de cobrar imposto vai mudar e quem não estiver preparado vai errar nota fiscal por meses.</p>
+</div>
+
+<h3>⚡ Pontos de ruptura possíveis</h3>
+<div class="card" style="border-left:3px solid #999">
+<strong>Choque cambial sustentado:</strong> dólar acima de R$ 6,50 por mais de 12 meses pode reverter migração para hardware nacional e re-equacionar precificação de DaaS.
+<p class="src">Traduzindo: se o dólar disparar e ficar alto, importar fica caro e o jogo todo muda de regra.</p>
+</div>
+<div class="card" style="border-left:3px solid #999">
+<strong>Marketplace abrindo crédito B2B em escala:</strong> se ML Negócios e Amazon Business lançarem linha de crédito em parceria com fintech, o distribuidor médio perde sua principal vantagem (financiamento ao canal).
+<p class="src">Traduzindo: se o marketplace começar a dar prazo de 60 dias para empresa, a revenda tradicional fica sem motivo de existir.</p>
+</div>
+
+<h3>Transmissão: do choque ao bolso</h3>
+<div class="tl">
+<div class="tl-item"><div class="tl-dot done"></div><strong>Choque global</strong> (geopolítica, supply, cotação)</div>
+<div class="tl-item"><div class="tl-dot now"></div><strong>Cotação no fabricante</strong> (4 a 8 semanas)</div>
+<div class="tl-item"><div class="tl-dot now"></div><strong>Reposição no distribuidor</strong> (8 a 16 semanas)</div>
+<div class="tl-item"><div class="tl-dot wait"></div><strong>Vitrine na revenda</strong> (12 a 20 semanas)</div>
+<div class="tl-item"><div class="tl-dot wait"></div><strong>Sentimento na PME</strong> (16 a 28 semanas)</div>
+</div>
+
+<h3>Loop de retroalimentação</h3>
+<div class="loop">
+<div class="loop-step"><strong>Mais DaaS</strong>menor capex à vista</div>
+<div class="loop-arrow">↓</div>
+<div class="loop-step"><strong>Mais cliente em contrato</strong>recorrência maior</div>
+<div class="loop-arrow">↓</div>
+<div class="loop-step"><strong>Menos cliente disponível</strong>para a revenda tradicional</div>
+<div class="loop-arrow">↓</div>
+<div class="loop-return">A revenda precisa virar MSP ou desaparecer</div>
+</div>
+</section>
+
+<!-- ============ ANÁLISE ============ -->
+<section id="analise" class="pane">
+<h2>Análise profunda do setor</h2>
+
+<h3>Contradições e conexões</h3>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Contradição 1:</strong> O mercado cresce 18,5% (recorde) e ao mesmo tempo o canal médio reclama de margem espremida. A causa: o crescimento se concentra em hardware caro de IA e em serviço, não em PC commodity, que é onde a maioria das revendas vive.
+<p class="src">Fonte: <a href="https://itforum.com.br/noticias/mercado-ti-brasil-cresce-185-2025/" target="_blank">ABES/IDC 2025</a>.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Contradição 2:</strong> ZFM segue como vantagem fiscal (IPI até 2027), mas a logística desde Manaus é o calcanhar; quem fabrica fora paga IPI cheio mas entrega em São Paulo em 24 horas. Os dois modelos coexistem com tensão.
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>Conexão escondida:</strong> a alta de juros atrapalha capex e ajuda DaaS; o DaaS empurra cliente para integrador grande; integrador grande compra integrador médio (M&A). Política monetária acaba acelerando consolidação setorial.
+</div>
+
+<h3>Quem ganha, quem perde</h3>
+<div class="g2">
+<div class="card" style="border-left:3px solid #2e7d32">
+<strong>GANHA</strong>
+<ul>
+<li>Distribuidor global com financiamento estruturado (TD SYNNEX, Ingram): R$ 200 a 600 mi adicionais via DaaS no Brasil até 2027.</li>
+<li>MSP nacional consolidador (Stefanini, TIVIT, Sonda): aceleração de 15 a 25% ao ano em receita gerenciada.</li>
+<li>Marketplace B2B (ML Negócios, Amazon Business): captura share da long tail de PME (estimativa de R$ 10 a 20 bi até 2030).</li>
+<li>Fabricante com programa direto (Lenovo, Dell, HP): aumento de penetração via DaaS direto, dispensando o distribuidor médio.</li>
+<li>Fundo de private equity em consolidação setorial: múltiplo de saída entre 8x e 12x EBITDA em integrador médio.</li>
+</ul>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>PERDE</strong>
+<ul>
+<li>Revenda regional pequena que só vende caixa: queda de 2 a 4 pontos de margem ao ano; risco de R$ 0,5 a 2 mi de receita migrando para marketplace.</li>
+<li>Distribuidor médio sem serviço agregado: perde escala para global e perde marketplace para plataforma.</li>
+<li>Loja física pura: sai do mapa em médio prazo se não virar prestador de serviço autorizado.</li>
+<li>Time interno de TI básico do cliente: substituído por MSP via licitação corporativa.</li>
+<li>Integrador local sem ESG/LGPD/SOC2: reprovado em RFP de média e grande empresa.</li>
+</ul>
+</div>
+</div>
+
+<h3>Ganhos ocultos</h3>
+<div class="card" style="border-left:3px solid #b71c1c">
+<ul>
+<li><strong>Certificadoras (TÜV, BSI, Bureau Veritas):</strong> R$ 200 a 500 mil/ano por integrador para manter ISO 27001, SOC 2, ISO 14001.</li>
+<li><strong>Escritórios tributários especializados em ZFM e reforma:</strong> contratos de retainer subindo 20 a 40% ao ano.</li>
+<li><strong>Recicladoras certificadas (Sinctronics, Reciclo):</strong> volume cresce com DaaS por causa do retorno em 36 meses.</li>
+<li><strong>Fintechs com crédito ao revendedor:</strong> taxa entre 1,8% e 3,5% ao mês com volume crescente.</li>
+<li><strong>Operadores logísticos B2B:</strong> last-mile com agendamento e instalação fatura por entrega quase 3x o B2C.</li>
+</ul>
+</div>
+
+<h3>Quem é afetado</h3>
+<div class="card-sm"><strong>Cliente final corporativo:</strong> ganha previsibilidade orçamentária, perde flexibilidade de barganhar.</div>
+<div class="card-sm"><strong>Trabalhador de campo (técnico, instalador, ponteiro):</strong> volume de rollout cresce mas regime de contratação segue terceirizado e sazonal.</div>
+<div class="card-sm"><strong>Pequena revenda regional:</strong> perde cliente para marketplace e DaaS; precisa migrar para nicho ou serviço.</div>
+<div class="card-sm"><strong>Time de TI corporativo:</strong> deixa de operar e passa a contratar; perfil migra de operacional para gestor de contrato.</div>
+<div class="card-sm"><strong>Setor público comprador:</strong> precisa redesenhar pregão para acomodar DaaS (vs. compra única).</div>
+
+<h3>Leis e projetos em tramitação relevantes</h3>
+<div class="card" style="border-left:3px solid #00695c">
+<ul>
+<li><a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/lcp/lcp214.htm" target="_blank">LC 214/2025</a> Regulamenta a reforma tributária; preserva IPI da ZFM até 2027.</li>
+<li><a href="https://www.camara.leg.br/" target="_blank">PL 2338/2023 (Marco da IA)</a> em tramitação avançada; afeta produtos e serviços com IA embarcada.</li>
+<li><a href="https://www.gov.br/anpd/" target="_blank">Resoluções ANPD 2024-2026</a> sobre transferência internacional de dados afetam SaaS e MSP global.</li>
+<li><a href="https://www.gov.br/mcti/" target="_blank">Decretos do programa Nova Indústria Brasil</a> com subprograma de eletroeletrônica e semicondutores.</li>
+<li><a href="https://www.camara.leg.br/" target="_blank">PL 2630/2020 (Fake News)</a> impacta plataforma e provedor de hosting integrado.</li>
+</ul>
+</div>
+
+<h3>Paradoxos do setor</h3>
+<div class="card">
+<strong>Paradoxo 1:</strong> É verdade que hardware ainda manda (47,9% do bolo). Também é verdade que quem só vive de hardware está em rota de extinção.
+</div>
+<div class="card">
+<strong>Paradoxo 2:</strong> É verdade que o Brasil é o maior mercado de TI da América Latina. Também é verdade que tem produção fragmentada e dependente de componente importado.
+</div>
+<div class="card">
+<strong>Paradoxo 3:</strong> É verdade que o DaaS reduz custo de TI do cliente. Também é verdade que aumenta o lucro recorrente do fornecedor; o jogo é de soma positiva, mas com gordura redistribuída.
+</div>
+
+<h3>Contra-argumentos</h3>
+<div class="card">
+<strong>Narrativa:</strong> "Marketplace B2B vai matar o canal tradicional."<br>
+<strong>Contra:</strong> a maioria das compras corporativas grandes ainda exige projeto, instalação e SLA, que marketplace não entrega.<br>
+<strong>Veredicto:</strong> marketplace come a long tail, canal sobra para o ticket complexo; não morre, encolhe.
+</div>
+<div class="card">
+<strong>Narrativa:</strong> "DaaS resolve o problema do cliente."<br>
+<strong>Contra:</strong> o cliente troca um problema (capex, gestão) por outro (lock-in, perda de propriedade do dado).<br>
+<strong>Veredicto:</strong> resolve para quem tem caixa apertado e não tem time; pesa para quem precisa flexibilidade.
+</div>
+
+<h3>Perguntas que ninguém está fazendo</h3>
+<div class="qbox">Quanto do crescimento de 18,5% é volume e quanto é dólar mais caro? A resposta muda quem ganha.</div>
+<div class="qbox">Se 7,9 milhões de PCs serão substituídos em 14 meses, para onde vão os 7,9 milhões antigos? Existe capacidade de descarte certificado nesse volume?</div>
+<div class="qbox">O que acontece com o canal pequeno (R$ 5 a 30 mi de receita) que não tem fôlego para virar MSP nem para ser comprado por PE? Existe um limbo silencioso aí.</div>
+<div class="qbox">Por que ninguém oferece DaaS para microempresa de até 10 dispositivos? É falha de mercado ou inviabilidade econômica?</div>
+</section>
+
+<!-- ============ RECLAMAÇÕES ============ -->
+<section id="reclamacoes" class="pane">
+<h2>O que o cliente do canal de TI realmente reclama</h2>
+<p style="font-style:italic;color:#666;margin-bottom:14px">Quem compra hardware corporativo no Brasil reclama com padrões previsíveis; mapear esses pontos é mapear oportunidade.</p>
+
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>1. Produto não entregue ou entrega muito atrasada</strong>
+<p>Reclame Aqui mostra recorrência alta: prazo cumprido só em 60-70% dos casos, principalmente em pedidos de baixo ticket de revendas pequenas. Caso citado: <a href="https://www.reclameaqui.com.br/empresa/lojas-pra-ti/lista-reclamacoes/" target="_blank">LOJAS PRA TI</a> com 86 dias de tempo médio de resposta.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>2. Garantia e reparo demorados</strong>
+<p>Atraso no envio de laudo técnico em assistência autorizada (ex.: <a href="https://www.reclameaqui.com.br/empresa/4tronic/lista-reclamacoes/" target="_blank">4TRONIC</a>); cliente fica sem equipamento por 30-60 dias, prejudicando operação.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>3. Comunicação falha pós-venda</strong>
+<p>Empresa não responde e-mail, atendente não tem informação, status do pedido sem atualização. Caso citado: <a href="https://www.reclameaqui.com.br/empresa/itt-brasil/" target="_blank">ITT BRASIL</a> com 0% de resposta nas reclamações.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>4. Produto trocado ou diferente do anunciado</strong>
+<p>Cliente recebe equipamento de configuração distinta do pedido; troca complexa, especialmente em operação tributária com nota fiscal já emitida.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>5. Cobrança indevida e nota fiscal divergente</strong>
+<p>ICMS ST mal calculado, frete não combinado, valor diferente do orçamento. Comum em operações interestaduais.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>6. Suporte técnico insuficiente para o porte do cliente</strong>
+<p>Cliente corporativo médio que não consegue SLA, acaba dependendo do mesmo callcenter de B2C, sem priorização.</p>
+</div>
+<div class="card" style="border-left:3px solid #b71c1c">
+<strong>7. Descarte e logística reversa não atendida</strong>
+<p>Cliente quer destinação certificada do equipamento substituído; revenda média sem processo, sobra para o cliente resolver.</p>
+</div>
+
+<h3>Volume estimado de reclamações por canal (proporção relativa)</h3>
+<div class="bar-row"><span class="bar-label">Reclame Aqui</span><div class="bar-track"><div class="bar-fill" style="width:88%"><span class="bar-val" style="color:#fff">~38%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">SAC fabricante</span><div class="bar-track"><div class="bar-fill" style="width:62%"><span class="bar-val" style="color:#fff">~26%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Procon</span><div class="bar-track"><div class="bar-fill" style="width:30%"><span class="bar-val" style="color:#fff">~13%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Redes sociais</span><div class="bar-track"><div class="bar-fill" style="width:24%"><span class="bar-val" style="color:#fff">~10%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Tribunal</span><div class="bar-track"><div class="bar-fill" style="width:18%"><span class="bar-val" style="color:#fff">~8%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Bocaaboca</span><div class="bar-track"><div class="bar-fill" style="width:12%"><span class="bar-val">~5%</span></div></div></div>
+<p class="src">Distribuição relativa estimada de canais de reclamação para B2B de TI; o "boca a boca" entre comprador corporativo é canal subdimensionado nos dados.</p>
+
+<h3>Canais formais e informais</h3>
+<div class="g2">
+<div class="card"><strong>Formais:</strong> Reclame Aqui, Procon estadual, Defensoria, Juizado Especial, ANPD (caso de dado), Anatel (caso de telecom), site de SAC do fabricante, ouvidoria.</div>
+<div class="card"><strong>Informais:</strong> grupo de WhatsApp setorial, fórum técnico (Hardware.com.br, Adrenaline), LinkedIn, recomendação no clube de CIOs, lista de fornecedores recomendados de associação de classe.</div>
+</div>
+
+<h3>Top reclamações por plataforma</h3>
+<div class="card-sm"><strong>Reclame Aqui:</strong> não-entrega, garantia atrasada, comunicação ruim. <a href="https://www.reclameaqui.com.br/empresa/distribuidores-e-fabricantes/lista-reclamacoes/" target="_blank">Ver lista</a>.</div>
+<div class="card-sm"><strong>Procon-SP:</strong> propaganda enganosa em condição de pagamento, descumprimento de prazo, divergência de produto.</div>
+<div class="card-sm"><strong>JEC (Juizado Especial Cível):</strong> ações de cumprimento de oferta e indenização por dano material em operação corporativa de pequeno porte.</div>
+
+<h3>O que os dados não mostram</h3>
+<div class="card" style="border-left:3px solid #b71c1c">
+<ul>
+<li><strong>Desistência silenciosa:</strong> cliente troca de fornecedor sem reclamar; o NPS negativo não vira reclamação formal e some das estatísticas.</li>
+<li><strong>Viés de sobrevivência:</strong> só vemos reclamação de quem ainda existe; revendas que faliram após perder cliente não geram reclamação.</li>
+<li><strong>Mercado informal invisível:</strong> compras de TI corporativa via "amigo do amigo" sem nota fiscal não têm reclamação registrada.</li>
+<li><strong>Reclamações resolvidas internamente:</strong> grandes contratos têm cláusula de mediação; problema fica entre advogados e nunca chega ao Reclame Aqui.</li>
+</ul>
+</div>
+
+<h3>Comparação internacional de proteção ao consumidor B2B</h3>
+<div class="card-sm"><strong>EUA:</strong> regime de class action e arbitragem comercial vigorosa; Better Business Bureau cumpre papel similar ao Reclame Aqui.</div>
+<div class="card-sm"><strong>União Europeia:</strong> Diretiva 2019/771 padroniza garantia de bens digitais; ODR (Online Dispute Resolution) gratuito.</div>
+<div class="card-sm"><strong>Reino Unido:</strong> Consumer Rights Act 2015 cobre B2B em casos de microempresa.</div>
+<div class="card-sm"><strong>Brasil:</strong> CDC só protege B2B em casos de vulnerabilidade demonstrada; PME média litiga em vara cível comum.</div>
+
+<div class="qbox">Se a maioria das reclamações brasileiras é sobre prazo e comunicação, por que ninguém faz disso vantagem competitiva clara em vez de tratar como tabu de pós-venda?</div>
+<div class="qbox">A reclamação que sai do canal formal (boca a boca, LinkedIn, grupo de CIO) custa mais cliente do que toda a reclamação registrada somada; o setor mede isso?</div>
+</section>
+
+<!-- ============ FUTURO ============ -->
+<section id="futuro" class="pane">
+<h2>Manchetes do futuro</h2>
+
+<div style="border-top:3px solid #999;background:#f9f9f9;padding:20px;margin-bottom:16px;border-radius:4px">
+<p class="lbl">PROVÁVEL (>60%) · 1 ANO · ABRIL DE 2027</p>
+<h2 style="font-size:28px;line-height:1.15;border:none;margin:0 0 8px;padding:0">Marketplace B2B brasileiro fecha 2026 com R$ 25 bi em transações corporativas e força distribuidor médio a virar serviço</h2>
+<p style="font-size:15px;font-style:italic;color:#555">A combinação de cartão corporativo, antecipação de recebível embarcada e logística B2B em 24 horas inverte a lógica do canal: a primeira pergunta do CFO deixa de ser "quem é meu fornecedor" e passa a ser "qual a melhor oferta agora".</p>
+<p style="font-size:14px;margin-top:10px"><strong>O que move:</strong> Mercado Livre Negócios já tinha 4 milhões de usuários em 2025; Amazon Business cresce em paralelo; KaBuM entra em B2B em 2025 com IA configuradora. Quando os três oferecerem prazo de 60 dias e SLA de 24h, o distribuidor médio precisa servir só ao integrador, não mais ao usuário final.</p>
+<div style="background:#f5f0eb;padding:14px 16px;margin:10px 0">
+<p style="font-weight:700;font-size:13px;color:#b71c1c">E DAÍ? O QUE MUDA NA SUA VIDA?</p>
+<ul>
+<li>Pequena empresa compra TI como compra material de escritório, sem cotação cruzada.</li>
+<li>Distribuidor que não tiver braço de serviço perde 30 a 50% do volume em até 18 meses.</li>
+<li>Revenda regional precisa virar especialista em projeto e instalação ou se torna apenas pickup point.</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<span class="lbl">FORÇA DE EVIDÊNCIA</span>
+<div class="bar-track" style="max-width:300px"><div class="bar-fill" style="width:78%"></div></div>
+<span style="font-size:14px;font-weight:700;color:#666">78%</span>
+</div>
+<p class="src">Precedentes: <a href="https://news.mercadolibre.com/compras-B2B-no-brasil" target="_blank">ML Negócios 4 mi usuários</a>; <a href="https://neofeed.com.br/negocios/kabum-do-magazine-luiza-prepara-entrada-no-b2b-e-se-aproxima-dos-r-5-bilhoes-de-faturamento/" target="_blank">KaBuM B2B 2025</a>.</p>
+</div>
+
+<div style="border-top:3px solid #999;background:#f9f9f9;padding:20px;margin-bottom:16px;border-radius:4px">
+<p class="lbl">PLAUSÍVEL (30-60%) · 3 ANOS · ABRIL DE 2029</p>
+<h2 style="font-size:28px;line-height:1.15;border:none;margin:0 0 8px;padding:0">Brasil consolida três super-MSPs nacionais; meio do canal é absorvido por private equity em ondas de roll-up</h2>
+<p style="font-size:15px;font-style:italic;color:#555">A combinação de juros normalizados, reforma tributária em rota e busca por escala leva o segmento a se concentrar; integradores médios viram alvo de tese consolidadora.</p>
+<p style="font-size:14px;margin-top:10px"><strong>O que move:</strong> Stefanini destinou R$ 2 bi a M&A em 2025; Positivo S+ mira top-3 em serviços; setor de TI/Software lidera M&A no Brasil com 340 transações em 2025. Pipeline Capital aponta consolidação como próxima onda. PE compra 4-6 integradores de R$ 50-200 mi de receita, monta plataforma e vende a global em 4-5 anos.</p>
+<div style="background:#f5f0eb;padding:14px 16px;margin:10px 0">
+<p style="font-weight:700;font-size:13px;color:#b71c1c">E DAÍ? O QUE MUDA NA SUA VIDA?</p>
+<ul>
+<li>Cliente corporativo médio passa a ter 4-5 opções consolidadas em vez de 30 fornecedores fragmentados.</li>
+<li>Empreendedor de revenda regional ganha porta de saída via M&A; quem não vender, fica isolado.</li>
+<li>Pricing setorial sobe; inovação local desacelera nas pontas; jogo vira game de eficiência operacional.</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<span class="lbl">FORÇA DE EVIDÊNCIA</span>
+<div class="bar-track" style="max-width:300px"><div class="bar-fill" style="width:48%"></div></div>
+<span style="font-size:14px;font-weight:700;color:#666">48%</span>
+</div>
+<p class="src">Precedentes: <a href="https://kpmg.com/br/pt/home/insights/2025/02/pesquisa-fusoes-aquisicoes-2024-4-trimestre.html" target="_blank">KPMG M&A 2024</a>; <a href="https://timesbrasil.com.br/empresas-e-negocios/ma/brasil-lidera-fusoes-e-aquisicoes-na-america-latina-com-alta-de-15-no-valor-das-operacoes/" target="_blank">M&A Brasil 2025</a>.</p>
+</div>
+
+<div style="border-top:3px solid #999;background:#f9f9f9;padding:20px;margin-bottom:16px;border-radius:4px">
+<p class="lbl">POSSÍVEL (<30%) · 5 ANOS · ABRIL DE 2031</p>
+<h2 style="font-size:28px;line-height:1.15;border:none;margin:0 0 8px;padding:0">Hardware corporativo brasileiro vira majoritariamente serviço por assinatura; venda transacional pura cai abaixo de 35% do mercado</h2>
+<p style="font-size:15px;font-style:italic;color:#555">A geração de gestores que assumem cargo entre 2026 e 2030 só conhece SaaS; aplica a mesma expectativa a hardware. CFO pede TCO, não preço de ponta.</p>
+<p style="font-size:14px;margin-top:10px"><strong>O que move:</strong> hoje só 10% do PC B2B é DaaS no Brasil; mercado deve duplicar até 2026. Mantida a curva, em cinco anos a maioria do parque corporativo médio e grande estará em modelo OPEX. Reforma tributária consolidada em 2033 favorece tributação de serviço sobre tributação de mercadoria.</p>
+<div style="background:#f5f0eb;padding:14px 16px;margin:10px 0">
+<p style="font-weight:700;font-size:13px;color:#b71c1c">E DAÍ? O QUE MUDA NA SUA VIDA?</p>
+<ul>
+<li>Capex de TI desaparece do balanço; demonstrativo financeiro do CFO vira só linha de OPEX.</li>
+<li>Comprador-emergencial de PME ainda compra à vista, mas vira nicho de mercado.</li>
+<li>Fabricante e integrador disputam o cliente final diretamente; distribuidor vira utility de logística pura.</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<span class="lbl">FORÇA DE EVIDÊNCIA</span>
+<div class="bar-track" style="max-width:300px"><div class="bar-fill" style="width:28%"></div></div>
+<span style="font-size:14px;font-weight:700;color:#666">28%</span>
+</div>
+<p class="src">Precedentes: <a href="https://itforum.com.br/noticias/pc-as-a-service-ganha-forca-no-mercado-b2b/" target="_blank">PCaaS Brasil</a>; <a href="https://www.muraldavila.com.br/noticias/tendencia-em-alta-dispositivos-como-servico-daas-ganha-forca-no-brasil-87388.html" target="_blank">DaaS BR 2025</a>.</p>
+</div>
+
+<h3>Cenários 2x2 sobre os próximos 5 anos</h3>
+<div class="g2">
+<div class="card"><strong>Juros baixos + Marketplace forte</strong><p>Capex barato e plataforma agressiva. PME compra direto; canal médio sofre. Integradores top sobrevivem com serviço.</p><p class="src">Eixo: liquidez e disponibilidade de plataforma B2B.</p></div>
+<div class="card"><strong>Juros baixos + Marketplace fraco</strong><p>Compra à vista volta; revenda tradicional respira. Distribuidor médio resgata margem. Cenário improvável.</p><p class="src">Eixo: liquidez sem plataforma maturidade.</p></div>
+<div class="card"><strong>Juros altos + Marketplace forte</strong><p>Cenário de ruptura. DaaS dispara, marketplace come long tail, canal médio precisa virar serviço ou desaparece.</p><p class="src">Eixo: maior pressão sobre incumbentes.</p></div>
+<div class="card"><strong>Juros altos + Marketplace fraco</strong><p>Capex caro e poucas alternativas; consolidação acelera via PE. Integrador grande captura share.</p><p class="src">Eixo: aceleração de M&A.</p></div>
+</div>
+
+<h3>Mapa de influência: quem move quem</h3>
+<div class="g2">
+<div class="card" style="border-left:3px solid #b71c1c"><strong>MOTRIZ (move muitos, pouco movido)</strong><p>Câmbio (USD/BRL); Selic; reforma tributária; ciclo Microsoft/Apple de fim de suporte; política industrial Nova Indústria Brasil.</p></div>
+<div class="card" style="border-left:3px solid #e65100"><strong>LIGAÇÃO (move e é movido)</strong><p>DaaS; M&A; marketplace B2B; LGPD/cibersegurança; modelo de financiamento ao canal.</p></div>
+<div class="card" style="border-left:3px solid #2e7d32"><strong>RESULTADO (movido por muitos)</strong><p>Margem da revenda; preço final ao consumidor; volume de e-waste; emprego em TI.</p></div>
+<div class="card" style="border-left:3px solid #888"><strong>AUTÔNOMA (pouco move, pouco movido)</strong><p>Eventos setoriais (Futurecom, Exposec); rankings de canal; certificações de fabricante.</p></div>
+</div>
+
+<h3>Known/Unknowns (Rumsfeld) aplicados ao setor</h3>
+<div class="g2">
+<div class="card"><strong>Known knowns (sabemos que sabemos)</strong><p>Ciclo Windows 10 termina out/2025; ZFM mantida até 2027; mercado cresceu 18,5% em 2025; M&A em alta; DaaS em ascensão.</p></div>
+<div class="card"><strong>Known unknowns (sabemos que não sabemos)</strong><p>Velocidade real da reforma tributária na ponta; quanto da curva DaaS é hype vs. adoção sustentada; até onde marketplace B2B avança em ticket alto; impacto da CBS/IBS em DaaS.</p></div>
+<div class="card"><strong>Unknown knowns (não sabemos que sabemos)</strong><p>O canal já tem dado de uso real do parque (telemetria de DaaS); ainda não monetizou esse insight; potencial de produto adjacente está latente.</p></div>
+<div class="card" style="border-left:3px solid #b71c1c"><strong>Unknown unknowns (nem imaginamos)</strong><p>1. Choque de fornecimento de componente por geopolítica EUA-China em escala que pare montagem na ZFM por 90 dias. 2. Hyperscaler chinês entrando direto em PME brasileira com hardware subsidiado. 3. Banco central digital (Drex) integrado a marketplace B2B com liquidação em segundos, eliminando a vantagem do crédito do distribuidor.</p></div>
+</div>
+
+<h3>Ponto cego crítico</h3>
+<div class="card" style="border-left:3px solid #b71c1c"><strong>Variável MOTRIZ que é UNKNOWN:</strong> a velocidade da CBS/IBS na cadeia de TI. Tributariamente é a mudança mais relevante em 30 anos, e quase nenhum integrador médio modelou contrato plurianual considerando o período de duplicidade. O canal que se preparar primeiro tem vantagem de 12 a 18 meses sobre o resto.</div>
+</section>
+
+<!-- ============ CHECK ============ -->
+<section id="check" class="pane">
+<h2>Check de precisão e temperatura</h2>
+
+<h3>Temperatura da análise</h3>
+<div style="height:20px;border-radius:10px;background:linear-gradient(to right,#2e7d32,#e65100,#b71c1c);position:relative;margin:14px 0 28px">
+<div style="position:absolute;left:65%;top:-6px;width:32px;height:32px;background:#fff;border:3px solid #1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;transform:translateX(-50%)">7</div>
+</div>
+<p class="src">Temperatura 7/10. Há tendência setorial firme com dados oficiais e múltiplas fontes; incertezas concentradas no ritmo da reforma tributária e na velocidade do DaaS na ponta.</p>
+
+<h3>Classificação das principais afirmações</h3>
+<div class="card-sm"><strong style="color:#2e7d32">Verificado</strong> Mercado de TI brasileiro cresceu 18,5% em 2025 (US$ 67,8 bi). <a href="https://abes.org.br/en/brasil-mantem-lideranca-em-ti-na-america-latina-cresce-acima-da-expectativa-em-2025-mas-desacelera-ritmo-de-crescimento-neste-ano-e-consolida-nova-fase-do-mercado-aponta-estudo-da-abes/" target="_blank">ABES/IDC</a></div>
+<div class="card-sm"><strong style="color:#2e7d32">Verificado</strong> Hardware = 47,9% do mercado, +20,6%. <a href="https://itforum.com.br/noticias/mercado-ti-brasil-cresce-185-2025/" target="_blank">IT Forum</a></div>
+<div class="card-sm"><strong style="color:#2e7d32">Verificado</strong> 7,9 milhões de PCs corporativos brasileiros em fim de ciclo Windows 10. <a href="https://itforum.com.br/noticias/pc-as-a-service-ganha-forca-no-mercado-b2b/" target="_blank">IT Forum</a></div>
+<div class="card-sm"><strong style="color:#2e7d32">Verificado</strong> Segurança eletrônica BR R$ 14 bi em 2024. <a href="https://itforum.com.br/noticias/setor-seguranca-eletronica-brasil/" target="_blank">ABESE/IT Forum</a></div>
+<div class="card-sm"><strong style="color:#2e7d32">Verificado</strong> M&A Brasil 2025 = 1.877 transações, US$ 56,4 bi. <a href="https://timesbrasil.com.br/empresas-e-negocios/ma/brasil-lidera-fusoes-e-aquisicoes-na-america-latina-com-alta-de-15-no-valor-das-operacoes/" target="_blank">Times Brasil</a></div>
+<div class="card-sm"><strong style="color:#e65100">Inferido</strong> 30-50% de queda potencial no volume do distribuidor médio em 18 meses (extrapolação a partir de tendência de marketplace B2B).</div>
+<div class="card-sm"><strong style="color:#e65100">Inferido</strong> R$ 200-500 mil/ano em certificações por integrador (estimativa de mercado).</div>
+<div class="card-sm"><strong style="color:#e65100">Inferido</strong> Distribuição relativa de canais de reclamação (proporção estimada baseada em padrões de B2B).</div>
+<div class="card-sm"><strong style="color:#999">Especulativo</strong> Existência de três super-MSPs em 2029 (cenário plausível, não determinístico).</div>
+<div class="card-sm"><strong style="color:#999">Especulativo</strong> Cenário de Drex eliminando vantagem do crédito do distribuidor (pondervável, sem prazo definido).</div>
+
+<h3>Posso estar errado sobre</h3>
+<ul>
+<li>Velocidade da adoção de DaaS na ponta de PME pode ser mais lenta que o cenário base assume; cultura brasileira de propriedade de ativo é forte.</li>
+<li>O ritmo do marketplace B2B pode ser limitado por experiência de pós-venda; cliente corporativo tolera menos falha que B2C.</li>
+<li>Reforma tributária pode ter ajustes legislativos no caminho que mudem o cálculo de DaaS e ZFM.</li>
+<li>Subestimei o papel das integradoras-fabricantes (Positivo S+, Multilaser) que podem capturar mais share via produto nacional + serviço.</li>
+<li>O peso do canal indireto via parceria com fabricante pode ser maior que a tese de desintermediação sugere.</li>
+</ul>
+
+<h3>Viés da análise</h3>
+<div class="bar-row"><span class="bar-label">Regulatório</span><div class="bar-track"><div class="bar-fill" style="width:33%;background:#00695c"><span class="bar-val" style="color:#fff">3</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Institucional</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#2e7d32"><span class="bar-val" style="color:#fff">5</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Esquerda</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#c62828"><span class="bar-val" style="color:#fff">2</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Centro</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#888"><span class="bar-val" style="color:#fff">5</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Direita</span><div class="bar-track"><div class="bar-fill" style="width:33%;background:#1565c0"><span class="bar-val" style="color:#fff">3</span></div></div></div>
+<p class="src">18 fontes verificadas: 3 regulatório, 5 institucional, 2 esquerda, 5 centro, 3 direita. Possível leve subrrepresentação do espectro de esquerda (cobertura do canal de TI tende a ser predominantemente de mídia de mercado e think tanks setoriais). A análise pode subestimar críticas estruturais ao modelo de incentivo fiscal e às condições de trabalho terceirizado.</p>
+</section>
+
+<!-- ============ GLOSSÁRIO ============ -->
+<section id="glossario" class="pane">
+<h2>Glossário</h2>
+<p style="font-style:italic;color:#666;margin-bottom:16px">Explicado como se fosse para alguém que nunca trabalhou com TI corporativa</p>
+
+<div class="card"><h3>Distribuidor</h3><p>É o atacadista do mercado de TI. Compra muito do fabricante, estoca, dá crédito e revende para milhares de revendas e integradores. Não vende para o consumidor final.</p><p class="src">Analogia: é o supermercadão da Ceasa, mas de eletroeletrônico.</p></div>
+
+<div class="card"><h3>Revenda</h3><p>Empresa que compra do distribuidor e vende para o cliente final, com ou sem instalação. Pode ser loja física, online, B2B ou B2C.</p><p class="src">Analogia: é o sacolão do bairro que compra na Ceasa e vende fruta na esquina.</p></div>
+
+<div class="card"><h3>Integrador</h3><p>Vai além de vender: monta projeto completo (rede, servidor, segurança, suporte), instala, configura e cobra projeto e serviço.</p><p class="src">Analogia: é o arquiteto + empreiteiro de TI; planeja a obra e entrega chave na mão.</p></div>
+
+<div class="card"><h3>MSP (Managed Service Provider)</h3><p>Provedor de serviço gerenciado. Cuida do parque de TI da empresa todo mês, vigia rede, atende suporte, instala atualização. Empresa paga assinatura.</p><p class="src">Analogia: é o time de portaria 24 horas do prédio; em vez de cuidar de porta, cuida de computador.</p></div>
+
+<div class="card"><h3>DaaS (Device as a Service)</h3><p>Em vez de comprar computador, a empresa aluga o dispositivo já com serviço incluído (suporte, troca, garantia, descarte). Paga mensalidade fixa.</p><p class="src">Analogia: é como Netflix, mas para o computador da empresa: você usa, paga por mês, e nunca é dono da caixa.</p></div>
+
+<div class="card"><h3>HaaS (Hardware as a Service)</h3><p>Versão mais ampla do DaaS, inclui servidor, storage, rede e até CFTV em modelo de assinatura.</p><p class="src">Dica: se o produto pode ser ligado em uma tomada e tem preço, dá para virar HaaS.</p></div>
+
+<div class="card"><h3>PPB (Processo Produtivo Básico)</h3><p>Conjunto mínimo de etapas que precisam ser feitas no Brasil para o fabricante ganhar incentivo fiscal (IPI, ICMS).</p><p class="src">Analogia: é a receita mínima que o "café brasileiro" tem que cumprir para ser considerado nacional.</p></div>
+
+<div class="card"><h3>Lei de Informática</h3><p>Lei 8.248/91 que dá redução de IPI para fabricantes que cumprem PPB e investem em P&D no Brasil.</p><p class="src">Dica: sem essa lei, equipamento nacional perderia em preço para o importado.</p></div>
+
+<div class="card"><h3>ZFM (Zona Franca de Manaus)</h3><p>Regime tributário especial em Manaus que dá desconto pesado de impostos para quem fabrica lá. Decisivo para Positivo, Multilaser, Intelbras e outros.</p><p class="src">Analogia: é uma "zona livre de impostos" criada para desenvolver a Amazônia industrial.</p></div>
+
+<div class="card"><h3>RFP (Request for Proposal)</h3><p>Pedido formal de proposta. Empresa grande publica edital com requisitos e fornecedores respondem com proposta técnica e comercial.</p><p class="src">Analogia: é um concurso entre fornecedores para conseguir o contrato.</p></div>
+
+<div class="card"><h3>SLA (Service Level Agreement)</h3><p>Contrato que define com quanto tempo o suporte tem que resolver o problema. Exemplo: "máquina parou, técnico em 4 horas, conserto em 24 horas".</p><p class="src">Dica: sem SLA, o cliente fica refém do humor do atendente.</p></div>
+
+<div class="card"><h3>NPU (Neural Processing Unit)</h3><p>Chip dedicado a rodar inteligência artificial dentro do computador. Notebook com NPU consegue resumir reunião, traduzir vídeo e gerar imagem sem mandar nada para a nuvem.</p><p class="src">Analogia: é como ter um "cérebro extra" só para tarefas inteligentes, junto da CPU normal.</p></div>
+
+<div class="card"><h3>Edge computing</h3><p>Em vez de mandar tudo para a nuvem distante, processa o dado pertinho (na fábrica, na loja). Câmera com IA é exemplo: ela analisa o vídeo na hora, sem mandar para um servidor.</p><p class="src">Analogia: é cozinhar na sua cozinha em vez de pedir delivery; mais rápido, mais privado.</p></div>
+
+<div class="card"><h3>Rollout</h3><p>Operação de implantação em massa. Trocar 500 computadores em 5 filiais em um mês é um rollout.</p><p class="src">Dica: o rollout é onde se ganha ou se perde a reputação do integrador.</p></div>
+
+<div class="card"><h3>Cabeamento estruturado</h3><p>Sistema padronizado de cabos (rede, voz, dados) que passa pelo prédio inteiro de forma organizada, com armário de telecom em cada andar.</p><p class="src">Analogia: é o "encanamento de dados" do prédio; bem feito uma vez, dura 20 anos.</p></div>
+
+<div class="card"><h3>CFTV (Circuito Fechado de Televisão)</h3><p>Sistema de vigilância com câmeras conectadas a um gravador (NVR/DVR). Hoje a maioria já vem com IA que reconhece pessoa, placa e comportamento.</p><p class="src">Dica: o CFTV moderno é mais software do que câmera.</p></div>
+
+<div class="card"><h3>Rebranding</h3><p>Mudança de identidade visual e posicionamento de uma marca, geralmente para refletir nova fase ou novo público.</p><p class="src">Analogia: é trocar o uniforme da empresa para que combine com o que ela virou.</p></div>
+
+<div class="card"><h3>Marketplace B2B</h3><p>Plataforma online onde empresa vende para empresa, com nota fiscal correta, parcelamento corporativo e categorias específicas (escritório, indústria, TI).</p><p class="src">Dica: Mercado Livre Negócios e Amazon Business são os principais no Brasil.</p></div>
+
+<div class="card"><h3>CBS/IBS</h3><p>Novos impostos da reforma tributária brasileira. CBS substitui PIS/Cofins (federal); IBS substitui ICMS/ISS (estadual/municipal). Transição até 2033.</p><p class="src">Analogia: é a "trocação geral" da nota fiscal brasileira; ninguém na cadeia escapa de adaptar.</p></div>
+
+<div class="card"><h3>LGPD (Lei Geral de Proteção de Dados)</h3><p>Lei que diz como empresa pode tratar dado pessoal de cliente. Quem armazena CRM, ERP, prontuário ou logística precisa estar em conformidade.</p><p class="src">Dica: integrador é solidariamente responsável com o cliente; não basta entregar; precisa entregar com base legal.</p></div>
+</section>
+
+<!-- LinkedIn oculto -->
+<section id="li" class="pane" style="display:none">
+<h2>Post para LinkedIn</h2>
+<div class="libox" id="litxt">O canal de TI corporativa brasileiro fechou 2025 crescendo 18,5%. Mas o número esconde a maior virada do setor em 20 anos.
+
+5 padrões que estão redesenhando quem ganha dinheiro nesse mercado:
+
+1. Hardware ainda é 47,9% do bolo (US$ 32,5 bi), mas margem de venda pura cai 2-3 pontos por ano. Quem só vende caixa está em rota de extinção.
+
+2. 7,9 milhões de PCs corporativos vão ser trocados em 14 meses por causa do fim do Windows 10. A janela é curta e disputada.
+
+3. DaaS está em 10% do parque hoje e deve dobrar até 2026. Hardware vira assinatura, igual carro de aplicativo.
+
+4. Marketplace B2B chegou: Mercado Livre Negócios em 12 meses fez 4 milhões de usuários e 1,3 milhão de produtos. Distribuidor médio sente.
+
+5. M&A em alta: 340 transações em TI/Software no Brasil em 2025. Private equity rola roll-up; quem não vender, fica isolado.
+
+Pergunta que ninguém faz: o canal pequeno (R$ 5-30 mi de receita) que não tem fôlego para virar MSP nem para ser comprado por PE; o que acontece com ele?
+
+Fontes: ABES/IDC 2025, ABINEE, ABESE, KPMG, IT Forum, Brasscom.
+
+#CanalDeTI #TecnologiaBrasil #DaaS #Distribuição #MercadoBR</div>
+<button class="cpbtn" onclick="var t=document.getElementById('litxt').innerText;navigator.clipboard.writeText(t).then(function(){event.target.textContent='Copiado!';setTimeout(function(){event.target.textContent='Copiar post'},2000)})">Copiar post</button>
+</section>
+
+<footer>
+<p>Pesquisa Rápida · Distribuição e varejo corporativo de TI no Brasil · 29 de abril de 2026 · 18 fontes verificadas</p>
+</footer>
+
+</div>
+
+<script>
+function P(id){document.querySelectorAll('.pane').forEach(function(e){e.classList.remove('on')});document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('on')});document.getElementById(id).classList.add('on');if(event&&event.currentTarget)event.currentTarget.classList.add('on');window.scrollTo(0,0)}
+function FF(f){document.querySelectorAll('.fo').forEach(function(c){c.style.display=(f==='t'||c.dataset.f===f)?'block':'none'});document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('on')});if(event&&event.currentTarget)event.currentTarget.classList.add('on')}
+</script>
+</body>
+</html>
