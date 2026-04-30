@@ -3,215 +3,699 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico Estratégico: Grupo Amorim Fonecar</title>
+<title>Diagnóstico Estratégico · Grupo Amorim Fonecar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+:root{
+  --blue:#16329B;
+  --blue-dark:#0d2475;
+  --blue-light:#4365BA;
+  --red:#df3336;
+  --yellow:#FCE100;
+  --text:#1a1d29;
+  --muted:#5d5d61;
+  --soft:#8F8F8F;
+  --bg:#ffffff;
+  --bg-soft:#f5f7fc;
+  --border:#e3e8f2;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#1a1a1a;background:#fff}
-.W{max-width:1140px;margin:0 auto;padding:2rem 2rem 4rem}
-h1{font-size:30px;font-weight:700;line-height:1.15;margin-bottom:6px;letter-spacing:-.5px}
-h2{font-size:22px;font-weight:700;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;line-height:1.25}
-h3{font-size:16px;font-weight:700;margin:20px 0 8px}
-h4{font-size:14px;font-weight:700;margin:14px 0 4px;color:#16329B}
-p{margin-bottom:10px}
-.lbl{font-family:system-ui,-apple-system,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:2px}
-.meta{font-family:system-ui,sans-serif;font-size:12px;color:#999;margin-bottom:24px}
-a{color:#16329B;text-decoration:none}
-a:hover{text-decoration:underline}
-.blue{color:#16329B}
-.accent{border-left:3px solid #16329B;padding-left:14px;margin:14px 0}
-.num{font-family:system-ui,sans-serif;font-size:28px;font-weight:700;color:#16329B;display:block;line-height:1.1;margin:4px 0}
-.src{font-family:system-ui,sans-serif;font-size:11px;color:#999;margin-top:4px}
-.tabs{display:flex;overflow-x:auto;border-bottom:2px solid #1a1a1a;margin-bottom:24px;gap:0;scrollbar-width:none;position:sticky;top:0;background:#fff;z-index:10;padding-top:6px}
-.tabs::-webkit-scrollbar{display:none}
-.tab{font-family:system-ui,sans-serif;font-size:13px;font-weight:500;padding:8px 14px;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;color:#999;transition:.15s}
-.tab:hover{color:#1a1a1a}
-.tab.on{color:#1a1a1a;border-bottom-color:#16329B;font-weight:700}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans','Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.65;color:var(--text);background:var(--bg)}
+
+/* HEADER. hierarquia em 3 níveis: marca · tipo de documento · objeto */
+.topbar{background:var(--blue);color:#fff;padding:14px 0;border-bottom:3px solid var(--yellow)}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.topbar-id{flex:1;min-width:200px;display:flex;flex-direction:column;gap:1px}
+.topbar-brand{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.6px;color:rgba(255,255,255,.78);line-height:1.2}
+.topbar-brand::after{content:'';display:inline-block;width:4px;height:4px;background:var(--yellow);border-radius:50%;margin-left:5px;vertical-align:middle;transform:translateY(-1px)}
+.topbar-doc{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--yellow);line-height:1.2;margin-top:2px}
+.topbar-subject{font-family:'Open Sans',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.3px;color:#fff;line-height:1.15;margin-top:2px}
+.topbar-actions{display:flex;gap:8px;align-items:center}
+.search-box{font-size:13px;padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:rgba(255,255,255,.12);color:#fff;outline:none;width:220px;transition:.15s}
+.search-box::placeholder{color:rgba(255,255,255,.7)}
+.search-box:focus{background:rgba(255,255,255,.22);border-color:var(--yellow);box-shadow:0 0 0 3px rgba(252,225,0,.15)}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Open Sans',sans-serif;font-size:13px;padding:9px 14px;background:#25D366;color:#fff;border:none;cursor:pointer;font-weight:700;letter-spacing:.2px;text-decoration:none;border-radius:4px;transition:.15s;white-space:nowrap;box-shadow:0 1px 4px rgba(37,211,102,.25)}
+.wa-btn:hover{background:#1EBE5A;text-decoration:none;color:#fff;transform:translateY(-1px);box-shadow:0 3px 8px rgba(37,211,102,.35)}
+.wa-btn svg{flex-shrink:0}
+.wa-btn-label{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.wa-btn-label small{font-size:10px;font-weight:600;opacity:.85;letter-spacing:.4px;text-transform:uppercase}
+.wa-btn-label strong{font-size:13px;font-weight:700;letter-spacing:.2px}
+
+/* SIDEBAR (vertical, hover-activated, com pin) */
+.sidebar-trigger{position:fixed;left:0;top:0;width:24px;height:100vh;z-index:90;cursor:pointer;background:linear-gradient(to right, rgba(22,50,155,.04), transparent)}
+.sidebar-trigger::before{content:'';position:absolute;left:0;top:0;width:4px;height:100%;background:var(--blue);box-shadow:1px 0 4px rgba(22,50,155,.2)}
+.sidebar-trigger::after{content:'≡ MENU';position:absolute;left:8px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left center;font-size:10px;letter-spacing:3px;font-weight:700;color:var(--blue);white-space:nowrap;font-family:'Open Sans',sans-serif}
+.sidebar{position:fixed;left:0;top:0;height:100vh;width:300px;background:#fff;box-shadow:4px 0 18px rgba(22,50,155,.18);z-index:100;transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;border-right:3px solid var(--blue);display:flex;flex-direction:column}
+.sidebar.open, .sidebar-trigger:hover + .sidebar, .sidebar:hover{transform:translateX(0)}
+body.sidebar-pinned .sidebar{transform:translateX(0)!important}
+body.sidebar-pinned .sidebar-trigger{display:none}
+body.sidebar-pinned main.W{margin-left:300px;transition:margin-left .25s ease}
+body.sidebar-pinned .topbar{padding-left:300px;transition:padding-left .25s ease}
+.sidebar-header{background:var(--blue);color:#fff;padding:14px 18px;border-bottom:3px solid var(--yellow);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sidebar-header-text{flex:1;min-width:0}
+.sidebar-header .lbl{color:rgba(252,225,0,.95);margin-bottom:3px}
+.sidebar-header .stitle{font-size:13px;font-weight:700;line-height:1.3;letter-spacing:.3px}
+.pin-btn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;font-family:'Open Sans',sans-serif;font-weight:700;display:grid;place-items:center;flex-shrink:0;transition:.15s;line-height:1}
+.pin-btn:hover{background:var(--yellow);color:var(--blue);border-color:var(--yellow)}
+body.sidebar-pinned .pin-btn{background:var(--yellow);color:var(--blue);border-color:var(--yellow)}
+.pin-btn .label-off,.pin-btn .label-on{display:block}
+.pin-btn .label-on{display:none}
+body.sidebar-pinned .pin-btn .label-off{display:none}
+body.sidebar-pinned .pin-btn .label-on{display:block;font-size:14px;font-weight:800}
+.sidebar-nav{padding:10px 0;flex:1;overflow-y:auto}
+.sidebar-section{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--soft);padding:14px 22px 6px;border-top:1px solid var(--border);margin-top:4px}
+.sidebar-section:first-child{border-top:0;margin-top:0;padding-top:10px}
+.tab{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;background:none;border:none;border-left:3px solid transparent;cursor:pointer;color:var(--muted);transition:.12s;display:block;width:100%;text-align:left}
+.tab:hover{background:var(--bg-soft);color:var(--blue);border-left-color:var(--blue-light)}
+.tab.on{color:var(--blue);border-left-color:var(--blue);background:var(--bg-soft);font-weight:700}
+.sidebar-foot{padding:12px 22px;font-size:10px;color:var(--soft);border-top:1px solid var(--border);flex-shrink:0}
+
+@media(max-width:900px){
+  body.sidebar-pinned main.W{margin-left:0}
+  body.sidebar-pinned .topbar{padding-left:0}
+}
+
+/* CONTENT */
+.W{max-width:1200px;margin:0 auto;padding:30px 24px 60px}
 .pane{display:none}
 .pane.on{display:block}
-.card{background:#f5f7fc;border:1px solid #e3e8f2;border-radius:4px;padding:12px 16px;margin-bottom:10px}
-.card-sm{background:#f5f7fc;border:1px solid #e3e8f2;border-radius:4px;padding:8px 12px;margin-bottom:6px;font-size:14px}
-.bar-row{display:flex;align-items:center;margin-bottom:8px;font-family:system-ui,sans-serif;font-size:13px}
-.bar-label{width:160px;text-align:right;padding-right:10px;font-weight:600;flex-shrink:0}
-.bar-track{flex:1;background:#eee;border-radius:3px;height:18px;position:relative;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:#16329B}
-.bar-val{position:absolute;right:8px;top:1px;font-size:11px;font-weight:700;color:#fff}
-.bar-val-dark{position:absolute;right:8px;top:1px;font-size:11px;font-weight:700;color:#1a1a1a}
-.dot{display:inline-block;width:8px;height:8px;border-radius:4px;margin-right:4px;vertical-align:middle}
-details{margin-top:8px;background:#f9f9fb;border:1px solid #e6e9f2;border-radius:4px;padding:8px 12px}
-summary{font-family:system-ui,sans-serif;font-size:13px;font-weight:600;color:#16329B;cursor:pointer;list-style:none}
+
+/* TYPOGRAPHY · escala hierárquica clara
+   H1 28px · H2 20px (com linha azul) · H3 15px UPPER · H4 13px UPPER · body 15px · small 12px · micro 10px */
+h1{font-size:28px;font-weight:800;line-height:1.2;margin:0 0 10px;color:var(--text);letter-spacing:-.4px}
+h2{font-family:'Open Sans',sans-serif;font-size:20px;font-weight:700;color:var(--blue);margin:32px 0 14px;line-height:1.3;letter-spacing:-.1px;padding-bottom:6px;border-bottom:2px solid var(--blue)}
+h3{font-family:'Open Sans',sans-serif;font-size:13px;font-weight:700;margin:22px 0 8px;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+h4{font-family:'Open Sans',sans-serif;font-size:14px;font-weight:700;margin:0 0 6px;color:var(--blue);letter-spacing:.1px}
+p{font-size:15px;margin:0 0 12px;line-height:1.65}
+ul,ol{padding-left:22px;margin:0 0 12px;font-size:15px}
+li{margin-bottom:6px;line-height:1.6}
+small{font-size:12px}
+strong{font-weight:700;color:var(--text)}
+a{color:var(--blue);text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+
+/* LABEL */
+.lbl{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+.meta{font-size:12px;color:var(--soft);margin-bottom:22px}
+
+/* COVER */
+.cover{background:var(--blue);color:#fff;padding:32px 32px;border-left:6px solid var(--yellow);margin-bottom:24px}
+.cover .lbl{color:rgba(252,225,0,.95)}
+.cover h1{color:#fff;font-size:26px;line-height:1.22;margin:0 0 12px;font-weight:800;letter-spacing:-.3px;border:0;padding:0}
+.cover h2{color:#fff;border:0;padding:0;font-size:18px;line-height:1.3;margin:6px 0 10px}
+.cover .sub{font-size:14px;opacity:.95;line-height:1.6;max-width:800px}
+.cover-meta{margin-top:20px;display:flex;gap:22px;font-size:11px;opacity:.9;border-top:1px solid rgba(255,255,255,.22);padding-top:12px;flex-wrap:wrap}
+.cover-meta div{font-weight:600;color:#fff}
+.cover-meta strong{color:var(--yellow);display:block;margin-bottom:2px;font-weight:700;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.cover p,.cover strong,.cover em{color:#fff}
+.cover .sub strong{color:var(--yellow);font-weight:700}
+
+/* CALLOUTS */
+.warn{background:#fff5f5;border-left:4px solid var(--red);padding:14px 18px;margin:14px 0}
+.warn h4{color:var(--red);margin-top:0}
+.info{background:var(--bg-soft);border-left:4px solid var(--blue);padding:14px 18px;margin:14px 0}
+.info h4{color:var(--blue);margin-top:0}
+.ok{background:#ecfdf5;border-left:4px solid #047857;padding:14px 18px;margin:14px 0}
+.ok h4{color:#047857;margin-top:0}
+.qbox{background:#fffbe6;border-left:4px solid #d97706;padding:12px 16px;margin:12px 0;font-style:italic;font-size:14px;color:#7a5912}
+blockquote{background:var(--bg-soft);border-left:4px solid var(--blue);padding:14px 18px;margin:16px 0;font-style:italic;color:var(--muted)}
+blockquote strong{color:var(--blue);font-style:normal}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(22,50,155,.05)}
+.card h4{margin-top:0}
+.card-tight{padding:12px 16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--blue);color:#fff;font-weight:700;font-size:12px;letter-spacing:.3px;text-transform:uppercase}
+tr:nth-child(even) td{background:#fafbfd}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.fonecar-row td{background:#fff5f5!important;font-weight:600}
+
+/* BIG NUM */
+.big-num{display:block;font-size:30px;font-weight:800;color:var(--blue);line-height:1.05;letter-spacing:-.5px;margin:6px 0}
+.big-num.red{color:var(--red)}
+.accent-block{border-left:4px solid var(--blue);padding:6px 0 6px 14px;margin:10px 0}
+.accent-block.red{border-left-color:var(--red)}
+
+/* TAGS */
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-right:4px}
+.tag.fato{background:#dcfce7;color:#15803d}
+.tag.inf{background:#fef3c7;color:#92400e}
+.tag.hip{background:#ede9fe;color:#6b21a8}
+.pill{display:inline-block;padding:3px 10px;background:var(--blue);color:#fff;border-radius:99px;font-size:11px;font-weight:700;margin-right:4px}
+.pill.red{background:var(--red)}
+.pill.yellow{background:var(--yellow);color:var(--blue)}
+.pill.gray{background:#e3e8f2;color:var(--muted)}
+
+/* DETAILS */
+details{background:var(--bg-soft);border:1px solid var(--border);border-radius:3px;padding:10px 14px;margin:8px 0}
+summary{font-weight:700;color:var(--blue);cursor:pointer;list-style:none;font-size:14px}
 summary::-webkit-details-marker{display:none}
-summary::before{content:'+ ';font-weight:700}
-details[open] summary::before{content:'− '}
+summary::before{content:'+';display:inline-block;width:18px;font-weight:800}
+details[open] summary::before{content:'−'}
 details[open] summary{margin-bottom:8px}
+
+/* TIMELINE */
 .tl{position:relative;padding-left:24px;margin:14px 0}
 .tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:#ddd}
 .tl-item{position:relative;margin-bottom:10px;padding-left:4px}
-.tl-dot{position:absolute;left:-21px;top:8px;width:12px;height:12px;border-radius:6px;background:#16329B;border:2px solid #fff;box-shadow:0 0 0 1px #ddd}
-.tl-dot.done{background:#2e7d32}
-.tl-dot.now{background:#e65100}
-.tl-dot.wait{background:#999}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
-@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}.bar-label{width:120px}}
-blockquote{border-left:3px solid #16329B;padding:10px 16px;margin:14px 0;color:#333;font-style:italic;background:#f5f7fc}
-.qbox{background:#fff8e1;border-left:3px solid #f59e0b;padding:10px 14px;margin:12px 0;font-style:italic;font-size:14px;color:#333}
-.warn{background:#fef2f2;border-left:3px solid #b71c1c;padding:10px 14px;margin:12px 0;font-size:14px}
-.ok{background:#ecfdf5;border-left:3px solid #047857;padding:10px 14px;margin:12px 0;font-size:14px}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;font-family:system-ui,sans-serif}
-th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #e6e9f2}
-th{background:#16329B;color:#fff;font-weight:600;font-size:12px;letter-spacing:.3px}
-tr:nth-child(even) td{background:#f9fafd}
-.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-right:4px;font-family:system-ui,sans-serif}
-.tag.fato{background:#ecfdf5;color:#047857}
-.tag.inf{background:#fef3c7;color:#92400e}
-.tag.hip{background:#ede9fe;color:#6b21a8}
-ul{padding-left:22px;margin-bottom:10px}
-li{margin-bottom:5px}
-.search-box{font-family:system-ui,sans-serif;font-size:13px;padding:6px 12px;border:1px solid #ddd;border-radius:4px;margin-left:auto;width:200px;outline:none}
-.search-box:focus{border-color:#16329B}
-.top-link{position:fixed;bottom:24px;right:24px;background:#fff;color:#16329B;border:1px solid #16329B;padding:8px 14px;text-decoration:none;font-size:11px;font-family:system-ui,sans-serif;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;z-index:50;border-radius:3px}
-.top-link:hover{background:#16329B;color:#fff;text-decoration:none}
-.print-btn{font-family:system-ui,sans-serif;font-size:12px;padding:6px 12px;background:#16329B;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:600;margin-left:8px}
-.print-btn:hover{background:#0f2476}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e0e0e0;font-family:system-ui,sans-serif;font-size:11px;color:#999;text-align:center}
-.brand-strip{display:flex;align-items:center;gap:14px;font-family:system-ui,sans-serif;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e0e0e0}
-.brand-name{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:#16329B;font-weight:700}
-.cover-block{background:#16329B;color:#fff;padding:30px 32px;border-left:6px solid #0d2475;margin-bottom:28px}
-.cover-block .lbl{color:#cfd6ee;opacity:.95}
-.cover-block h1{color:#fff;font-size:28px;margin:8px 0 12px;font-weight:700;line-height:1.2}
-.cover-block .sub{font-size:15px;opacity:.92;line-height:1.55;max-width:720px}
-@media print{
-  .tabs,.search-box,.top-link,.print-btn{display:none}
-  .pane{display:block!important;page-break-after:always}
-  .W{max-width:100%;padding:1rem}
-}
+.tl-dot{position:absolute;left:-21px;top:8px;width:12px;height:12px;border-radius:6px;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 1px #ddd}
+.tl-dot.done{background:#15803d}
+.tl-dot.now{background:var(--red)}
+.tl-dot.wait{background:var(--soft)}
+
+/* BARS */
+.bar-row{display:flex;align-items:center;margin-bottom:8px;font-size:13px}
+.bar-label{width:170px;text-align:right;padding-right:12px;font-weight:600;flex-shrink:0;color:var(--muted)}
+.bar-track{flex:1;background:#eee;border-radius:2px;height:20px;position:relative;overflow:hidden}
+.bar-fill{height:100%;background:var(--blue);border-radius:2px;transition:width .3s}
+.bar-val{position:absolute;right:8px;top:2px;font-size:11px;font-weight:700;color:#fff}
+.bar-val-out{position:absolute;left:calc(100% + 8px);top:2px;font-size:11px;font-weight:700;color:var(--text);white-space:nowrap}
+
+/* CODE BLOCK STYLE PARA CICLOS */
+.flow-box{background:var(--bg-soft);border:1px solid var(--border);border-radius:4px;padding:14px 18px;font-family:'Roboto Mono','Courier New',monospace;font-size:13px;line-height:1.7;color:var(--blue);white-space:pre-wrap;margin:10px 0;overflow-x:auto}
+
+/* CONTINUIDADE. frentes simples e objetivas */
+/* RÉGUA da síntese: entrada, operação, saída */
+.regua{display:flex;gap:0;margin:18px 0 24px;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.regua-step{flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--border);background:#fff;position:relative}
+.regua-step:last-child{border-right:0}
+.regua-step .regua-num{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;color:var(--soft);margin-bottom:4px;font-family:'Open Sans',sans-serif}
+.regua-step .regua-name{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-.3px}
+.regua-step::after{content:'\203A';position:absolute;right:-8px;top:50%;transform:translateY(-50%);background:#fff;color:var(--blue);font-size:18px;font-weight:800;width:16px;height:16px;line-height:14px;text-align:center;border-radius:50%;z-index:2}
+.regua-step:last-child::after{display:none}
+
+.estagio{margin:24px 0;padding:18px 0;border-bottom:1px solid var(--border)}
+.estagio:last-of-type{border-bottom:0}
+.estagio-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:10px}
+.estagio-num{font-size:42px;font-weight:800;color:var(--blue);line-height:.95;letter-spacing:-2px;flex-shrink:0;width:60px}
+.estagio-head-text{flex:1;min-width:0}
+.estagio-titulo{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--soft);margin-bottom:2px}
+.estagio-name{font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.2px}
+.estagio-lead{font-size:15px;color:var(--text);margin:0 0 10px;font-weight:500;line-height:1.55}
+.estagio ul{font-size:14px;color:var(--text);line-height:1.55;margin:0 0 10px}
+.estagio-parecer{background:var(--bg-soft);border-left:3px solid var(--blue);padding:10px 14px;margin-top:12px;font-size:14px;line-height:1.5}
+.estagio-parecer strong{color:var(--blue);font-weight:700}
+
+.veredito{background:var(--blue);color:#fff;padding:22px 26px;margin:28px 0;border-left:6px solid var(--yellow)}
+.veredito-lbl{color:var(--yellow);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.veredito p{font-size:16px;line-height:1.6;margin:0;color:#fff}
+.veredito strong{color:var(--yellow)}
+.frente{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--border)}
+.frente:last-of-type{border-bottom:0}
+.frente-num{flex-shrink:0;width:42px;font-family:'Open Sans',sans-serif;font-size:22px;font-weight:800;color:var(--blue);line-height:1;letter-spacing:-1px}
+.frente-body{flex:1;min-width:0}
+.frente-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.2px}
+.frente-resolve{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.5}
+.frente-resolve strong{color:var(--text);font-weight:700}
+.frente-job{font-size:14px;font-style:italic;color:var(--blue);margin-bottom:8px;line-height:1.45}
+.frente-impact{display:flex;gap:18px;font-size:13px;flex-wrap:wrap;margin-top:6px}
+.frente-up{color:#15803d;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.frente-down{color:var(--red);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.frente-up::before{content:'\2191';font-weight:800;font-size:14px}
+.frente-down::before{content:'\2193';font-weight:800;font-size:14px}
+.frente-section-title{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--soft);margin:32px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
 @media(max-width:600px){
-  h1{font-size:24px}
-  .cover-block h1{font-size:24px}
-  .cover-block{padding:22px 18px}
-  .W{padding:1.2rem 1rem 3rem}
+  .frente{gap:10px;padding:14px 0}
+  .frente-num{width:32px;font-size:18px}
+  .frente-impact{gap:14px;font-size:12px}
+}
+
+/* SCORECARD */
+.score{display:inline-block;padding:3px 10px;border-radius:3px;font-weight:700;font-size:12px}
+.score.gold{background:#FCE100;color:var(--blue)}
+.score.green{background:#dcfce7;color:#15803d}
+.score.yellow{background:#fef3c7;color:#92400e}
+.score.red{background:#fee2e2;color:var(--red)}
+.score.gray{background:#e3e8f2;color:var(--muted)}
+
+/* TOP LINK */
+.top-link{position:fixed;bottom:24px;right:24px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);padding:7px 14px;text-decoration:none;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;z-index:30;border-radius:2px}
+.top-link:hover{background:var(--blue);color:#fff;text-decoration:none}
+
+/* FOOTER */
+footer{margin-top:3rem;padding:18px 24px;background:var(--bg-soft);border-top:3px solid var(--blue);font-size:11px;color:var(--muted);text-align:center;letter-spacing:.5px}
+
+/* CARTÃO DE CONTATO. assinatura da Limiar.Co ao fim da Continuidade */
+.signoff{margin-top:40px;padding:32px 28px;background:#fafbfd;border:1px solid var(--border);border-top:4px solid var(--blue);border-radius:6px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.signoff-brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.signoff-icon{width:54px;height:54px;flex-shrink:0}
+.signoff-wordmark{display:flex;align-items:baseline;gap:1px;font-family:'Open Sans',sans-serif}
+.signoff-wordmark .lm{font-size:30px;font-weight:800;color:#1E88E5;letter-spacing:-1px;line-height:1}
+.signoff-wordmark .co{font-size:18px;font-weight:700;color:#444;letter-spacing:-.3px;line-height:1}
+.signoff-body{flex:1;min-width:240px}
+.signoff-tag{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.signoff-mission{font-family:Georgia,serif;font-size:18px;font-style:italic;color:var(--text);line-height:1.4;margin:0 0 16px;font-weight:500;max-width:100%}
+.signoff-contact{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.signoff-contact strong{font-size:14px;font-weight:800;color:var(--text)}
+.signoff-contact a{color:var(--blue);font-weight:600}
+.signoff-contact .sep{color:var(--soft);opacity:.5}
+@media(max-width:600px){
+  .signoff{flex-direction:column;padding:24px 20px}
+  .signoff-mission{font-size:16px}
+}
+
+/* TRANSIÇÕES e foco */
+.pane{animation:fadeIn .25s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.tab:focus-visible,.wa-btn:focus-visible,.search-box:focus-visible,.pin-btn:focus-visible,.top-link:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.card{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(22,50,155,.1);border-color:var(--blue-light)}
+.frente{transition:background .15s ease}
+.frente:hover{background:#fafbfd}
+section.report,.pane{scroll-margin-top:24px}
+h1,h2,h3{scroll-margin-top:24px}
+
+/* Legibilidade. limite de largura para texto longo (UX padrão de readability) */
+.pane p,.pane li{max-width:78ch}
+.cover .sub{max-width:78ch}
+
+/* PRINT */
+@media print{
+  .topbar,.sidebar-trigger,.sidebar,.search-box,.wa-btn,.top-link{display:none!important}
+  .pane{display:block!important;page-break-after:always;animation:none}
+  .W{padding:1rem;max-width:100%}
+}
+
+@media(max-width:600px){
+  h1{font-size:22px}
+  .cover h1{font-size:22px}
+  .cover{padding:24px 20px}
+  .W{padding:20px 16px 40px}
+  .topbar-inner{padding:0 16px}
+  .search-box{width:140px}
+  .bar-label{width:110px;font-size:12px}
 }
 </style>
 </head>
 <body>
 
-<div class="W">
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-id">
+      <div class="topbar-brand">limiar.co</div>
+      <div class="topbar-doc">Diagnóstico Rápido</div>
+      <div class="topbar-subject">Grupo Amorim Fonecar</div>
+    </div>
+    <div class="topbar-actions">
+      <input type="text" class="search-box" id="search" placeholder="Buscar no relatório">
+      <a class="wa-btn" href="https://wa.me/5511984568861?text=Ol%C3%A1%20Eric%2C%20li%20o%20diagn%C3%B3stico%20da%20Fonecar%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" title="Falar com Eric Leite no WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01zM12.04 20.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.88 2.39 1.01 2.55c.12.17 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+        <span class="wa-btn-label"><small>Falar com Eric</small><strong>(11) 98456-8861</strong></span>
+      </a>
+    </div>
+  </div>
+</header>
 
-<div class="brand-strip">
-  <div class="brand-name">Relatório Executivo · Confidencial</div>
-  <input type="text" class="search-box" id="search" placeholder="Buscar no relatório" />
-  <button class="print-btn" onclick="window.print()">Imprimir / PDF</button>
-</div>
+<div class="sidebar-trigger" id="sidebar-trigger"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-header-text">
+      <div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.6px;color:rgba(255,255,255,.78);margin-bottom:2px">limiar.co<span style="display:inline-block;width:4px;height:4px;background:var(--yellow);border-radius:50%;margin-left:5px;vertical-align:middle;transform:translateY(-1px)"></span></div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:3px">Diagnóstico Rápido</div>
+      <div class="stitle" style="font-size:14px;font-weight:800;letter-spacing:-.2px;color:#fff;line-height:1.2">Grupo Amorim Fonecar</div>
+    </div>
+    <button class="pin-btn" id="pin-btn" title="Fixar menu" aria-label="Fixar menu"><span class="label-off">O</span><span class="label-on">●</span></button>
+  </div>
+  <nav class="sidebar-nav" id="tabs">
+    <div class="sidebar-section">Abertura</div>
+    <button class="tab on" data-pane="dest">Síntese</button>
+    <button class="tab" data-pane="empresa">Empresa</button>
 
-<p class="lbl">PESQUISA INDEPENDENTE · ABRIL DE 2026</p>
-<h1>Grupo Amorim Fonecar: o diagnóstico que a apresentação institucional não conta</h1>
-<p class="meta">Pesquisa independente · 18 documentos consolidados · Eric Leite, abril de 2026</p>
+    <div class="sidebar-section">Negócio</div>
+    <button class="tab" data-pane="negocio">Diagnóstico de Negócio</button>
+    <button class="tab" data-pane="cliente-ideal">Cliente Ideal</button>
+    <button class="tab" data-pane="jornada">Jornada do Cliente</button>
+    <button class="tab" data-pane="bench">Comparativos</button>
 
-<nav class="tabs">
-<button class="tab on" onclick="P('dest')">Destaque</button>
-<button class="tab" onclick="P('empresa')">Empresa</button>
-<button class="tab" onclick="P('riscos')">Riscos</button>
-<button class="tab" onclick="P('vulner')">Vulnerabilidades</button>
-<button class="tab" onclick="P('loops')">Loops Causais</button>
-<button class="tab" onclick="P('mercado')">Mercado</button>
-<button class="tab" onclick="P('cliente')">Cliente</button>
-<button class="tab" onclick="P('canais')">Canais</button>
-<button class="tab" onclick="P('funcs')">Funcionários</button>
-<button class="tab" onclick="P('stake')">Stakeholders</button>
-<button class="tab" onclick="P('bmc')">BMC</button>
-<button class="tab" onclick="P('marca')">Marca e Site</button>
-<button class="tab" onclick="P('incoer')">Incoerências</button>
-<button class="tab" onclick="P('posic')">Posicionamento</button>
-<button class="tab" onclick="P('sutil')">Sutilezas</button>
-<button class="tab" onclick="P('perg')">100 Perguntas</button>
-<button class="tab" onclick="P('apont')">Apontamentos</button>
-<button class="tab" onclick="P('contin')">Continuidade</button>
-</nav>
+    <div class="sidebar-section">Ação imediata</div>
+    <button class="tab" data-pane="quickwins">Ações de 30 dias</button>
 
-<!-- ============ DESTAQUE ============ -->
+    <div class="sidebar-section">Riscos e Sistema</div>
+    <button class="tab" data-pane="riscos">Riscos</button>
+    <button class="tab" data-pane="vulner">Vulnerabilidades</button>
+    <button class="tab" data-pane="loops">Ciclos Viciosos</button>
+
+    <div class="sidebar-section">Mercado e Cliente</div>
+    <button class="tab" data-pane="mercado">Voz do Mercado</button>
+    <button class="tab" data-pane="cliente">Voz do Cliente</button>
+    <button class="tab" data-pane="canais">Canais e Comportamento</button>
+    <button class="tab" data-pane="apont">Apontamentos Setoriais</button>
+    <button class="tab" data-pane="funcs">Funcionários</button>
+    <button class="tab" data-pane="stake">Stakeholders</button>
+
+    <div class="sidebar-section">Marca e Comunicação</div>
+    <button class="tab" data-pane="marca">Marca e Site</button>
+    <button class="tab" data-pane="incoer">Incoerências</button>
+    <button class="tab" data-pane="posic">Posicionamento</button>
+
+    <div class="sidebar-section">Estratégia</div>
+    <button class="tab" data-pane="estrat">Estratégia da Fonecar</button>
+
+    <div class="sidebar-section">Próximo Passo</div>
+    <button class="tab" data-pane="contin">Continuidade</button>
+  </nav>
+  <div class="sidebar-foot">Limiar.Co · Abril de 2026</div>
+</aside>
+
+<main class="W">
+
+<!-- ========== SINTESE ========== -->
 <section id="dest" class="pane on">
-
-<div class="cover-block">
-  <p class="lbl">SÍNTESE EXECUTIVA</p>
-  <h1>A apresentação institucional documenta um momento que a empresa ainda não terminou de viver, nem deixou para trás</h1>
-  <p class="sub">Pesquisa baseada em fontes públicas, navegação do site oficial, marketplaces, registros judiciais, redes sociais e cruzamento com a apresentação institucional fornecida pela empresa.</p>
+<div class="cover">
+  <p class="lbl">DIAGNÓSTICO RÁPIDO. ABERTURA EXECUTIVA</p>
+  <h1>A Fonecar em três estágios: como o cliente chega, o que encontra e o que leva</h1>
+  <p class="sub">Diagnóstico rápido baseado em fontes públicas: site oficial, marketplaces, registros judiciais e jurídicos, redes sociais, e cruzamento com a apresentação institucional fornecida pela empresa. <strong>Sem acesso a dados internos. Sem prescrição estratégica. Diagnóstico apenas.</strong></p>
+  <div class="cover-meta">
+    <div><strong>Modalidade</strong>Diagnóstico rápido</div>
+    <div><strong>Base</strong>Fontes públicas</div>
+    <div><strong>Cruzamentos</strong>Mais de 30 verificados</div>
+  </div>
 </div>
 
-<h2>A leitura em 30 segundos</h2>
-<p>O Grupo Amorim Fonecar é uma revenda de informática paulistana com 35 anos de história, hoje em Recuperação Judicial. A apresentação institucional cuidada conta uma história de evolução. Os registros públicos contam outra: cinco marcas sem arquitetura, presença digital fraca, dependência de marketplaces, governança familiar concentrada e um site que comunica fragilidade.</p>
-
-<p>O problema central não é nenhum item isolado. É o sistema de loops causais que se reforça em silêncio.</p>
-
-<div class="warn">
-<strong>Achado crítico que ninguém está dizendo:</strong> a razão social oficial é "FONECAR TELECOMUNICAÇÕES ELETRÔNICAS LTDA EM RECUPERAÇÃO JUDICIAL". A apresentação fala em "renascimento" sem mencionar o capítulo. Cliente B2B descobre via consulta de CNPJ no pior momento do funil.
+<div class="info">
+<h4>Como ler este relatório</h4>
+<p>Diagnóstico rápido, não auditoria. Cada conclusão aceita ser refutada com dado interno. Onde aparece número não verificado, está marcado como <span class="tag hip">HIPÓTESE</span>. Onde aparece inferência, <span class="tag inf">INFERÊNCIA</span>. Onde aparece fato, <span class="tag fato">FATO</span>.</p>
 </div>
 
-<h3>Os números que enquadram o caso</h3>
+<h2>A empresa em três estágios</h2>
 
-<div class="accent">
-<span class="num">5 marcas</span>
-<p class="src">Fonecar, Amorim Shop, Amorim Tech, Thargon, Fonecar ON. Sem arquitetura entre elas. Cada uma canibaliza a atenção das outras.</p>
+<div class="regua">
+  <div class="regua-step"><div class="regua-num">Estágio 01</div><div class="regua-name">Entrada</div></div>
+  <div class="regua-step"><div class="regua-num">Estágio 02</div><div class="regua-name">Operação</div></div>
+  <div class="regua-step"><div class="regua-num">Estágio 03</div><div class="regua-name">Saída</div></div>
 </div>
 
-<div class="accent">
-<span class="num">309 vendas</span>
-<p class="src">Volume da Amorim Shop no Mercado Livre em 5 anos. Nota 2 de 5. Vendedor mediano de informática no canal fecha o mesmo volume em duas semanas. Fonte: <a href="https://www.mercadolivre.com.br/perfil/AMORIM+SHOP" target="_blank">Mercado Livre</a>.</p>
+<div class="estagio">
+  <div class="estagio-head">
+    <div class="estagio-num">01</div>
+    <div class="estagio-head-text">
+      <div class="estagio-titulo">Entrada</div>
+      <div class="estagio-name">Como o cliente chega à Fonecar</div>
+    </div>
+  </div>
+  <p class="estagio-lead">Cliente novo chega por busca, indicação ou marketplace, e encontra um conjunto fragmentado de pontos de contato.</p>
+  <ul>
+    <li>Site institucional sem catálogo navegável e com erros visíveis no menu (a palavra "INSTALAÇÃO" aparece grafada errada três vezes).</li>
+    <li>Canal de fechamento principal é WhatsApp.</li>
+    <li>Quem faz consulta pública de CNPJ encontra "em recuperação judicial" antes da primeira conversa começar.</li>
+    <li>O LinkedIn oficial diz "fundada em 2014" e "11 a 50 funcionários", em contradição com a apresentação institucional, que celebra 1989.</li>
+  </ul>
+  <div class="estagio-parecer"><strong>Parecer.</strong> A entrada é onde o cliente percebe a fragilidade primeiro. A marca não está pronta para receber quem está pesquisando antes de comprar.</div>
 </div>
 
-<div class="accent">
-<span class="num">867 seguidores</span>
-<p class="src">Audiência da conta @fonecarinformatica no Instagram após 35 anos de mercado. Cobertura social inferior à de pequenas lojas locais. Fonte: <a href="https://www.instagram.com/fonecarinformatica/" target="_blank">Instagram</a>.</p>
+<div class="estagio">
+  <div class="estagio-head">
+    <div class="estagio-num">02</div>
+    <div class="estagio-head-text">
+      <div class="estagio-titulo">Operação</div>
+      <div class="estagio-name">O que sustenta a empresa por dentro</div>
+    </div>
+  </div>
+  <p class="estagio-lead">A empresa opera com cinco marcas convivendo, equipe enxuta e liderança concentrada em duas pessoas.</p>
+  <ul>
+    <li>Cinco marcas dividem orçamento e atenção: Fonecar, Amorim Shop, Amorim Tech, Thargon, Fonecar ON.</li>
+    <li>Recuperação judicial em curso. 58 processos jurídicos identificados em consulta pública, com volume relevante na Justiça do Trabalho.</li>
+    <li>Tamanho do time aparece em duas faixas diferentes em canais oficiais (LinkedIn e ZoomInfo).</li>
+    <li>Comunicação institucional cuidada na apresentação. Cotidiano operacional fica pouco visível.</li>
+    <li>Dependência de marketplace de terceiros, com nota 2 de 5 no Mercado Livre da marca-irmã.</li>
+  </ul>
+  <div class="estagio-parecer"><strong>Parecer.</strong> A operação está em recuperação judicial real, e a comunicação ainda não terminou de processar isso. Há ativo de marca de 35 anos. Há tempo de mercado. O cotidiano se sustenta na confiança pessoal de poucos.</div>
 </div>
 
-<div class="accent">
-<span class="num">58 processos</span>
-<p class="src">Volume de processos jurídicos da Fonecar em consultas públicas, com concentração em TJSP e TRT2 (trabalhista). Fonte: <a href="https://www.jusbrasil.com.br/processos/nome/133348382/fonecar-telecomunicacoes-eletronicas-ltda" target="_blank">Jusbrasil</a>.</p>
+<div class="estagio">
+  <div class="estagio-head">
+    <div class="estagio-num">03</div>
+    <div class="estagio-head-text">
+      <div class="estagio-titulo">Saída</div>
+      <div class="estagio-name">O que o cliente leva consigo</div>
+    </div>
+  </div>
+  <p class="estagio-lead">Quando vai bem, o cliente fechou via WhatsApp com vendedor de confiança. Quando vai mal, vira reclamação pública.</p>
+  <ul>
+    <li>309 vendas em cinco anos no Mercado Livre da Amorim Shop, com nota 2 de 5.</li>
+    <li>Reclame Aqui sem selo em todas as marcas do grupo. Sem reputação consolidada.</li>
+    <li>Reclamações concentradas em pós-venda, defeito, troca, atendimento.</li>
+    <li>Sem caso de cliente publicado, sem testemunho, sem prova social.</li>
+  </ul>
+  <div class="estagio-parecer"><strong>Parecer.</strong> A saída comunica reputação fragmentada. Quando há voz pública, é negativa. Voz positiva existe na confiança pessoal entre vendedor e cliente, mas não tem volume.</div>
 </div>
 
-<h3>Cinco verdades inconfortáveis</h3>
-
-<div class="card">
-<h4>1. A palavra "renasce" omite a Recuperação Judicial</h4>
-<p>O site afirma "A Fonecar renasce". Em nenhum material analisado aparece o termo RJ. A razão social oficial contém o termo. Qualquer comprador corporativo competente faz consulta de CNPJ antes de assinar contrato.</p>
+<div class="veredito">
+<div class="veredito-lbl">Parecer final</div>
+<p>A Fonecar não está perdendo para a concorrência. <strong>Está perdendo para si mesma</strong>, em ciclos viciosos que se reforçam. Cinco marcas dividindo orçamento sem arquitetura. Recuperação judicial real, com narrativa institucional ainda não escrita. Marca cuidada na superfície e operação intacta por dentro. Presença digital de vitrine, não de venda. O ativo de 35 anos existe. Não está sendo capitalizado.</p>
 </div>
 
-<div class="card">
-<h4>2. O grupo tem cinco marcas e nenhum posicionamento</h4>
-<p>Não existe diferenciação clara de público, preço, promessa ou produto. Para o consumidor é ruído. Para o fornecedor é desconfiança. Para o time interno é dispersão.</p>
+<h2>Quatro números que enquadram o caso</h2>
+<div class="g4">
+<div class="card card-tight"><div class="lbl">Marcas no grupo</div><span class="big-num">5</span><p style="font-size:12px;color:var(--muted);margin:0">Sem arquitetura entre elas.</p></div>
+<div class="card card-tight"><div class="lbl">Vendas em 5 anos no Mercado Livre</div><span class="big-num">309</span><p style="font-size:12px;color:var(--muted);margin:0">Marca-irmã Amorim Shop. Nota 2 de 5.</p></div>
+<div class="card card-tight"><div class="lbl">Seguidores Instagram</div><span class="big-num">867</span><p style="font-size:12px;color:var(--muted);margin:0">Em uma empresa de 35 anos.</p></div>
+<div class="card card-tight"><div class="lbl">Processos públicos</div><span class="big-num">58</span><p style="font-size:12px;color:var(--muted);margin:0">Concentração em Justiça do Trabalho.</p></div>
 </div>
 
-<div class="card">
-<h4>3. A presença digital é teatral, não comercial</h4>
-<p>867 seguidores no Instagram após 35 anos. 309 vendas em 5 anos no Mercado Livre Amorim Shop. Loja oficial fora do ar. Existe vitrine, não existe motor de venda.</p>
-</div>
+<h2>Cinco verdades inconfortáveis</h2>
 
-<div class="card">
-<h4>4. O site contém erros que reduzem confiança no primeiro segundo</h4>
-<p>"INSTAÇÃO ELÉTRICA" no menu (três vezes), copyright travado em 2022 a 2024, página de loja fora do ar. Para um comprador corporativo, o site comunica fragilidade.</p>
-</div>
+<div class="card"><h4>1. A palavra "renasce" omite a recuperação judicial</h4><p>O site afirma "A Fonecar renasce". A razão social oficial contém o termo "EM RECUPERAÇÃO JUDICIAL". Cliente corporativo competente faz consulta de CNPJ antes de assinar contrato.</p></div>
 
-<div class="card">
-<h4>5. Os problemas reportados pelos clientes são os básicos</h4>
-<p>Reclame Aqui, marketplaces e redes apontam para os mesmos temas: pós-venda, atendimento, defeito, troca. Não são problemas de inovação. São problemas de operação que dominam o ramo de varejo de informática há décadas.</p>
-</div>
+<div class="card"><h4>2. Cinco marcas e nenhum posicionamento</h4><p>Sem diferenciação clara de público, preço, promessa ou produto. Para o consumidor é ruído. Para o fornecedor é desconfiança. Para o time interno é dispersão.</p></div>
 
-<h3>O que ninguém está dizendo</h3>
-<blockquote>A Fonecar não está perdendo para a KaBuM, para a Pichau ou para a Officer. Está perdendo para si mesma, em ciclos que se reforçam: rebranding sem reestruturar operação, novas marcas sem novo posicionamento, marketplace sem estrutura de marketplace, Recuperação Judicial sem narrativa institucional honesta.</blockquote>
+<div class="card"><h4>3. Presença digital é vitrine, não venda</h4><p>867 seguidores no Instagram após 35 anos. 309 vendas em 5 anos no marketplace. Loja oficial fora do ar.</p></div>
 
-<div class="qbox">A Fonecar quer continuar como está, ou quer ser uma empresa diferente? A resposta a essa pergunta define o resto.</div>
+<div class="card"><h4>4. O site reduz confiança no primeiro segundo</h4><p>Erros de grafia no menu, copyright travado em ano antigo, página com erro 404. Comprador corporativo lê isso como descuido.</p></div>
+
+<div class="card"><h4>5. Reclamações são sobre o básico</h4><p>Pós-venda, atendimento, defeito, troca. Não são problemas de inovação. São problemas de operação que dominam o ramo há décadas.</p></div>
+
+<div class="qbox">A Fonecar quer continuar como está, ou quer ser uma empresa diferente?</div>
 </section>
 
-<!-- ============ EMPRESA ============ -->
+<!-- ========== CLIENTE IDEAL ========== -->
+<section id="cliente-ideal" class="pane">
+<h1>Cliente Ideal</h1>
+<p class="meta">Quem é, hoje, o cliente que paga as contas. E quem deveria ser.</p>
+
+<div class="info">
+<h4>Por que esta seção existe</h4>
+<p>A apresentação institucional fala "para empresas". O site fala "para empresas". Sem qualificar. Sem cliente ideal definido, a empresa gasta mais para vender, retém menos, e investe em comunicação por instinto. Esta seção propõe o perfil mais provável do cliente que sustenta a Fonecar hoje, com base em sinais públicos cruzados.</p>
+</div>
+
+<h2>Perfil mais provável do cliente que paga as contas</h2>
+
+<div class="g2">
+<div class="card">
+<h4>Empresa</h4>
+<ul>
+<li>PME paulistana, até 50 funcionários.</li>
+<li>Sede em São Paulo capital ou região metropolitana.</li>
+<li>Setores prováveis: comércio, serviço, escritório de advocacia, contabilidade, pequena indústria, saúde de bairro.</li>
+<li>Compra equipamento corporativo a cada 3 a 5 anos.</li>
+</ul>
+</div>
+<div class="card">
+<h4>Comportamento de compra</h4>
+<ul>
+<li>Volume típico: 5 a 20 dispositivos por pedido.</li>
+<li>Ticket estimado: R$ 8 mil a R$ 35 mil. <span class="tag hip">HIPÓTESE</span></li>
+<li>Decide por relação pessoal e indicação, não por catálogo digital.</li>
+<li>Paga em até 30 dias após nota fiscal.</li>
+</ul>
+</div>
+</div>
+
+<h2>O que esse cliente quer</h2>
+<ul>
+<li>Cotação rápida, com preço claro.</li>
+<li>Prazo de entrega que não atrase a operação dele.</li>
+<li>Garantia que funcione quando precisar.</li>
+<li>Vendedor que devolva ligação no mesmo dia.</li>
+<li>Instalação simples, sem dor de cabeça.</li>
+</ul>
+
+<h2>O que esse cliente teme</h2>
+<ul>
+<li>Empresa fechar antes da garantia acabar.</li>
+<li>Atraso na entrega que pare a operação.</li>
+<li>Receber equipamento errado por má orientação.</li>
+<li>Pós-venda sumir depois do pedido.</li>
+</ul>
+
+<h2>Por que ele volta. Por que ele não volta.</h2>
+<div class="g2">
+<div class="card">
+<h4>Volta</h4>
+<ul>
+<li>Confiança no vendedor que atendeu da última vez.</li>
+<li>Prazo cumprido sem improviso.</li>
+<li>Pós-venda funcional na primeira vez que precisou.</li>
+<li>Preço razoável, dentro da realidade.</li>
+</ul>
+</div>
+<div class="card">
+<h4>Não volta</h4>
+<ul>
+<li>Problema na garantia que não foi resolvido.</li>
+<li>Atraso sem aviso.</li>
+<li>Vendedor que sumiu.</li>
+<li>Atendimento de pós-venda lento.</li>
+</ul>
+</div>
+</div>
+
+<h2>Cliente que a Fonecar atende mal hoje</h2>
+<ul>
+<li><strong>Empresa grande com banca técnica e edital formal.</strong> Pede certidões, certificações, contrato com prazo plurianual. A recuperação judicial bloqueia.</li>
+<li><strong>Entusiasta gamer e pessoa física apaixonada por tecnologia.</strong> Esse público compra em KaBuM, Pichau, TerabyteShop. A Fonecar não fala a língua.</li>
+<li><strong>Empresa que já migrou para assinatura de equipamento.</strong> Quer pagar mensalidade fixa pelo parque, com troca, suporte e descarte inclusos. A Fonecar não tem essa oferta.</li>
+</ul>
+
+<h2>Lacuna estratégica</h2>
+<div class="warn">
+<h4>O que falta dizer com clareza</h4>
+<p>A empresa não declara cliente ideal. Sem isso, todo movimento de marketing é genérico, todo orçamento se dilui em vários públicos, e nenhum segmento sente que a marca foi feita para ele. <strong>A primeira pergunta antes de qualquer estratégia é: a empresa quer atender PME paulistana com proximidade, ou quer brigar por outro segmento?</strong> Hoje, a operação atende o primeiro perfil sem dizer.</p>
+</div>
+</section>
+
+<!-- ========== JORNADA ========== -->
+<section id="jornada" class="pane">
+<h1>Jornada do Cliente</h1>
+<p class="meta">Como o cliente percorre a empresa, do primeiro contato à recompra. Onde pode ganhar. Onde está perdendo.</p>
+
+<h2>Visão completa em sete etapas</h2>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">1</div><div class="estagio-head-text"><div class="estagio-titulo">Descoberta</div><div class="estagio-name">Cliente novo procura fornecedor de informática</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> busca no Google, indicação de outra empresa, pedido a fornecedor antigo, ou navegação em marketplace.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> a Fonecar não aparece em SEO orgânico para "fornecedor de informática SP". Não há blog ativo, não há autoridade técnica publicada, não há case. O cliente que poderia descobrir, não descobre.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">2</div><div class="estagio-head-text"><div class="estagio-titulo">Avaliação</div><div class="estagio-name">Cliente confere se a empresa é confiável</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> visita o site, olha LinkedIn, busca no Reclame Aqui, faz consulta de CNPJ.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> site com erros, LinkedIn em contradição com a apresentação, Reclame Aqui sem selo, CNPJ com termo "em recuperação judicial". Cada ponto reduz confiança antes da primeira conversa.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">3</div><div class="estagio-head-text"><div class="estagio-titulo">Contato</div><div class="estagio-name">Cliente pede orçamento</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> formulário ou WhatsApp. Conversa com vendedor.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> o canal depende de quem está disponível. Sem padrão de tempo de resposta. Sem orçamento automatizado. Cliente que pede a três fornecedores compara o tempo de resposta.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">4</div><div class="estagio-head-text"><div class="estagio-titulo">Decisão</div><div class="estagio-name">Cliente compara e escolhe</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> compara preço, prazo, condição de pagamento, atendimento.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> sem diferencial declarado, a comparação cai em preço. A Fonecar não tem escala para vencer no preço. Sem prova de qualidade técnica ou de prazo, perde por padrão.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">5</div><div class="estagio-head-text"><div class="estagio-titulo">Entrega</div><div class="estagio-name">Cliente recebe o pedido</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> entrega física, eventual instalação, nota fiscal.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> sem promessa pública de prazo, qualquer atraso vira surpresa. Sem comunicação proativa de status, cliente liga para saber. Em escala, isso consome tempo do time comercial.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">6</div><div class="estagio-head-text"><div class="estagio-titulo">Pós-venda</div><div class="estagio-name">Cliente precisa de garantia ou suporte</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> aciona vendedor, abre Reclame Aqui em caso extremo.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> reclamações públicas mostram pós-venda como ponto frágil recorrente. É justamente aqui que a próxima compra é decidida.</div>
+</div>
+
+<div class="estagio">
+<div class="estagio-head"><div class="estagio-num">7</div><div class="estagio-head-text"><div class="estagio-titulo">Recompra</div><div class="estagio-name">Cliente volta ou desaparece</div></div></div>
+<p class="estagio-lead"><strong>Como acontece hoje:</strong> não há contato proativo. Cliente que volta, volta porque lembrou.</p>
+<div class="estagio-parecer"><strong>Onde está perdendo:</strong> sem sistema de gestão de cliente, sem newsletter, sem programa de relacionamento. Cada cliente novo é tratado como cliente novo, mesmo que já tenha comprado três vezes.</div>
+</div>
+
+<div class="veredito">
+<div class="veredito-lbl">Diagnóstico da jornada</div>
+<p>A jornada hoje é frágil em pelo menos cinco das sete etapas. As etapas mais frágeis são <strong>Descoberta, Avaliação e Recompra</strong>, todas as três fora do controle direto do vendedor. Justamente as etapas onde o crescimento sustentável mora.</p>
+</div>
+</section>
+
+<!-- ========== QUICK WINS ========== -->
+<section id="quickwins" class="pane">
+<h1>Ações de 30 dias</h1>
+<p class="meta">Movimentos de baixo custo e alto impacto, executáveis nos próximos 30 dias, antes de qualquer iniciativa estratégica maior.</p>
+
+<div class="info">
+<h4>Por que estas ações</h4>
+<p>São ações que não exigem decisão estratégica grande. Custam pouco. Reduzem fricção visível. Mostram, internamente e externamente, que a empresa está olhando para si. Quem decide as cinco abaixo, em trinta dias entrega resultado.</p>
+</div>
+
+<div class="frente">
+<div class="frente-num">01</div>
+<div class="frente-body">
+<div class="frente-title">Corrigir os erros do site</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> primeira impressão de descuido.</p>
+<p class="frente-job">"Trocar 'INSTAÇÃO' por 'INSTALAÇÃO' (3 lugares), atualizar copyright, consertar link da Amorim Shop, tirar página com erro 404."</p>
+<div class="frente-impact"><span class="frente-up">credibilidade no primeiro acesso</span><span class="frente-down">tempo de explicação ao cliente novo</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">02</div>
+<div class="frente-body">
+<div class="frente-title">Atualizar o LinkedIn da empresa</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> contradição entre canais oficiais.</p>
+<p class="frente-job">"Ajustar data de fundação, faixa de funcionários, e listar todas as marcas do grupo (ou tirar o que não vai usar)."</p>
+<div class="frente-impact"><span class="frente-up">consistência institucional</span><span class="frente-down">desconfiança do comprador corporativo</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">03</div>
+<div class="frente-body">
+<div class="frente-title">Publicar prazo, garantia e processo de compra no site</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> incerteza do cliente que pesquisa antes de pedir orçamento.</p>
+<p class="frente-job">"Página simples 'Como funciona uma compra para empresa na Fonecar', com prazo médio por categoria e política de garantia clara."</p>
+<div class="frente-impact"><span class="frente-up">conversão de visitante em pedido de orçamento</span><span class="frente-down">consultas repetitivas no WhatsApp</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">04</div>
+<div class="frente-body">
+<div class="frente-title">Resposta consistente no Reclame Aqui</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> reputação pública estagnada e sem volta.</p>
+<p class="frente-job">"Responder reclamações pendentes, definir prazo interno de resposta de 24 horas, pedir avaliação ao final."</p>
+<div class="frente-impact"><span class="frente-up">curva de melhoria da reputação pública</span><span class="frente-down">queixa que vira processo no PROCON</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">05</div>
+<div class="frente-body">
+<div class="frente-title">Eleger uma marca-cabeça</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> orçamento e atenção pulverizados em cinco marcas.</p>
+<p class="frente-job">"Definir Fonecar como marca-cabeça do grupo, reduzir comunicação das outras a marcas-irmãs e concentrar investimento em uma só."</p>
+<div class="frente-impact"><span class="frente-up">força da comunicação concentrada</span><span class="frente-down">canibalização entre marcas e dispersão de orçamento</span></div>
+</div>
+</div>
+
+<h2>O que essas cinco ações entregam juntas</h2>
+<div class="ok">
+<p>Em trinta dias, a empresa vira fonte de impressão diferente para o cliente novo, ajusta a fotografia institucional pública, organiza a primeira camada digital, dá tração ao Reclame Aqui, e toma a primeira decisão estratégica de marca. <strong>Nenhuma ação isolada vira a empresa. Juntas, mostram que a casa começou a olhar para si.</strong> Esse é o sinal que destrava as conversas estratégicas mais difíceis.</p>
+</div>
+</section>
+
+<!-- ========== EMPRESA ========== -->
 <section id="empresa" class="pane">
-<h2>Identificação</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Quem é a empresa, no papel e na operação.</p>
+<h1>Identificação da empresa</h1>
+<p class="meta">Quem é a empresa, no papel e na operação</p>
 
 <table>
 <tr><th>Item</th><th>Dado</th></tr>
 <tr><td>Razão social</td><td><strong>Fonecar Telecomunicações Eletrônicas Ltda em Recuperação Judicial</strong></td></tr>
 <tr><td>CNPJ matriz</td><td>60.433.091/0001-80</td></tr>
-<tr><td>Outras filiais</td><td>0002-61 (ativa), 0003-42 (baixada), 0004-23</td></tr>
+<tr><td>Outras filiais</td><td>0002-61 (ativa) · 0003-42 (baixada) · 0004-23</td></tr>
 <tr><td>PJ paralela</td><td>Fonecar Plus Comércio de Informática Ltda (Serra/ES, criada em 22/06/2022)</td></tr>
 <tr><td>Fundação</td><td>21/04/1989</td></tr>
 <tr><td>Endereço</td><td>R. Horácio Vergueiro Rudge, 512, Casa Verde, São Paulo, SP</td></tr>
@@ -222,10 +706,11 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e0e0e0;font-family
 </table>
 
 <div class="warn">
-<strong>Inconsistência grave entre canais oficiais.</strong> O LinkedIn da empresa diz "fundada em 2014" e "11 a 50 funcionários", em contradição com a apresentação institucional (1989) e com o ZoomInfo (51 a 200). Cliente que pesquisa em dois lugares descobre informação diferente.
+<h4>Inconsistência grave entre canais oficiais</h4>
+<p>O LinkedIn da empresa diz "fundada em 2014" e "11 a 50 funcionários", em contradição com a apresentação institucional (1989) e com o ZoomInfo (51 a 200). Cliente que pesquisa em dois lugares descobre informação diferente.</p>
 </div>
 
-<h3>Cronologia oficial declarada</h3>
+<h2>Cronologia oficial declarada</h2>
 <div class="tl">
 <div class="tl-item"><div class="tl-dot done"></div><strong>1989</strong> Início em sala de 50 m² (apresentação).</div>
 <div class="tl-item"><div class="tl-dot done"></div><strong>1994</strong> Josival Santos entra como funcionário.</div>
@@ -238,79 +723,460 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e0e0e0;font-family
 
 <div class="qbox">A apresentação salta de 2007 para 2022. O que aconteceu nos quinze anos do meio? Esse silêncio é informativo.</div>
 
-<h3>Estrutura de marcas (declaradas no grupo)</h3>
+<h2>Estrutura de marcas</h2>
 <div class="g3">
-<div class="card"><strong>Fonecar</strong><p>B2B. Site institucional. Foco em empresa.</p></div>
-<div class="card"><strong>Amorim Shop</strong><p>B2C marketplace (ML, Submarino). Pessoa física.</p></div>
-<div class="card"><strong>Amorim Tech</strong><p>Loja paralela no ML. Volume baixo.</p></div>
-<div class="card"><strong>Thargon</strong><p>Marca dormente. Sem site funcional.</p></div>
-<div class="card"><strong>Fonecar ON</strong><p>Anunciada em 2024. Não tem espaço próprio no site.</p></div>
+<div class="card"><h4>Fonecar</h4><p>corporativo. Site institucional. Foco em empresa.</p></div>
+<div class="card"><h4>Amorim Shop</h4><p>Marca em marketplace (Mercado Livre, Submarino). Vende para pessoa física.</p></div>
+<div class="card"><h4>Amorim Tech</h4><p>Loja paralela no ML. Volume baixo.</p></div>
+<div class="card"><h4>Thargon</h4><p>Marca dormente. Sem site funcional.</p></div>
+<div class="card"><h4>Fonecar ON</h4><p>Anunciada em 2024. Não tem espaço próprio no site.</p></div>
 </div>
 </section>
 
-<!-- ============ RISCOS ============ -->
-<section id="riscos" class="pane">
-<h2>Inventário de riscos</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Inventário descritivo, sem priorização. A priorização aparece em Vulnerabilidades.</p>
+<!-- ========== DIAGNÓSTICO DE NEGÓCIO ========== -->
+<section id="negocio" class="pane">
+<h1>Diagnóstico de Negócio</h1>
+<p class="meta">Análise estrutural do modelo de negócio. Quando há valor monetário, está marcado como hipótese ou estimativa.</p>
 
-<h3>Risco financeiro e jurídico</h3>
-<div class="card-sm"><strong>Recuperação Judicial em curso.</strong> Razão social oficial inclui o termo. Implica plano de pagamento, restrições contratuais, supervisão judicial.</div>
-<div class="card-sm"><strong>58 processos jurídicos.</strong> Concentração em TJSP e TRT2. Volume relevante em trabalhista sugere padrão repetitivo.</div>
-<div class="card-sm"><strong>Múltiplos CNPJs.</strong> Existem 4 filiais sob o radical e a Fonecar Plus em ES como pessoa jurídica autônoma.</div>
-<div class="card-sm"><strong>Endividamento provável com fornecedores.</strong> Em revenda, RJ implica quase sempre dívida com distribuidores.</div>
+<div class="info">
+<h4>Sobre a base desta análise</h4>
+<p>Sem acesso a demonstrações financeiras internas. As estimativas de receita, margem, custo e ticket usam bandas de mercado conhecidas para revenda regional de informática no Brasil (faixa 11 a 50 funcionários, sede própria em SP capital), cruzadas com sinais públicos da operação (marketplace, redes sociais, presença em fóruns). Cada estimativa está marcada como <span class="tag hip">HIPÓTESE</span>. Sócios podem confirmar, refutar ou ajustar com dado interno.</p>
+</div>
 
-<h3>Risco operacional</h3>
-<div class="card-sm"><strong>Pós-venda fragilizado.</strong> Reclamações concentram defeito, troca, atendimento.</div>
-<div class="card-sm"><strong>Logística não declarada.</strong> Endereço único na Casa Verde. Sem CD secundário.</div>
-<div class="card-sm"><strong>Erros visíveis em ativos digitais.</strong> Site com erro de grafia, rodapé desatualizado, URL incorreta, página /sobre 404, loja oficial fora do ar.</div>
-<div class="card-sm"><strong>Dependência de WhatsApp como canal comercial.</strong> Frágil para B2B corporativo (rastreabilidade limitada).</div>
+<h2>1. Modelo de receita</h2>
 
-<h3>Risco comercial e de marca</h3>
-<div class="card-sm"><strong>Posicionamento confuso.</strong> Cinco marcas sem segmentação clara.</div>
-<div class="card-sm"><strong>Dependência de marketplaces.</strong> Comissões de 16% a 20% reduzem margem estruturalmente.</div>
-<div class="card-sm"><strong>Reputação fragmentada.</strong> Nenhuma marca com selo Reclame Aqui. Amorim Shop com 2 de 5 no Mercado Livre.</div>
-<div class="card-sm"><strong>Volume baixo em marketplace.</strong> 309 vendas em 5 anos no perfil Amorim Shop.</div>
-<div class="card-sm"><strong>Audiência social baixa.</strong> Instagram com 867 seguidores após mais de 35 anos.</div>
+<h3>Mix de receita estimado por categoria</h3>
+<div class="bar-row"><span class="bar-label">Hardware corporativo</span><div class="bar-track"><div class="bar-fill" style="width:55%"><span class="bar-val">≈ 55%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Marketplace para pessoa física</span><div class="bar-track"><div class="bar-fill" style="width:18%"><span class="bar-val">≈ 18%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Acessório/perif.</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--blue-light)"><span class="bar-val">≈ 14%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Serviço técnico</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--blue-light)"><span class="bar-val">≈ 10%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">CFTV / cabeam.</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--blue-light)"><span class="bar-val">≈ 3%</span></div></div></div>
+<p class="meta"><span class="tag hip">HIPÓTESE</span> Estimativa baseada em portfólio comunicado e padrão típico de revenda corporativo paulistana com presença em marketplace.</p>
 
-<h3>Risco estratégico</h3>
-<div class="card-sm"><strong>Comoditização do produto principal.</strong> Vencer no preço exige escala que a empresa não tem. Vencer no serviço exige especialização que o site não evidencia.</div>
-<div class="card-sm"><strong>Concorrência de gigantes.</strong> KaBuM (Magalu), Pichau, TerabyteShop em B2C. Officer, Sonda, BRA em B2B.</div>
-<div class="card-sm"><strong>Comunicação institucional ausente.</strong> Blog com 3 posts em 2025. LinkedIn dominado por datas comemorativas.</div>
-<div class="card-sm"><strong>Ausência de ICP definido.</strong> O site fala em "empresas" sem qualificar.</div>
+<h3>Margem operacional típica do setor (referência)</h3>
+<table>
+<tr><th>Categoria</th><th>Margem bruta típica</th><th>Volume na Fonecar</th><th>Lucro relativo</th></tr>
+<tr><td>Notebook corporativo</td><td>3 a 8%</td><td>Alto (carro-chefe)</td><td>Baixo</td></tr>
+<tr><td>Acessório / periférico</td><td>15 a 30%</td><td>Médio</td><td>Médio</td></tr>
+<tr><td>Servidor customizado</td><td>12 a 18%</td><td>Baixo</td><td>Médio</td></tr>
+<tr><td>Serviço (cabeamento, CFTV, manutenção)</td><td>30%+</td><td>Baixo (não comunicado em volume)</td><td>Alto se escalado</td></tr>
+<tr><td>Marketplace para pessoa física</td><td>3 a 8% menos comissão de 16-20%</td><td>309 vendas em 5 anos</td><td>Marginal ou negativo</td></tr>
+</table>
 
-<h3>Risco de governança e sucessão</h3>
-<div class="card-sm"><strong>Empresa familiar com gestão concentrada.</strong> CEO e Diretor são a dupla central.</div>
-<div class="card-sm"><strong>Sucessão indefinida.</strong> Sem informação sobre planos.</div>
-<div class="card-sm"><strong>Profissionalização incipiente.</strong> Sem C-level externo declarado.</div>
+<div class="warn">
+<h4>Inferência crítica sobre lucratividade</h4>
+<p>Se o mix de receita acima estiver próximo da realidade, a Fonecar concentra mais de 70% da receita em categorias com margem bruta abaixo de 10%. Após custo fixo (folha de 11 a 50 pessoas, sede própria, marketing residual, custo financeiro de RJ), a margem operacional efetiva é provavelmente próxima de zero ou negativa. Esse é o motor numérico que justifica a Recuperação Judicial.</p>
+</div>
 
-<h3>Risco regulatório e tributário</h3>
-<div class="card-sm"><strong>Tributação complexa.</strong> ICMS interestadual, ICMS-ST, PIS, COFINS, regimes setoriais.</div>
-<div class="card-sm"><strong>CDC e PROCON.</strong> Reclame Aqui mostra reclamações sobre devolução e troca.</div>
-<div class="card-sm"><strong>LGPD.</strong> Site coleta dado em formulário sem aviso de tratamento visível.</div>
+<h2>2. Estimativa de tamanho da operação</h2>
 
-<div class="qbox">O Reclame Aqui captura só a fração reclamona. Empresas com pouco volume tendem a ter pouca reclamação visível. Não é virtude: é sinal de que a maioria das insatisfações nunca vira registro público. Essa população silenciosa raramente volta.</div>
-</section>
+<div class="g3">
+<div class="card"><div class="lbl">Receita anual estimada</div><span class="big-num">R$ 8 a 25 mi</span><p style="font-size:12px;color:var(--muted)">Banda compatível com 11 a 50 funcionários, sede própria em SP, operação multimarcas. <span class="tag hip">HIPÓTESE</span></p></div>
+<div class="card"><div class="lbl">Ticket médio corporativo</div><span class="big-num">R$ 8 a 35 mil</span><p style="font-size:12px;color:var(--muted)">Compatível com PME que compra 5 a 30 dispositivos por pedido. <span class="tag hip">HIPÓTESE</span></p></div>
+<div class="card"><div class="lbl">Ticket médio consumidor final (ML)</div><span class="big-num">R$ 200 a 800</span><p style="font-size:12px;color:var(--muted)">Periférico, acessório, monitor, mini PC. <span class="tag hip">HIPÓTESE</span></p></div>
+</div>
 
-<!-- ============ VULNERABILIDADES ============ -->
-<section id="vulner" class="pane">
-<h2>Vulnerabilidades críticas</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Vulnerabilidade não é o mesmo que risco. Risco é evento possível. Vulnerabilidade é ponto onde a falha se propaga em cascata pelo sistema.</p>
+<h2>3. Estrutura de custo estimada</h2>
+
+<div class="bar-row"><span class="bar-label">Custo da mercadoria</span><div class="bar-track"><div class="bar-fill" style="width:65%"><span class="bar-val">≈ 65%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Folha + encargos</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--blue-light)"><span class="bar-val">≈ 15%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Imóvel/utilidades</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--blue-light)"><span class="bar-val">≈ 5%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Tributos op.</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--blue-light)"><span class="bar-val">≈ 8%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Marketing/digital</span><div class="bar-track"><div class="bar-fill" style="width:1.5%;background:var(--blue-light)"><span class="bar-val-out">≈ 1 a 2%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Custo financeiro RJ</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:var(--red)"><span class="bar-val-out">≈ 3 a 6%</span></div></div></div>
+<div class="bar-row"><span class="bar-label">Outros</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--blue-light)"><span class="bar-val-out">≈ 3%</span></div></div></div>
+<p class="meta"><span class="tag hip">HIPÓTESE</span> Composição típica de revenda paulistana de porte médio com sede própria, sem investimento robusto em digital.</p>
+
+<h2>4. Análise por caixa do modelo de negócio tradicional</h2>
+
+<table>
+<tr><th>Caixa</th><th>O que a empresa diz</th><th>O que a operação revela</th><th>Diagnóstico</th></tr>
+<tr>
+<td><strong>1. Cliente</strong></td>
+<td>"Empresas". Genérico.</td>
+<td>Atende PME paulistana via WhatsApp; varejo consumidor final marginal via marketplace.</td>
+<td>Sem cliente ideal único. Múltiplos perfis tentando ser atendidos sem priorização.</td>
+</tr>
+<tr>
+<td><strong>2. Proposta de valor</strong></td>
+<td>"Análise personalizada", "atendimento personalizado", "qualidade".</td>
+<td>Vendedor por WhatsApp, prazo não comunicado, sem case publicado.</td>
+<td>Palavra ornamental. Em mercado comoditizado, é fatal.</td>
+</tr>
+<tr>
+<td><strong>3. Canais</strong></td>
+<td>Site, ML, Magalu, Amazon, IG, FB, LinkedIn, WhatsApp, YouTube.</td>
+<td>Vários canais com presença mínima; WhatsApp é o que fecha.</td>
+<td>Vários canais fracos. Custo de manutenção ultrapassa receita.</td>
+</tr>
+<tr>
+<td><strong>4. Relacionamento</strong></td>
+<td>"Linha dedicada para SAC", "consultoria técnica".</td>
+<td>Reclame Aqui mostra pós-venda fraco. Sem sistema de gestão de cliente, sem fidelidade.</td>
+<td>Episódico, transacional. Sem ferramenta de retenção.</td>
+</tr>
+<tr>
+<td><strong>5. Receita</strong></td>
+<td>Venda de produto + serviço.</td>
+<td>Mix concentrado em hardware comoditizado, com baixa margem.</td>
+<td>Sem previsibilidade. Sem receita recorrente. Risco de fluxo de caixa.</td>
+</tr>
+<tr>
+<td><strong>6. Recursos-chave</strong></td>
+<td>"Equipe experiente", localização, parcerias.</td>
+<td>Imóvel próprio, dois sócios, marca histórica, equipe enxuta.</td>
+<td>Tangíveis ok. Intangíveis (marca, dado, conhecimento documentado) frágeis.</td>
+</tr>
+<tr>
+<td><strong>7. Atividades-chave</strong></td>
+<td>Comercial, logística, instalação, atendimento.</td>
+<td>Compra de distribuidor, cotação por WhatsApp, entrega, instalação eventual.</td>
+<td>Tradicionais. Atividades digitais subdimensionadas.</td>
+</tr>
+<tr>
+<td><strong>8. Parcerias</strong></td>
+<td>Logos no site ("marcas que trabalhamos").</td>
+<td>Sem prova de status (Gold, Premier, Authorized).</td>
+<td>Pôster decorativo. Sem capital político junto a fabricante.</td>
+</tr>
+<tr>
+<td><strong>9. Custos</strong></td>
+<td>Não comunica.</td>
+<td>Folha + imóvel + 5 marcas + custo financeiro de RJ.</td>
+<td>Alto, com sobreposição. Sem volume para diluir.</td>
+</tr>
+</table>
+
+<h2>5. Unit economics estimados</h2>
 
 <div class="g2">
-<div class="card"><h4>V1. RJ não comunicada como narrativa</h4><p>Cliente B2B descobre via consulta de CNPJ tarde no funil. Cascata: perda de venda corporativa.</p></div>
-<div class="card"><h4>V2. Dependência de marketplaces de terceiros</h4><p>Quem controla o algoritmo controla o negócio. Cascata: mudança de regra desorganiza tudo.</p></div>
-<div class="card"><h4>V3. Ausência de canal próprio funcional</h4><p>Loja oficial fora do ar. Sem dado próprio do cliente. Sem CRM.</p></div>
+<div class="card">
+<h4>custo de aquisição (custo de aquisição) estimado</h4>
+<p>Sem time de marketing dedicado, sem mídia paga relevante, custo de aquisição orgânico depende de cliente que chega pelo WhatsApp e indicação. <span class="tag hip">HIPÓTESE</span></p>
+<ul>
+<li><strong>corporativo que chega por contato direto:</strong> R$ 200 a 600 por cliente (custo de tempo de vendedor).</li>
+<li><strong>Em marketplace:</strong> 16 a 20% de comissão sobre venda equivale a custo de aquisição efetivo de R$ 40 a 160 por venda média.</li>
+</ul>
+</div>
+<div class="card">
+<h4>Valor por cliente ao longo do tempo</h4>
+<p>Sem sistema de gestão de cliente, sem programa de fidelidade, sem newsletter, sem retenção declarada. <span class="tag hip">HIPÓTESE</span></p>
+<ul>
+<li><strong>Para empresa:</strong> recompra provável em troca de parque (3 a 5 anos). Ticket médio R$ 8 a 35 mil. Cliente fidelizado por relação pessoal, não por ferramenta.</li>
+<li><strong>Para pessoa física:</strong> valor efetivo próximo do ticket único. Sem retorno mensurável.</li>
+</ul>
+</div>
+</div>
+
+<h2>6. Capacidade de geração de caixa</h2>
+
+<div class="card">
+<h4>Onde o caixa entra</h4>
+<ul>
+<li>Pedidos corporativo fechados via WhatsApp, faturados, com prazo médio de 30 dias.</li>
+<li>Vendas consumidor final nos marketplaces, com repasse em 14 dias após entrega (Mercado Livre).</li>
+<li>Eventuais contratos de serviço (cabeamento, CFTV, manutenção) com pagamento parcelado.</li>
+</ul>
+</div>
+
+<div class="card">
+<h4>Onde o caixa sai</h4>
+<ul>
+<li>Pagamento a distribuidor (em RJ provável condição de antecipado ou prazo curto).</li>
+<li>Folha mensal + encargos.</li>
+<li>Aluguel ou IPTU/manutenção do imóvel próprio.</li>
+<li>Parcelas do plano de Recuperação Judicial.</li>
+<li>Custos jurídicos e processuais (58 processos).</li>
+</ul>
+</div>
+
+<div class="warn">
+<h4>O aperto provável</h4>
+<p>O ciclo de pagamento é mais curto do que o ciclo de recebimento. Distribuidor pede antecipado; cliente corporativo paga em 30 dias; marketplace repassa em 14 dias após entrega. Soma: caixa estruturalmente apertado, com pouco espaço para imprevisto. <span class="tag hip">HIPÓTESE</span> baseada em padrão de revenda em RJ.</p>
+</div>
+
+<h2>7. Eficiência operacional</h2>
+
+<table>
+<tr><th>Indicador</th><th>Estimativa Fonecar</th><th>Referência saudável (revenda média)</th></tr>
+<tr><td>Receita por funcionário</td><td>R$ 250 a 500 mil/ano <span class="tag hip">HIP</span></td><td>R$ 600 mil a R$ 1,5 mi/ano</td></tr>
+<tr><td>Margem operacional</td><td>Próxima de zero ou negativa <span class="tag hip">HIP</span></td><td>3 a 8%</td></tr>
+<tr><td>Giro de estoque (ano)</td><td>Não publicizado</td><td>6 a 12x</td></tr>
+<tr><td>Ticket médio mensal por cliente corporativo ativo</td><td>R$ 1 a 3 mil <span class="tag hip">HIP</span></td><td>R$ 3 a 8 mil</td></tr>
+<tr><td>Conversão de orçamento em pedido</td><td>Não publicizado</td><td>20 a 35%</td></tr>
+</table>
+
+<h2>8. Capacidade de investimento e crescimento</h2>
+
+<div class="warn">
+<h4>O dilema central</h4>
+<p>Empresa em RJ tem capacidade de investimento limitada por dois motivos simultâneos. Primeiro, capital de giro próprio é apertado. Segundo, o plano de RJ provavelmente restringe contração de novas dívidas. Resultado: investimentos em marketing digital, em sistema de gestão de cliente, em integração de marketplaces, em catálogo digital, em treinamento, ficam represados justamente quando seriam alavancas para sair da RJ. É um nó.</p>
+</div>
+
+<h2>9. Modelo de negócio versus mercado</h2>
+
+<div class="info">
+<h4>Onde o modelo Fonecar está hoje no mapa do setor</h4>
+<p>O setor brasileiro de revenda corporativa de TI cresce 18,5% ao ano (ABES/IDC 2025). Hardware = US$ 32,5 bilhões. Mas o crescimento se concentra em <strong>(a) hardware caro com IA</strong>, <strong>(b) assinatura de equipamento/aluguel de hardware (assinatura de hardware)</strong> e <strong>(c) serviço gerenciado</strong>. A Fonecar está em <strong>hardware comoditizado em modelo de venda transacional</strong>, exatamente o segmento com menor crescimento e maior compressão de margem. O modelo está, em resumo, em desencaixe com a direção do setor.</p>
+</div>
+
+<h2>Síntese do diagnóstico de negócio</h2>
+<blockquote>O modelo de negócio da Fonecar é de revenda tradicional de hardware corporativo com presença marginal em marketplace. <strong>Está em descasamento estrutural com o mercado em três frentes simultâneas: (1) categoria com menor margem, (2) modelo transacional num mercado migrando para assinatura, e (3) operação com custo fixo elevado para o volume praticado.</strong> O ciclo vicioso 8 (custos fixos altos) e o ciclo vicioso 5 (comoditização não enfrentada) são consequências numéricas desse desencaixe, não causas.</blockquote>
+</section>
+
+<!-- ========== BENCH ========== -->
+<section id="bench" class="pane">
+<h1>Comparativos</h1>
+<p class="meta">Comparação direta da Fonecar com concorrentes consumidor final, corporativo e marketplace corporativo, em métricas verificáveis em fontes públicas.</p>
+
+<h2>Quadro comparativo principal</h2>
+<p>Reputação no Reclame Aqui é o termômetro mais consistente disponível publicamente. Período de referência: 01/10/2025 a 31/03/2026.</p>
+
+<table>
+<tr>
+<th>Marca</th>
+<th>Selo</th>
+<th>Nota</th>
+<th>Reclamações</th>
+<th>% volta a fazer negócio</th>
+<th>% resolução</th>
+<th>Tempo médio de resposta</th>
+</tr>
+<tr class="fonecar-row">
+<td><strong>Fonecar Informática</strong></td>
+<td><span class="score red">SEM SELO</span></td>
+<td>n/c</td>
+<td>Sem volume avaliado</td>
+<td>n/c</td>
+<td>n/c</td>
+<td>n/c</td>
+</tr>
+<tr class="fonecar-row">
+<td><strong>Amorim Shop</strong></td>
+<td><span class="score red">SEM SELO</span></td>
+<td>2/5 no ML</td>
+<td>Poucas, sem reputação</td>
+<td>n/c</td>
+<td>n/c</td>
+<td>n/c</td>
+</tr>
+<tr class="fonecar-row">
+<td><strong>Amorim Tech</strong></td>
+<td><span class="score red">SEM SELO</span></td>
+<td>n/c</td>
+<td>Sem volume</td>
+<td>n/c</td>
+<td>n/c</td>
+<td>n/c</td>
+</tr>
+<tr>
+<td>KaBuM!</td>
+<td><span class="score gold">Ótima reputação</span></td>
+<td>8,2/10 (média 7,12)</td>
+<td>11.595</td>
+<td>74,1%</td>
+<td>89,7%</td>
+<td>11 dias 14 horas</td>
+</tr>
+<tr>
+<td>Pichau Informática</td>
+<td><span class="score yellow">REGULAR</span></td>
+<td>4,86</td>
+<td>3.194</td>
+<td>52,8%</td>
+<td>83,4%</td>
+<td>21 dias 22 horas</td>
+</tr>
+<tr>
+<td>TerabyteShop</td>
+<td><span class="score yellow">BOM</span></td>
+<td>n/d</td>
+<td>n/d</td>
+<td>55,2%</td>
+<td>81,2%</td>
+<td>10 dias 13 horas</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td><span class="score green">BOM</span></td>
+<td>7,15</td>
+<td>volume alto</td>
+<td>78,5%</td>
+<td>86,9%</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>Ingram Micro Brasil (distribuidor corporativo)</td>
+<td><span class="score green">BOM</span></td>
+<td>8,3/10</td>
+<td>47</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+</table>
+
+<p class="meta">Fontes: <a href="https://www.reclameaqui.com.br/empresa/kabum/" target="_blank">RA KaBuM</a> · <a href="https://www.reclameaqui.com.br/empresa/pichau-informatica/" target="_blank">RA Pichau</a> · <a href="https://www.reclameaqui.com.br/empresa/terabyte-shop/" target="_blank">RA TeraByte</a> · <a href="https://www.reclameaqui.com.br/empresa/amazon/" target="_blank">RA Amazon</a> · <a href="https://www.reclameaqui.com.br/empresa/ingram-micro-brasil-ltda/" target="_blank">RA Ingram</a> · <a href="https://www.reclameaqui.com.br/empresa/fonecar-informatica/" target="_blank">RA Fonecar</a></p>
+
+<div class="warn">
+<h4>O que essa tabela significa</h4>
+<p>A Fonecar e suas marcas-irmãs estão na coluna em vermelho: <strong>sem selo, sem reputação calculada, sem volume avaliável</strong>. Os concorrentes diretos (KaBuM, Pichau, TeraByte) têm milhares de reclamações tratadas, métricas públicas, posição mensurável. Em corporativo, Ingram Micro tem 8,3/10 com 47 reclamações tratadas. Para o cliente novo que pesquisa antes de fechar, o concorrente é entidade auditável; a Fonecar é incógnita.</p>
+</div>
+
+<h2>Comparativo por canal de venda</h2>
+
+<table>
+<tr><th>Canal</th><th>Fonecar (Amorim Shop)</th><th>Concorrente típico no canal</th></tr>
+<tr><td>Mercado Livre</td><td>309 vendas em 5 anos · 2/5 · 6 anos no canal</td><td>Vendedor mediano: 30 a 100 vendas/mês · 4,7+ estrelas</td></tr>
+<tr><td>Magazine Luiza</td><td>Lojista ativo · volume não publicizado</td><td>Magalu Empresas com infraestrutura corporativo própria</td></tr>
+<tr><td>Amazon</td><td>Merchant ativo · catálogo restrito</td><td>Amazon Business com 4 milhões de usuários no Brasil</td></tr>
+<tr><td>Site próprio</td><td>Loja oficial fora do ar (loja.fonecar.com.br)</td><td>KaBuM/Pichau/Terabyte com e-commerce dedicado</td></tr>
+</table>
+
+<h2>Comparativo de presença digital</h2>
+
+<table>
+<tr><th>Indicador</th><th>Fonecar</th><th>KaBuM</th><th>Pichau</th><th>TeraByte</th></tr>
+<tr><td>Seguidores LinkedIn (corporativo)</td><td>1.423</td><td>~280 mil</td><td>~50 mil</td><td>~30 mil</td></tr>
+<tr><td>Seguidores Instagram</td><td>867</td><td>~1,2 mi</td><td>~620 mil</td><td>~280 mil</td></tr>
+<tr><td>YouTube</td><td>Canal ativo, audiência baixa</td><td>Canal com milhões de views</td><td>Canal com milhões</td><td>Canal técnico ativo</td></tr>
+<tr><td>Blog próprio</td><td>3 posts em 2025</td><td>Blog editorial diário</td><td>Blog editorial</td><td>Blog editorial</td></tr>
+<tr><td>Marketplace ML (vendas/5 anos)</td><td>309 (Amorim Shop)</td><td>milhões cumulativos</td><td>centenas de milhares</td><td>centenas de milhares</td></tr>
+</table>
+<p class="meta">Os números dos concorrentes são estimativas observadas em fontes públicas das próprias plataformas; servem como ordem de grandeza. <span class="tag inf">INFERÊNCIA</span></p>
+
+<h2>Comparativo de proposta de valor declarada</h2>
+
+<div class="g2">
+<div class="card">
+<h4>Fonecar</h4>
+<p>"Análise personalizada, propostas customizadas, entrega e implementação, suporte e SAC."</p>
+<p><strong>Vetor:</strong> não escolhido. Tenta ser tudo.</p>
+</div>
+<div class="card">
+<h4>KaBuM</h4>
+<p>"O maior e melhor preço". Logística do Magalu. Variedade.</p>
+<p><strong>Vetor:</strong> escala + preço + logística.</p>
+</div>
+<div class="card">
+<h4>Pichau</h4>
+<p>"PC gamer e tecnologia com os menores preços". Promoções agressivas.</p>
+<p><strong>Vetor:</strong> preço para o entusiasta gamer.</p>
+</div>
+<div class="card">
+<h4>TerabyteShop</h4>
+<p>"Tradição, conhecimento técnico, atendimento próximo".</p>
+<p><strong>Vetor:</strong> técnico, montagem custom.</p>
+</div>
+<div class="card">
+<h4>Officer (corporativo)</h4>
+<p>Distribuidor que abastece o canal. Acordo de prazo, programa de revendas, financiamento.</p>
+<p><strong>Vetor:</strong> infraestrutura corporativo para canal.</p>
+</div>
+<div class="card">
+<h4>Sonda / Stefanini</h4>
+<p>Integrador de soluções de TI para grandes empresas. Compromisso de prazo, contrato de vários anos.</p>
+<p><strong>Vetor:</strong> serviço gerenciado para grande empresa.</p>
+</div>
+</div>
+
+<h2>Posição relativa: cenário urgência x escala</h2>
+
+<table>
+<tr><th></th><th>Baixa escala (até 10 itens)</th><th>Alta escala (50 itens ou mais)</th></tr>
+<tr><td><strong>Alta urgência</strong></td><td>KaBuM, ML, Amazon ganham</td><td>Officer, Sonda, integradores ganham</td></tr>
+<tr><td><strong>Baixa urgência</strong></td><td>KaBuM, Pichau, ML ganham por preço</td><td>Sonda, TIVIT, Stefanini ganham por contrato</td></tr>
+</table>
+
+<div class="warn">
+<h4>A leitura mais dura desse mapa</h4>
+<p>Em nenhuma das quatro caixas a Fonecar é primeira escolha objetiva. Nenhum dos critérios (preço, prazo, contrato, técnica, escala, custo) coloca a Fonecar à frente de algum dos jogadores estabelecidos. A operação atual sobrevive em <strong>vendas relacionais para PME paulistana com proximidade física e confiança de longa data</strong>, segmento que ninguém mede publicamente, e que fica menor a cada ano que passa.</p>
+</div>
+
+<h2>Vetor de competição</h2>
+<p>Em qual eixo a Fonecar pode disputar? Análise honesta:</p>
+
+<table>
+<tr><th>Eixo</th><th>Líder atual</th><th>Posição da Fonecar</th></tr>
+<tr><td>Preço</td><td>KaBuM, Pichau</td><td>Não compete (sem escala)</td></tr>
+<tr><td>Logística rápida</td><td>KaBuM (Magalu Ninja)</td><td>Não compete</td></tr>
+<tr><td>Conhecimento técnico</td><td>TeraByte, integradores</td><td>Possível, mas não comunica</td></tr>
+<tr><td>Atendimento próximo presencial</td><td>Lojas regionais</td><td>Possível em SP, mas não comunica</td></tr>
+<tr><td>Compromisso de prazo em contrato</td><td>Sonda, Stefanini</td><td>Não compete (RJ restringe)</td></tr>
+<tr><td>Marketplace</td><td>ML, Amazon, Magalu</td><td>Marginal (309 vendas em 5 anos)</td></tr>
+<tr><td>Crédito/financiamento</td><td>Distribuidor + fintech</td><td>Não compete (RJ)</td></tr>
+<tr><td>Recondicionado/sustentabilidade</td><td>Sinctronics, Reciclo</td><td>Possível, mas não comunica</td></tr>
+<tr><td>Nicho protegido (CFTV de bairro, atendimento a empresas em recuperação)</td><td>Sem incumbente claro</td><td>Espaço aberto</td></tr>
+</table>
+
+<div class="info">
+<h4>Síntese do bench</h4>
+<p>Em quase todos os eixos onde os concorrentes já estabelecidos atuam, a Fonecar não tem chance de competir hoje. Os dois eixos onde existe espaço aberto (atendimento próximo presencial em SP capital + nicho protegido) não estão sendo comunicados pela empresa. <strong>O bench mostra um cenário em que a empresa não está competindo na arena que ela mesma escolheu, e não está reivindicando os territórios onde poderia ganhar.</strong></p>
+</div>
+</section>
+
+<!-- ========== RISCOS ========== -->
+<section id="riscos" class="pane">
+<h1>Inventário de riscos</h1>
+<p class="meta">Inventário descritivo, sem priorização. A priorização aparece em Vulnerabilidades.</p>
+
+<h2>Risco financeiro e jurídico</h2>
+<div class="card card-tight"><strong>Recuperação Judicial em curso.</strong> Razão social oficial inclui o termo. Implica plano de pagamento, restrições contratuais, supervisão judicial.</div>
+<div class="card card-tight"><strong>58 processos jurídicos.</strong> Concentração em TJSP e TRT2. Volume relevante em trabalhista sugere padrão repetitivo.</div>
+<div class="card card-tight"><strong>Múltiplos CNPJs.</strong> Quatro filiais sob o radical e a Fonecar Plus em ES como pessoa jurídica autônoma.</div>
+<div class="card card-tight"><strong>Endividamento provável com fornecedores.</strong> Em revenda, RJ implica quase sempre dívida com distribuidores.</div>
+
+<h2>Risco operacional</h2>
+<div class="card card-tight"><strong>Pós-venda fragilizado.</strong> Reclamações concentram defeito, troca, atendimento.</div>
+<div class="card card-tight"><strong>Logística não declarada.</strong> Endereço único na Casa Verde. Sem CD secundário.</div>
+<div class="card card-tight"><strong>Erros visíveis em ativos digitais.</strong> Site com erro de grafia, rodapé desatualizado, URL incorreta, página /sobre 404, loja oficial fora do ar.</div>
+<div class="card card-tight"><strong>Dependência de WhatsApp como canal comercial.</strong> Frágil para venda para empresa (rastreabilidade limitada).</div>
+
+<h2>Risco comercial e de marca</h2>
+<div class="card card-tight"><strong>Posicionamento confuso.</strong> Cinco marcas sem segmentação clara.</div>
+<div class="card card-tight"><strong>Dependência de marketplaces.</strong> Comissões de 16% a 20% reduzem margem estruturalmente.</div>
+<div class="card card-tight"><strong>Reputação fragmentada.</strong> Nenhuma marca com selo Reclame Aqui. Amorim Shop com 2 de 5 no Mercado Livre.</div>
+<div class="card card-tight"><strong>Volume baixo em marketplace.</strong> 309 vendas em 5 anos no perfil Amorim Shop.</div>
+<div class="card card-tight"><strong>Audiência social baixa.</strong> Instagram com 867 seguidores após mais de 35 anos.</div>
+
+<h2>Risco estratégico</h2>
+<div class="card card-tight"><strong>Comoditização do produto principal.</strong> Vencer no preço exige escala que a empresa não tem. Vencer no serviço exige especialização que o site não evidencia.</div>
+<div class="card card-tight"><strong>Concorrência de gigantes.</strong> KaBuM (Magalu), Pichau, TerabyteShop em consumidor final. Officer, Sonda, BRA em corporativo.</div>
+<div class="card card-tight"><strong>Comunicação institucional ausente.</strong> Blog com 3 posts em 2025. LinkedIn dominado por datas comemorativas.</div>
+<div class="card card-tight"><strong>Ausência de cliente ideal definido.</strong> O site fala em "empresas" sem qualificar.</div>
+
+<h2>Risco de governança e sucessão</h2>
+<div class="card card-tight"><strong>Empresa familiar com gestão concentrada.</strong> CEO e Diretor são a dupla central.</div>
+<div class="card card-tight"><strong>Sucessão indefinida.</strong> Sem informação sobre planos.</div>
+<div class="card card-tight"><strong>Profissionalização incipiente.</strong> Sem C-level externo declarado.</div>
+
+<h2>Risco regulatório e tributário</h2>
+<div class="card card-tight"><strong>Tributação complexa.</strong> ICMS interestadual, ICMS-ST, PIS, COFINS, regimes setoriais.</div>
+<div class="card card-tight"><strong>CDC e PROCON.</strong> Reclame Aqui mostra reclamações sobre devolução e troca.</div>
+<div class="card card-tight"><strong>LGPD.</strong> Site coleta dado em formulário sem aviso de tratamento visível.</div>
+<div class="card card-tight"><strong>Reforma tributária CBS/IBS.</strong> Transição inicia em 2026, com período de duplicidade. Empresa em RJ tem dificuldade adicional para adequação.</div>
+</section>
+
+<!-- ========== VULNERABILIDADES ========== -->
+<section id="vulner" class="pane">
+<h1>Vulnerabilidades críticas</h1>
+<p class="meta">Vulnerabilidade não é o mesmo que risco. Risco é evento possível. Vulnerabilidade é ponto onde a falha se propaga em cascata pelo sistema.</p>
+
+<div class="g2">
+<div class="card"><h4>V1. RJ não comunicada como narrativa</h4><p>Cliente corporativo descobre via consulta de CNPJ tarde no funil. Cascata: perda de venda corporativa.</p></div>
+<div class="card"><h4>V2. Dependência de marketplaces</h4><p>Quem controla o algoritmo controla o negócio. Cascata: mudança de regra desorganiza tudo.</p></div>
+<div class="card"><h4>V3. Ausência de canal próprio funcional</h4><p>Loja oficial fora do ar. Sem dado próprio do cliente. Sem sistema de gestão de cliente.</p></div>
 <div class="card"><h4>V4. Erros fixos no site institucional</h4><p>"INSTAÇÃO ELÉTRICA" em produção em 2026. Proxy cultural: ninguém está olhando.</p></div>
 <div class="card"><h4>V5. Marca dependente de duas pessoas</h4><p>Bus factor crítico. Saída de qualquer um dos dois paralisa decisão.</p></div>
 <div class="card"><h4>V6. Reclamações sobre o básico</h4><p>Defeito, troca, atendimento. Tabela periódica do varejo.</p></div>
-<div class="card"><h4>V7. Confusão de identidade pública</h4><p>"Juliana Vilar" no site, "Juliana Vilar Amorim" nos registros, "Juliana Amorim" no LinkedIn. Quem é quem?</p></div>
+<div class="card"><h4>V7. Confusão de identidade pública</h4><p>"Juliana Vilar", "Juliana Vilar Amorim", "Juliana Amorim". Quem é quem?</p></div>
 <div class="card"><h4>V8. Sem proposta de valor verificável</h4><p>"Atendimento personalizado" é slogan que oitenta por cento das revendas do Brasil assina.</p></div>
 <div class="card"><h4>V9. Cinco marcas sem arquitetura</h4><p>Multiplicidade não é o problema. Indefinição é. Recurso pulverizado.</p></div>
-<div class="card"><h4>V10. Dois discursos não conversam</h4><p>Apresentação otimista versus registros públicos que descrevem desafio. Os dois grupos cruzam fronteira.</p></div>
+<div class="card"><h4>V10. Dois discursos não conversam</h4><p>Apresentação otimista versus registros públicos. Os dois grupos cruzam fronteira.</p></div>
 </div>
 
-<h3>Mapa de propagação entre vulnerabilidades</h3>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;background:#f5f7fc">V1 (RJ) ───┐
+<h2>Mapa de propagação</h2>
+<div class="flow-box">V1 (RJ) ───┐
            ├──→ V8 (sem PVU) ──→ V6 (reclamações)
 V2 (ML) ───┤
            ├──→ V3 (sem canal) ──→ V2 (reforça)
@@ -320,91 +1186,76 @@ V5 (casal) ┴──→ V10 (dois discursos) ──→ V1 (piora)
 
 V4 e V7 são sintomas transversais.</div>
 
-<div class="accent">
-<h3>Tese sobre prioridade</h3>
+<div class="info">
+<h4>Tese sobre prioridade</h4>
 <p>Sem orçamento ilimitado, ataque na ordem: V1 (RJ comunicada) → V9 (arquitetura de marca) → V5 (governança) → V8 (proposta de valor única). Os demais decorrem.</p>
 </div>
 </section>
 
-<!-- ============ LOOPS ============ -->
+<!-- ========== LOOPS ========== -->
 <section id="loops" class="pane">
-<h2>Loops causais e erros sistêmicos</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Os outros documentos descrevem sintomas. Aqui descrevemos a doença. Loops são piores que problemas isolados, porque cada vitória pontual é absorvida pelo sistema.</p>
+<h1>Ciclos viciosos e erros sistêmicos</h1>
+<p class="meta">Os outros documentos descrevem sintomas. Aqui descrevemos a doença. Ciclos viciosos são piores que problemas isolados, porque cada vitória pontual é absorvida pelo sistema.</p>
 
-<details open>
-<summary>Loop 1. Identidade dispersa</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Mais marcas → atenção dividida → investimento por marca cai → resultado por marca cai → crise de receita → "precisamos de uma nova marca / canal / nicho" → mais marcas</div>
-<p>Cinco marcas convivem sob um mesmo grupo. Nenhuma com promessa diferenciada. Internamente: equipes pequenas tentando operar muitas frentes. Externamente: cliente nunca decora qual marca faz o quê.</p>
-<p><em>A pergunta que ninguém faz: se cinco marcas somam menos do que uma teria, por que cinco?</em></p>
+<details open><summary>Ciclo vicioso 1. Identidade dispersa</summary>
+<div class="flow-box">Mais marcas → atenção dividida → investimento por marca cai → resultado por marca cai → crise de receita → "precisamos de uma nova marca / canal / nicho" → mais marcas</div>
+<p>Cinco marcas convivem sob um mesmo grupo. Nenhuma com promessa diferenciada. <em>Pergunta que ninguém faz: se cinco marcas somam menos do que uma teria, por que cinco?</em></p>
 </details>
 
-<details>
-<summary>Loop 2. Modernização cosmética</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Operação com problema crônico → insatisfação visível → decisão de "rebranding" → investimento em fachada → operação intacta → insatisfação volta → necessidade de novo "rebranding"</div>
-<p>Trocou-se a roupa, manteve-se o corpo. As reclamações de antes e depois do rebranding 2022 falam dos mesmos pontos.</p>
+<details><summary>Ciclo vicioso2. Modernização cosmética</summary>
+<div class="flow-box">Operação com problema crônico → insatisfação visível → decisão de "rebranding" → investimento em fachada → operação intacta → insatisfação volta → necessidade de novo "rebranding"</div>
+<p>Trocou-se a roupa, manteve-se o corpo.</p>
 </details>
 
-<details>
-<summary>Loop 3. Recuperação Judicial silenciada</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">RJ em curso → decisão de não comunicar → cliente B2B faz due diligence → descobre via CNPJ → desiste → pressão de caixa cresce → "não comunicar para não assustar" reforçado</div>
-<p>A maior fragilidade não é a RJ em si. É o silêncio sobre ela. RJ bem comunicada vira história de virada. Mal comunicada vira armadilha.</p>
+<details><summary>Ciclo vicioso3. Recuperação Judicial silenciada</summary>
+<div class="flow-box">RJ em curso → decisão de não comunicar → cliente corporativo faz verificação prévia → descobre via CNPJ → desiste → pressão de caixa cresce → "não comunicar para não assustar" reforçado</div>
+<p>A maior fragilidade não é a RJ em si. É o silêncio sobre ela.</p>
 </details>
 
-<details>
-<summary>Loop 4. Varejo a serviço do B2B</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Estoque parado de B2B → escoar via marketplace → marketplace exige preço baixo + logística rápida → operação não foi construída para isso → atrasos, defeitos, reclamações → reputação cai → cliente B2B vê 2/5 e desiste → mais estoque parado</div>
-<p>Marketplace é commodity. Tem regra própria. Vender no marketplace para escoar estoque B2B é como usar carro de Fórmula 1 para entregar pizza.</p>
+<details><summary>Ciclo vicioso4. Varejo a serviço do corporativo</summary>
+<div class="flow-box">Estoque parado de corporativo → escoar via marketplace → marketplace exige preço baixo + logística rápida → operação não foi construída para isso → atrasos, defeitos, reclamações → reputação cai → cliente corporativo vê 2/5 e desiste → mais estoque parado</div>
 </details>
 
-<details>
-<summary>Loop 5. Comoditização não enfrentada</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Mercado vira commodity → diferencial precisa ser feito → empresa não escolhe → "atendimento personalizado" vira slogan vazio → cliente compara preço → empresa perde por preço → "precisamos melhorar atendimento" → slogan continua vazio</div>
-<p>KaBuM ganha em escala. TerabyteShop em técnica. Officer e Sonda em corporativo grande. A Fonecar fica no meio, lugar onde commodity destrói.</p>
+<details><summary>Ciclo vicioso5. Comoditização não enfrentada</summary>
+<div class="flow-box">Mercado vira commodity → diferencial precisa ser feito → empresa não escolhe → "atendimento personalizado" vira slogan vazio → cliente compara preço → empresa perde por preço → "precisamos melhorar atendimento" → slogan continua vazio</div>
 </details>
 
-<details>
-<summary>Loop 6. Governança familiar não profissionalizada</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Empresa familiar → decisões fluem por relação → sucessão indefinida → profissionais qualificados resistem em entrar → time fica fraco → sócios precisam decidir mais → time fica mais fraco → sucessão fica mais difícil</div>
-<p>Sem clareza de governança, investidor profissional não compra. Em RJ, isso amplifica.</p>
+<details><summary>Ciclo vicioso6. Governança familiar não profissionalizada</summary>
+<div class="flow-box">Empresa familiar → decisões fluem por relação → sucessão indefinida → profissionais qualificados resistem em entrar → time fica fraco → sócios precisam decidir mais → time fica mais fraco → sucessão fica mais difícil</div>
 </details>
 
-<details>
-<summary>Loop 7. Digitalização aparente</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Pressão por "estar online" → cria site, redes, marketplaces → nenhuma estrutura de venda online é criada → vitrines existem, conversão não → "online não funciona para B2B" → reduz investimento → menos visível → pressão volta com angústia</div>
-<p>Existir não é vender. Aparecer não é converter.</p>
+<details><summary>Ciclo vicioso7. Digitalização aparente</summary>
+<div class="flow-box">Pressão por "estar online" → cria site, redes, marketplaces → nenhuma estrutura de venda online é criada → vitrines existem, conversão não → "online não funciona para corporativo" → reduz investimento → menos visível → pressão volta com angústia</div>
 </details>
 
-<details>
-<summary>Loop 8. Custos fixos altos</summary>
-<div class="card" style="font-family:'SF Mono',monospace;font-size:12px;line-height:1.6">Imóvel + folha + várias marcas = custo fixo alto → margem de informática é pequena → para fechar conta é preciso volume → volume não vem → pressão de margem cresce → cortes em pós-venda, garantia, estoque → reclamação aumenta → volume cai mais → pressão cresce mais</div>
-<p>Esse é o loop terminal. A RJ provavelmente nasce dentro dele.</p>
+<details><summary>Ciclo vicioso8. Custos fixos altos (ciclo terminal)</summary>
+<div class="flow-box">Imóvel + folha + várias marcas = custo fixo alto → margem de informática é pequena → para fechar conta é preciso volume → volume não vem → pressão de margem cresce → cortes em pós-venda, garantia, estoque → reclamação aumenta → volume cai mais → pressão cresce mais</div>
+<p>A RJ provavelmente nasce dentro deste loop.</p>
 </details>
 
-<details>
-<summary>Loop 9. Comunicação interna versus externa (descoberto na auditoria)</summary>
+<details><summary>Ciclo vicioso9. Comunicação interna versus externa</summary>
 <p>A empresa fala em "renascimento" para fora. Internamente, provavelmente fala em "esticar caixa", "negociar com fornecedor", "renegociar parcela". Esse descompasso descrê o time da própria narrativa institucional.</p>
 </details>
 
-<details>
-<summary>Loop 10. Cansaço dos sócios (descoberto na auditoria)</summary>
+<details><summary>Ciclo vicioso10. Cansaço dos sócios</summary>
 <p>Trinta e cinco anos de operação, RJ, equipe pequena. Há custo psíquico. Cansaço enviesa decisão para o curto prazo. O loop é: cansaço → decisões curtas → estrutura piora → mais cansaço.</p>
 </details>
 
-<div class="accent">
-<h3>A intervenção que rompe o sistema</h3>
+<div class="info">
+<h4>A intervenção que rompe o sistema</h4>
 <p>Não está em nenhum loop isolado. Está na decisão de escolher um deles para atacar primeiro, com plena consciência de que os outros vão resistir. Sem essa escolha, qualquer ação será absorvida.</p>
 </div>
 </section>
 
-<!-- ============ MERCADO ============ -->
+<!-- ========== MERCADO ========== -->
 <section id="mercado" class="pane">
-<h2>Voz do mercado</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">O que o mercado em que a Fonecar atua diz, faz e premia.</p>
+<h1>Voz do mercado</h1>
+<p class="meta">O que o mercado em que a Fonecar atua diz, faz e premia.</p>
 
-<h3>Cenário macro</h3>
+<h2>Cenário macro</h2>
 <p>Mercado adulto, com altíssima concorrência, baixa diferenciação técnica em produto e dinâmica de preço aberta. Quem revende não tem controle sobre o produto. Tem controle sobre serviço, escala, especialização ou nicho.</p>
 
-<h3>Concorrentes diretos B2C</h3>
+<h2>Concorrentes que vendem para pessoa física</h2>
 <table>
 <tr><th>Marca</th><th>Posicionamento</th><th>Vantagem</th></tr>
 <tr><td>KaBuM!</td><td>Massivo</td><td>Logística do Magalu, 24 a 48 horas em capitais</td></tr>
@@ -412,38 +1263,30 @@ V4 e V7 são sintomas transversais.</div>
 <tr><td>TerabyteShop</td><td>Técnico</td><td>Atendimento, conhecimento profundo</td></tr>
 </table>
 
-<h3>Concorrentes diretos B2B</h3>
+<h2>Concorrentes que vendem para empresa</h2>
 <div class="g3">
-<div class="card"><strong>Grandes contas</strong><p>Officer, Sonda, Stefanini, NTT Data, BRA, Ingram Micro. Contrato anual, SLA assinado, equipe dedicada.</p></div>
-<div class="card"><strong>Corporativo médio</strong><p>Connection, Allnet, Pacaembu, Mannix, Compusoftware. Catálogo digital, fechamento por orçamento.</p></div>
-<div class="card"><strong>Corporativo pequeno</strong><p>Revendas locais, KaBuM corporativo, Magalu Empresa, Amazon Business, Mercado Livre Empresa.</p></div>
+<div class="card"><h4>Grandes contas</h4><p>Officer, Sonda, Stefanini, NTT Data, BRA, Ingram Micro. Contrato anual, compromisso de prazo assinado, time dedicado.</p></div>
+<div class="card"><h4>Corporativo médio</h4><p>Connection, Allnet, Pacaembu, Mannix, Compusoftware. Catálogo digital, fechamento por orçamento.</p></div>
+<div class="card"><h4>Corporativo pequeno</h4><p>Revendas locais, KaBuM corporativo, Magalu Empresa, Amazon Business, Mercado Livre Empresa.</p></div>
 </div>
 
-<h3>Dinâmica de preço (margem por categoria)</h3>
-<div class="bar-row"><span class="bar-label">Notebook corp.</span><div class="bar-track"><div class="bar-fill" style="width:8%"><span class="bar-val">3 a 8%</span></div></div></div>
-<div class="bar-row"><span class="bar-label">Acessório/perif.</span><div class="bar-track"><div class="bar-fill" style="width:30%"><span class="bar-val">15 a 30%</span></div></div></div>
-<div class="bar-row"><span class="bar-label">Servidor custom.</span><div class="bar-track"><div class="bar-fill" style="width:18%"><span class="bar-val">12 a 18%</span></div></div></div>
-<div class="bar-row"><span class="bar-label">Serviço (cabeam.)</span><div class="bar-track"><div class="bar-fill" style="width:50%"><span class="bar-val">acima de 30%</span></div></div></div>
-
-<h3>Movimentos do setor que pressionam</h3>
+<h2>Movimentos do setor que pressionam</h2>
 <div class="g2">
-<div class="card"><strong>Magalu absorvendo KaBuM</strong><p>Aumenta poder logístico do principal player B2C.</p></div>
-<div class="card"><strong>Amazon Business</strong><p>Catálogo gigante, integração com SAP e Oracle. Erodi pequeno e médio B2B.</p></div>
-<div class="card"><strong>Mercado Livre Empresa</strong><p>Frente B2B com nota fiscal CNPJ-CNPJ e benefícios fiscais.</p></div>
-<div class="card"><strong>Direct sales dos OEMs</strong><p>Dell, HP e Lenovo expandiram canais próprios. Squeeze sobre revendas médias.</p></div>
-<div class="card"><strong>Migração para nuvem</strong><p>Servidores físicos perdem espaço para AWS, Azure e Google Cloud.</p></div>
-<div class="card"><strong>Cibersegurança e CFTV em alta</strong><p>Categorias adjacentes com tese própria.</p></div>
+<div class="card"><h4>Magalu absorvendo KaBuM</h4><p>Aumenta poder logístico do principal player consumidor final.</p></div>
+<div class="card"><h4>Amazon Business</h4><p>Catálogo gigante, integração com sistemas de gestão das grandes empresas. Erodi pequeno e médio corporativo.</p></div>
+<div class="card"><h4>Mercado Livre Empresa</h4><p>Frente corporativo com nota fiscal CNPJ-CNPJ e benefícios fiscais.</p></div>
+<div class="card"><h4>Direct sales dos OEMs</h4><p>Dell, HP e Lenovo expandiram canais próprios.</p></div>
+<div class="card"><h4>Migração para nuvem</h4><p>Servidores físicos perdem espaço para AWS, Azure e Google Cloud.</p></div>
+<div class="card"><h4>Cibersegurança e CFTV em alta</h4><p>Categorias adjacentes com tese própria.</p></div>
 </div>
-
-<div class="qbox">Cada faixa tem sua moeda de valor. A Fonecar não tem moeda dominante em nenhuma. Está na zona mais difícil do mercado: a do meio.</div>
 </section>
 
-<!-- ============ CLIENTE ============ -->
+<!-- ========== CLIENTE ========== -->
 <section id="cliente" class="pane">
-<h2>Voz do cliente</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">O que clientes dizem em canais públicos. Sem extrapolação.</p>
+<h1>Voz do cliente</h1>
+<p class="meta">O que clientes dizem em canais públicos. Sem extrapolação.</p>
 
-<h3>Reclame Aqui</h3>
+<h2>Reclame Aqui</h2>
 <table>
 <tr><th>Marca</th><th>Selo</th><th>Reputação</th><th>Padrão de queixa</th></tr>
 <tr><td>Fonecar Informática</td><td>Sem selo</td><td>Não calculada</td><td>Pós-venda, atendimento, defeito</td></tr>
@@ -451,45 +1294,46 @@ V4 e V7 são sintomas transversais.</div>
 <tr><td>Amorim Tech</td><td>Sem selo</td><td>Sem volume</td><td></td></tr>
 </table>
 
-<h3>Mercado Livre. Amorim Shop</h3>
-<div class="card-sm"><strong>Reputação:</strong> 2 de 5 estrelas, com base em 3 avaliações.</div>
-<div class="card-sm"><strong>Histórico:</strong> 6 anos de operação, 309 vendas no acumulado dos últimos 5 anos.</div>
-<div class="card-sm"><strong>Cálculo:</strong> menos de 1 venda por semana em média.</div>
+<h2>Mercado Livre · Amorim Shop</h2>
+<div class="card-tight card"><strong>Reputação na plataforma:</strong> 2 de 5 estrelas, com base em 3 avaliações.</div>
+<div class="card-tight card"><strong>Histórico:</strong> 6 anos de operação, 309 vendas no acumulado dos últimos 5 anos.</div>
+<div class="card-tight card"><strong>Cálculo:</strong> menos de 1 venda por semana em média.</div>
 
 <div class="warn">
-<strong>Operação subescalar.</strong> Vendedores premium do Mercado Livre fecham milhares de pedidos por mês. A Amorim Shop está em fração disso. Sem volume, algoritmo não promove. Sem promoção, não vem volume.
+<h4>Operação subescalar</h4>
+<p>Vendedores premium do Mercado Livre fecham milhares de pedidos por mês. A Amorim Shop está em fração disso. Sem volume, algoritmo não promove. Sem promoção, não vem volume.</p>
 </div>
 
-<h3>Redes sociais</h3>
+<h2>Redes sociais</h2>
 <div class="g3">
 <div class="card"><h4>Instagram</h4><p>@fonecarinformatica · 867 seguidores · 82 seguindo · 55 posts.</p></div>
 <div class="card"><h4>LinkedIn</h4><p>1.423 seguidores. Conteúdo: datas comemorativas (Outubro Rosa, Dia da Mãe, Dia da Amizade).</p></div>
 <div class="card"><h4>Facebook</h4><p>Página ativa, audiência baixa.</p></div>
 </div>
 
-<h3>O que se repete na voz do cliente</h3>
+<h2>O que se repete na voz do cliente</h2>
 <div class="g4">
-<div class="card-sm"><strong>Pós-venda</strong><p>"Descaso", "não responde", "o mesmo problema, de novo".</p></div>
-<div class="card-sm"><strong>Atendimento</strong><p>"Falta de respeito".</p></div>
-<div class="card-sm"><strong>Defeito</strong><p>"Pane", "pior loja".</p></div>
-<div class="card-sm"><strong>Não recebimento</strong><p>Padrão de marketplace.</p></div>
+<div class="card-tight card"><h4>Pós-venda</h4><p>"Descaso", "não responde", "o mesmo problema, de novo".</p></div>
+<div class="card-tight card"><h4>Atendimento</h4><p>"Falta de respeito".</p></div>
+<div class="card-tight card"><h4>Defeito</h4><p>"Pane", "pior loja".</p></div>
+<div class="card-tight card"><h4>Não recebimento</h4><p>Padrão de marketplace.</p></div>
 </div>
 
-<h3>O que o cliente não está dizendo</h3>
+<h2>O que o cliente não está dizendo</h2>
 <ul>
 <li><strong>Não há elogio público em volume.</strong></li>
 <li><strong>Não há recomendação espontânea em fóruns técnicos</strong> (Adrenaline, Clube do Hardware).</li>
-<li><strong>Não há case B2B publicado.</strong></li>
+<li><strong>Não há case corporativo publicado.</strong></li>
 </ul>
 <p>A ausência de voz positiva é tão informativa quanto a presença de voz negativa.</p>
 </section>
 
-<!-- ============ CANAIS ============ -->
+<!-- ========== CANAIS ========== -->
 <section id="canais" class="pane">
-<h2>Pesquisa, canais, nichos e comportamento</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Como o cliente brasileiro de informática compra hoje. Como o B2B compra. Quais nichos crescem.</p>
+<h1>Pesquisa, canais, nichos e comportamento</h1>
+<p class="meta">Como o cliente brasileiro de informática compra hoje.</p>
 
-<h3>Jornada B2C</h3>
+<h2>Jornada do consumidor final</h2>
 <div class="tl">
 <div class="tl-item"><div class="tl-dot done"></div><strong>1. Busca</strong> YouTube, Reddit, Adrenaline, Clube do Hardware, TecMundo.</div>
 <div class="tl-item"><div class="tl-dot done"></div><strong>2. Comparação</strong> Buscapé, Zoom, Promobit, Pelando.</div>
@@ -500,17 +1344,17 @@ V4 e V7 são sintomas transversais.</div>
 
 <p><strong>A Fonecar está visível só nos passos 3 e 4 (em marketplace), com presença frágil. Não está visível em 1, 2 ou 5.</strong> Onde a decisão é tomada, ela não está.</p>
 
-<h3>Comportamentos que mudaram nos últimos 5 anos</h3>
+<h2>Comportamentos que mudaram nos últimos 5 anos</h2>
 <div class="g2">
-<div class="card"><strong>Consulta de CNPJ trivial</strong><p>Econodata, Casa dos Dados. Recuperação Judicial aparece em 30 segundos.</p></div>
-<div class="card"><strong>Conferência por call</strong><p>Comprador prefere call de 30 minutos a deslocamento.</p></div>
-<div class="card"><strong>Marketplace B2B</strong><p>Amazon Business, ML Empresa, Magalu Empresa.</p></div>
-<div class="card"><strong>Compra direta do OEM</strong><p>Dell, HP, Lenovo mantêm canais próprios para PME.</p></div>
-<div class="card"><strong>ESG nas grandes contas</strong><p>Equipamento usado, recondicionado, descarte responsável.</p></div>
-<div class="card"><strong>Trabalho híbrido</strong><p>Webcam, headset, suporte ergonômico, monitor secundário.</p></div>
+<div class="card"><h4>Consulta de CNPJ trivial</h4><p>Econodata, Casa dos Dados. Recuperação Judicial aparece em 30 segundos.</p></div>
+<div class="card"><h4>Conferência por call</h4><p>Comprador prefere call de 30 minutos a deslocamento.</p></div>
+<div class="card"><h4>Marketplace corporativo</h4><p>Amazon Business, ML Empresa, Magalu Empresa.</p></div>
+<div class="card"><h4>Compra direta do OEM</h4><p>Dell, HP, Lenovo mantêm canais próprios para PME.</p></div>
+<div class="card"><h4>Sustentabilidade nas grandes contas</h4><p>Equipamento usado, recondicionado, descarte responsável.</p></div>
+<div class="card"><h4>Trabalho híbrido</h4><p>Webcam, headset, suporte ergonômico, monitor secundário.</p></div>
 </div>
 
-<h3>Nichos que crescem</h3>
+<h2>Nichos que crescem</h2>
 <ul>
 <li><strong>Cibersegurança para PME</strong> (US$ 3,68 bilhões em 2025).</li>
 <li><strong>Workplace híbrido completo.</strong></li>
@@ -524,19 +1368,20 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>Servidores edge.</strong></li>
 </ul>
 
-<p><strong>A Fonecar tem portfólio que toca pelo menos cinco desses nichos (CFTV, segurança, redes, servidores, periféricos). Mas o site não comunica nicho. Comunica produto.</strong></p>
+<p><strong>A Fonecar tem portfólio que toca pelo menos cinco desses nichos. Mas o site não comunica nicho. Comunica produto.</strong></p>
 </section>
 
-<!-- ============ FUNCS ============ -->
+<!-- ========== FUNCS ========== -->
 <section id="funcs" class="pane">
-<h2>Voz dos funcionários</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">O que se vê de fora sobre cultura interna.</p>
+<h1>Voz dos funcionários</h1>
+<p class="meta">O que se vê de fora sobre cultura interna.</p>
 
 <div class="warn">
-<strong>Aviso importante.</strong> A pesquisa retornou 27 avaliações no Infojobs sob o nome "GRUPO AMORIM" com nota 3,9. Mas os cargos (Agente Funerário, Marinheiro, Motorista) e localizações (Pernambuco, Bahia, Alagoas) não correspondem à Fonecar de SP. Trata-se de outro Grupo Amorim. Esses dados não devem ser usados.
+<h4>Aviso importante</h4>
+<p>A pesquisa retornou 27 avaliações no Infojobs sob o nome "GRUPO AMORIM" com nota 3,9. Mas os cargos (Agente Funerário, Marinheiro, Motorista) e localizações (Pernambuco, Bahia, Alagoas) não correspondem à Fonecar de SP. Trata-se de outro Grupo Amorim. Esses dados não devem ser usados.</p>
 </div>
 
-<h3>O que está acessível</h3>
+<h2>O que está acessível</h2>
 <ul>
 <li><strong>Glassdoor (perfil ID 2797888):</strong> a Fonecar tem cadastro. Avaliações específicas estão protegidas.</li>
 <li><strong>LinkedIn:</strong> 1.423 seguidores. 25 funcionários listados.</li>
@@ -545,37 +1390,34 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>TRT2:</strong> volume relevante de processos trabalhistas.</li>
 </ul>
 
-<h3>Sinais que se inferem</h3>
-<div class="card-sm"><strong>Tamanho inconsistente entre canais.</strong></div>
-<div class="card-sm"><strong>Data de fundação contraditória.</strong> LinkedIn (2014) versus apresentação (1989) versus Solutudo (2007).</div>
-<div class="card-sm"><strong>Time com pouco protagonismo público.</strong></div>
-<div class="card-sm"><strong>Sem página "Trabalhe Conosco" no site.</strong></div>
-<div class="card-sm"><strong>Volume de causas trabalhistas</strong> indica padrão repetitivo.</div>
+<h2>Sinais que se inferem</h2>
+<div class="card-tight card"><strong>Tamanho inconsistente entre canais.</strong></div>
+<div class="card-tight card"><strong>Data de fundação contraditória.</strong> LinkedIn (2014) versus apresentação (1989) versus Solutudo (2007).</div>
+<div class="card-tight card"><strong>Time com pouco protagonismo público.</strong></div>
+<div class="card-tight card"><strong>Sem página "Trabalhe Conosco" no site.</strong></div>
+<div class="card-tight card"><strong>Volume de causas trabalhistas</strong> indica padrão repetitivo.</div>
 
-<h3>Hipóteses sobre cultura interna</h3>
-<details>
-<summary>Hipótese A: cultura familiar tradicional</summary>
+<h2>Hipóteses sobre cultura interna</h2>
+<details><summary>Hipótese A: cultura familiar tradicional</summary>
 <p>Decisões fluem por relação pessoal. Promoção por tempo de casa, não por mérito visível. Em empresa familiar de 35 anos, padrão mais comum.</p>
 </details>
-<details>
-<summary>Hipótese B: pressão por entrega em time enxuto</summary>
+<details><summary>Hipótese B: pressão por entrega em time enxuto</summary>
 <p>Em RJ, cada centavo conta. Hora extra invisível, jornada estendida, pressão sobre vendedor. Esse padrão alimenta processo trabalhista.</p>
 </details>
-<details>
-<summary>Hipótese C: descompasso entre discurso e prática</summary>
+<details><summary>Hipótese C: descompasso entre discurso e prática</summary>
 <p>Empresa publica datas comemorativas. Time não posta junto. Quando o funcionário não compartilha o que a empresa publica, geralmente é porque não acredita.</p>
 </details>
 </section>
 
-<!-- ============ STAKEHOLDERS ============ -->
+<!-- ========== STAKEHOLDERS ========== -->
 <section id="stake" class="pane">
-<h2>Partes interessadas por segmento</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Para cada um: interesse, poder, sinal a observar.</p>
+<h1>Partes interessadas por segmento</h1>
+<p class="meta">Para cada segmento: poder e risco específico.</p>
 
 <table>
 <tr><th>Segmento</th><th>Poder</th><th>Risco específico</th></tr>
-<tr><td>Clientes B2B corporativos médios</td><td>Alto</td><td>Descoberta de RJ via CNPJ tarde no funil</td></tr>
-<tr><td>Clientes B2C via marketplace</td><td>Médio individual, alto agregado</td><td>Avaliação 2/5 puxa algoritmo para baixo</td></tr>
+<tr><td>Clientes venda para empresas médios</td><td>Alto</td><td>Descoberta de RJ via CNPJ tarde no funil</td></tr>
+<tr><td>Clientes consumidor final via marketplace</td><td>Médio individual, alto agregado</td><td>Avaliação 2/5 puxa algoritmo para baixo</td></tr>
 <tr><td>Distribuidores e fabricantes</td><td>Altíssimo</td><td>Suspensão de crédito ou exigência de antecipado</td></tr>
 <tr><td>Marketplaces</td><td>Altíssimo</td><td>Mudança de regra ou bloqueio</td></tr>
 <tr><td>Credores (RJ)</td><td>Estrutural</td><td>Não cumprimento abre porta para falência</td></tr>
@@ -583,68 +1425,41 @@ V4 e V7 são sintomas transversais.</div>
 <tr><td>Sócios e família</td><td>Total</td><td>Conflito patrimonial pessoal versus negócio</td></tr>
 <tr><td>Justiça e órgãos reguladores</td><td>Alto</td><td>PROCON, Receita, Anatel</td></tr>
 <tr><td>Concorrentes diretos</td><td>Indireto, constante</td><td>Aquisição ou movimento agressivo</td></tr>
-<tr><td>Influenciadores técnicos</td><td>Alto em B2C qualificado</td><td>Invisibilidade impede crescimento orgânico</td></tr>
+<tr><td>Influenciadores técnicos</td><td>Alto em consumidor final qualificado</td><td>Invisibilidade impede crescimento orgânico</td></tr>
 <tr><td>Imprensa e setor</td><td>Médio</td><td>Cobertura tardia em momento sensível</td></tr>
 <tr><td>Comunidade local (Casa Verde)</td><td>Baixo curto, alto longo</td><td>Alvará, regularização</td></tr>
 <tr><td>Parceiros de serviço</td><td>Alto na execução</td><td>Saída de terceirizado paralisa entrega</td></tr>
 <tr><td>Bancos e fintechs</td><td>Alto</td><td>Linha de crédito restrita em RJ</td></tr>
 </table>
-
-<div class="warn">
-<strong>Em cenário de estresse, todos os agentes externos pressionam ao mesmo tempo.</strong> A empresa precisa, no cenário base, manter folga em cada relacionamento.
-</div>
 </section>
 
-<!-- ============ BMC ============ -->
-<section id="bmc" class="pane">
-<h2>Diagnóstico Business Model Canvas</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Análise caixa por caixa do BMC.</p>
-
-<table>
-<tr><th>Caixa</th><th>Como a empresa comunica</th><th>Diagnóstico</th></tr>
-<tr><td>1. Cliente</td><td>"Empresas". Genérico.</td><td>Sem ICP único. Múltiplos pseudo-ICPs sem priorização.</td></tr>
-<tr><td>2. Proposta de valor</td><td>"Atendimento personalizado", "qualidade".</td><td>Palavra ornamental. Em mercado comoditizado, é fatal.</td></tr>
-<tr><td>3. Canais</td><td>Site, ML, Magalu, Amazon, IG, FB, LinkedIn, WhatsApp.</td><td>Vários canais fracos. Custo de manutenção ultrapassa receita.</td></tr>
-<tr><td>4. Relacionamento</td><td>"Linha dedicada para SAC".</td><td>Episódico, transacional. Sem ferramenta para fazer o cliente voltar.</td></tr>
-<tr><td>5. Receita</td><td>Venda de produto + serviço.</td><td>Mix com dependência transacional, baixa margem, sem previsibilidade.</td></tr>
-<tr><td>6. Recursos-chave</td><td>Equipe, localização, parcerias.</td><td>Tangíveis típicos de varejo de bairro escalado. Intangíveis frágeis.</td></tr>
-<tr><td>7. Atividades-chave</td><td>Comercial, logística, instalação, atendimento.</td><td>Tradicionais. Atividades digitais subdimensionadas.</td></tr>
-<tr><td>8. Parcerias</td><td>Logos no site.</td><td>Sem prova de status (Gold, Premier). Pôster.</td></tr>
-<tr><td>9. Custos</td><td>Não comunica.</td><td>Sobreposição de marcas pulveriza. Sem volume para diluir.</td></tr>
-</table>
-
-<div class="accent">
-<p>O BMC, lido como sistema, mostra empresa de varejo tradicional tentando operar em mercado digital sem reestruturação operacional. Cada bloco enfraquece o próximo. O choque útil entra no bloco 1 (cliente). Os outros oito acompanham.</p>
-</div>
-</section>
-
-<!-- ============ MARCA ============ -->
+<!-- ========== MARCA ========== -->
 <section id="marca" class="pane">
-<h2>Marca, site e design visual</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Linguagem simples. Sem jargão. O que o olho vê e o que isso comunica.</p>
+<h1>Marca, site e design visual</h1>
+<p class="meta">Linguagem simples. Sem jargão. O que o olho vê e o que isso comunica.</p>
 
-<h3>O nome</h3>
+<h2>O nome</h2>
 <p>"Fonecar" mistura "Fone" (telefone) com final que soa em "car". Nasceu na época em que a empresa fazia telefonia. Hoje vende informática. Mas o nome ficou. Cliente novo tende a pensar em telefone. Vendedor precisa explicar antes de vender.</p>
 
-<h3>O logo</h3>
+<h2>O logo</h2>
 <p>Azul forte com letras brancas. Estilo limpo, parecido com mil outras marcas. Não tem nada que prenda o olho. Cumpre o papel de identificar, não constrói memória.</p>
 
-<h3>As cinco marcas do grupo</h3>
+<h2>As cinco marcas do grupo</h2>
 <div class="g3">
-<div class="card-sm"><strong>Fonecar.</strong> Azul. B2B.</div>
-<div class="card-sm"><strong>Amorim Shop.</strong> Pessoa física no Mercado Livre.</div>
-<div class="card-sm"><strong>Amorim Tech.</strong> Outra loja no ML, paralela.</div>
-<div class="card-sm"><strong>Thargon.</strong> Marca antiga, sem site.</div>
-<div class="card-sm"><strong>Fonecar ON.</strong> Anunciada na apresentação, sem espaço próprio no site.</div>
+<div class="card-tight card"><strong>Fonecar.</strong> Azul. corporativo.</div>
+<div class="card-tight card"><strong>Amorim Shop.</strong> Pessoa física no Mercado Livre.</div>
+<div class="card-tight card"><strong>Amorim Tech.</strong> Outra loja no ML, paralela.</div>
+<div class="card-tight card"><strong>Thargon.</strong> Marca antiga, sem site.</div>
+<div class="card-tight card"><strong>Fonecar ON.</strong> Anunciada na apresentação, sem espaço próprio no site.</div>
 </div>
 
-<h3>Cores e fontes</h3>
+<h2>Cores e fontes</h2>
 <ul>
 <li>Mais de <strong>60 cores diferentes</strong> no código. Marca forte usa de 3 a 5.</li>
 <li><strong>Quatro fontes diferentes</strong> (Open Sans, Roboto, Helvetica, Anton).</li>
 </ul>
 
-<h3>Contradição que o LinkedIn revela</h3>
+<h2>Contradição que o LinkedIn revela</h2>
 <table>
 <tr><th>Dado</th><th>LinkedIn oficial</th><th>Apresentação</th><th>ZoomInfo</th></tr>
 <tr><td>Fundação</td><td>2014</td><td>1989</td><td></td></tr>
@@ -653,16 +1468,17 @@ V4 e V7 são sintomas transversais.</div>
 </table>
 
 <div class="warn">
-<strong>Cliente que pesquisa em dois lugares descobre informação diferente.</strong> A confiança cai antes da primeira reunião.
+<h4>Cliente que pesquisa em dois lugares descobre informação diferente</h4>
+<p>A confiança cai antes da primeira reunião.</p>
 </div>
 </section>
 
-<!-- ============ INCOERÊNCIAS ============ -->
+<!-- ========== INCOERÊNCIAS ========== -->
 <section id="incoer" class="pane">
-<h2>Incoerências do site</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Análise direta de fonecar.com.br em 29/04/2026.</p>
+<h1>Incoerências do site</h1>
+<p class="meta">Análise direta de fonecar.com.br em 29/04/2026.</p>
 
-<h3>A. Erros literais</h3>
+<h2>A. Erros literais</h2>
 <ul>
 <li><strong>A1.</strong> "INSTAÇÃO ELÉTRICA" três vezes no menu, em todas as páginas.</li>
 <li><strong>A2.</strong> Footer com URL "amorimshop.com.br/!" formatada incorretamente.</li>
@@ -674,16 +1490,16 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>A8.</strong> thargon.com.br não resolve.</li>
 </ul>
 
-<h3>B. Inconsistência de identidade</h3>
+<h2>B. Inconsistência de identidade</h2>
 <ul>
 <li><strong>B1.</strong> CEO "Juliana Vilar" no site, "Juliana Vilar Amorim" nos registros.</li>
 <li><strong>B2.</strong> "Fonecar renasce" sem qualquer menção à RJ.</li>
-<li><strong>B3.</strong> Site B2B linka para Amorim Shop (B2C).</li>
+<li><strong>B3.</strong> Site corporativo linka para Amorim Shop (consumidor final).</li>
 <li><strong>B4.</strong> "Fonecar ON" na apresentação, ausente no site.</li>
 <li><strong>B5.</strong> Cinco marcas declaradas, site só fala de Fonecar.</li>
 </ul>
 
-<h3>C. Lacunas esperadas em B2B</h3>
+<h2>C. Lacunas esperadas em corporativo</h2>
 <ul>
 <li><strong>C1.</strong> Sem catálogo com modelo, especificação, disponibilidade.</li>
 <li><strong>C2.</strong> Sem indicador de prazo de entrega.</li>
@@ -694,7 +1510,7 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>C7.</strong> Sem chat ao vivo ou agendamento de reunião.</li>
 </ul>
 
-<h3>D. Hierarquia e clareza</h3>
+<h2>D. Hierarquia e clareza</h2>
 <ul>
 <li><strong>D1.</strong> CTA "COMPRE AGORA" leva para formulário, não para compra.</li>
 <li><strong>D2.</strong> Tom oscila entre formal-técnico e promocional-emocional.</li>
@@ -702,7 +1518,7 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>D4.</strong> Página de servidores tem texto curto e genérico.</li>
 </ul>
 
-<h3>E. Cross-canal</h3>
+<h2>E. Cross-canal</h2>
 <ul>
 <li><strong>E1.</strong> Blog com 3 posts em 2025. Última publicação em setembro de 2025.</li>
 <li><strong>E2.</strong> Instagram com 867 seguidores, 55 posts.</li>
@@ -710,31 +1526,29 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>E4.</strong> Reclame Aqui sem selo em todas as marcas.</li>
 <li><strong>E5.</strong> Mercado Livre Amorim Shop com 2/5 e 309 vendas em 5 anos.</li>
 </ul>
-
-<div class="qbox">A maioria dos itens listados é de baixo custo de correção. Tomados juntos, comunicam algo que custa caro: ausência de processo de governança digital.</div>
 </section>
 
-<!-- ============ POSICIONAMENTO ============ -->
+<!-- ========== POSICIONAMENTO ========== -->
 <section id="posic" class="pane">
-<h2>Diferencial, posicionamento, B2B e B2C</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">
+<h1>Diferencial, posicionamento, corporativo e consumidor final</h1>
+<p class="meta">
 <span class="tag fato">FATO</span> verificado ·
 <span class="tag inf">INFERÊNCIA</span> conclusão lógica ·
 <span class="tag hip">HIPÓTESE</span> precisa validação interna
 </p>
 
-<h3>1. Qual é o diferencial real?</h3>
+<h2>1. Qual é o diferencial real?</h2>
 <p><strong>O que a empresa diz:</strong> "análise personalizada", "propostas customizadas", "entrega e implementação", "suporte e SAC". <span class="tag fato">FATO</span></p>
-<p><strong>Por que isso não é diferencial:</strong> esses pontos são oferecidos por toda revenda B2B no Brasil. Quando todo mundo diz a mesma coisa, ninguém diz nada.</p>
+<p><strong>Por que isso não é diferencial:</strong> esses pontos são oferecidos por toda revenda corporativo no Brasil. Quando todo mundo diz a mesma coisa, ninguém diz nada.</p>
 
 <p><strong>Diferenciais reais (não comunicados):</strong></p>
 <ul>
 <li><strong>35 anos de operação contínua.</strong> Pouquíssimas revendas chegam aos 35.</li>
 <li><strong>Conhecimento do processo de Recuperação Judicial.</strong> A empresa vive o processo.</li>
-<li><strong>Localização Casa Verde com endereço próprio.</strong> Para B2B SP que valoriza fornecedor presente, vale.</li>
+<li><strong>Localização Casa Verde com endereço próprio.</strong> Para corporativo SP que valoriza fornecedor presente, vale.</li>
 </ul>
 
-<h3>2. Atrativos e afastadores</h3>
+<h2>2. Atrativos e afastadores</h2>
 <table>
 <tr><th>Atrai</th><th>Afasta</th></tr>
 <tr><td>Portfólio amplo (8 produtos + 6 serviços)</td><td>RJ pública na consulta de CNPJ</td></tr>
@@ -744,19 +1558,7 @@ V4 e V7 são sintomas transversais.</div>
 <tr><td></td><td>Ausência de cliente referência citado</td></tr>
 </table>
 
-<h3>3. Experiência do cliente B2B</h3>
-<div class="tl">
-<div class="tl-item"><div class="tl-dot done"></div><strong>1.</strong> Chega ao site (orgânico, busca, indicação).</div>
-<div class="tl-item"><div class="tl-dot done"></div><strong>2.</strong> Vê descrição genérica.</div>
-<div class="tl-item"><div class="tl-dot now"></div><strong>3.</strong> Não encontra preço, prazo, garantia explicada.</div>
-<div class="tl-item"><div class="tl-dot done"></div><strong>4.</strong> Clica em "Orçamento por WhatsApp".</div>
-<div class="tl-item"><div class="tl-dot done"></div><strong>5.</strong> Conversa com vendedor por mensagem.</div>
-<div class="tl-item"><div class="tl-dot done"></div><strong>6.</strong> Recebe proposta por e-mail ou WhatsApp.</div>
-<div class="tl-item"><div class="tl-dot done"></div><strong>7.</strong> Negocia, fecha, recebe produto.</div>
-<div class="tl-item"><div class="tl-dot wait"></div><strong>8.</strong> Em problema, abre conversa de pós-venda.</div>
-</div>
-
-<h3>4. Operação B2C</h3>
+<h2>3. Operação consumidor final</h2>
 <table>
 <tr><th>Marca</th><th>Canal</th><th>Volume</th><th>Nota</th></tr>
 <tr><td>Amorim Shop</td><td>Mercado Livre</td><td>309 vendas em 5 anos</td><td>2/5</td></tr>
@@ -764,32 +1566,130 @@ V4 e V7 são sintomas transversais.</div>
 <tr><td>Fonecar Informática</td><td>Magalu, Amazon</td><td>Não publicizado</td><td></td></tr>
 </table>
 
-<p><strong>Posição em B2C: marginal.</strong> Vendedor mediano de informática no ML fecha de 30 a 100 vendas por mês. A Amorim Shop está em fração disso.</p>
+<p><strong>Posição em consumidor final: marginal.</strong> Vendedor mediano de informática no ML fecha de 30 a 100 vendas por mês. A Amorim Shop está em fração disso.</p>
 
-<h3>5. Posicionamento</h3>
+<h2>4. Posicionamento</h2>
 <p><strong>Declarado:</strong> "Capacitando sua jornada digital com as melhores tecnologias".</p>
 <p><strong>Por que não é posicionamento:</strong> qualquer concorrente poderia escrever sem mudar nada.</p>
 <p><strong>Posicionamento real percebido:</strong> "revenda de informática genérica de São Paulo, com presença discreta, com história, mas sem destaque claro". Posicionamento por ausência.</p>
-
-<h3>6. Estratégia de comunicação</h3>
-<ul>
-<li>Site: 3 posts em 2025, último em setembro.</li>
-<li>Instagram: 867 seguidores.</li>
-<li>LinkedIn: 1.423 seguidores, conteúdo de catálogo + datas comemorativas.</li>
-<li>WhatsApp: canal principal de fechamento.</li>
-<li>Marketplaces: ML, Magalu, Amazon.</li>
-<li>YouTube: canal ativo.</li>
-</ul>
-
-<p><strong>Falta:</strong> conteúdo de prova (caso, número), conteúdo humano (vídeo do CEO), conteúdo técnico autoral, conteúdo de bastidor, conteúdo de relacionamento (newsletter).</p>
 </section>
 
-<!-- ============ SUTIL ============ -->
-<section id="sutil" class="pane">
-<h2>Sutilezas e oportunidades não exploradas</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Os outros documentos descrevem o visível. Aqui o sutil. Três perguntas: o que ninguém está dizendo, o que está oculto na própria forma de a empresa se apresentar, quais oportunidades aparecem.</p>
+<!-- ========== ESTRATÉGIA ========== -->
+<section id="estrat" class="pane">
+<h1>Estratégia da Fonecar</h1>
+<p class="meta">A leitura da estratégia que está sendo praticada hoje, comparada com a que é declarada. Sem prescrição. Apenas leitura.</p>
 
-<h3>15 sutilezas que ninguém está dizendo</h3>
+<div class="info">
+<h4>Como ler este capítulo</h4>
+<p>Não é o que a Fonecar deveria fazer. É o que a Fonecar está fazendo, lido de fora. Declarar estratégia é decisão. Mas toda empresa, mesmo sem declarar, opera uma. A primeira tarefa é ler qual é.</p>
+</div>
+
+<h2>A estratégia praticada (sem rótulo declarado)</h2>
+<p>A operação real, lida pelos canais públicos, é a de <strong>revenda relacional para pequena e média empresa paulistana</strong>. O cliente novo chega por busca, indicação ou marketplace. O fechamento acontece via WhatsApp, com vendedor de relação pessoal. A entrega é local, com instalação eventual. Pós-venda funciona quando há tempo do mesmo vendedor para atender de volta.</p>
+<p>É uma estratégia legítima, com tradição no setor. Mas não foi escolhida; foi <strong>herdada do padrão histórico</strong>. E não está sendo capitalizada como diferencial em comunicação ou em posicionamento.</p>
+
+<h2>A estratégia declarada</h2>
+<p>No site e na apresentação institucional, a empresa fala em <em>"soluções inteligentes em informática para o mercado corporativo"</em>. O recorte é amplo. Não há cliente ideal definido. Não há promessa diferenciada. A frase poderia ser assinada por qualquer concorrente do país sem mudar uma palavra.</p>
+
+<h2>O descasamento entre o discurso e a prática</h2>
+<div class="warn">
+<h4>O que a empresa diz versus o que a empresa entrega</h4>
+<p>A comunicação convoca o mercado corporativo amplo. A operação atende, na prática, pequena e média empresa paulistana via WhatsApp. Não atende a grande empresa que pede edital formal. Não atende o consumidor entusiasta. Não atende o varejo de massa. <strong>O discurso convoca quem a empresa não tem capacidade de atender bem hoje.</strong> Resultado: cliente errado entra no funil, sai do funil, e cliente certo nunca soube que a Fonecar existe.</p>
+</div>
+
+<h2>Cinco dilemas estratégicos centrais</h2>
+
+<div class="frente">
+<div class="frente-num">A</div>
+<div class="frente-body">
+<div class="frente-title">Estancar ou virar</div>
+<p class="frente-resolve">Recuperar caixa hoje, com ajuste pontual, ou usar a janela da Recuperação Judicial para redesenhar o negócio para o mercado de amanhã.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">B</div>
+<div class="frente-body">
+<div class="frente-title">Concentrar ou diversificar</div>
+<p class="frente-resolve">Eleger uma marca-cabeça e desligar ou reduzir as outras, ou continuar investindo em cinco frentes simultâneas.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">C</div>
+<div class="frente-body">
+<div class="frente-title">Crescer ou consolidar</div>
+<p class="frente-resolve">Buscar volume novo em segmentos onde hoje não atua, ou cuidar com método e profundidade do volume e do cliente que já tem.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">D</div>
+<div class="frente-body">
+<div class="frente-title">Ficar ou ser comprada</div>
+<p class="frente-resolve">Sustentar autonomia familiar como tese, ou preparar a empresa para virar parte de algo maior em fusão, aquisição ou consolidação por fundo.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">E</div>
+<div class="frente-body">
+<div class="frente-title">Falar da Recuperação Judicial ou silenciar</div>
+<p class="frente-resolve">Comunicar a Recuperação Judicial como capítulo aberto e em superação, com narrativa, ou seguir silenciando até resolver formalmente.</p>
+</div>
+</div>
+
+<h2>Cinco caminhos estratégicos no horizonte</h2>
+<p>Opções identificadas, sem prescrição. Cada caminho tem custo, tempo e exigência diferentes. A escolha é da empresa.</p>
+
+<div class="g2">
+<div class="card">
+<h4>Caminho 1. Incumbente próximo</h4>
+<p>Virar a melhor revenda local de bairro de São Paulo. Estratégia defendida por presença física, relação histórica e capilaridade local. Cresce devagar, perde pouco, dura.</p>
+</div>
+<div class="card">
+<h4>Caminho 2. Especialista de nicho técnico</h4>
+<p>Eleger uma categoria (CFTV inteligente, cabeamento estruturado, segurança eletrônica para varejo) e ser referência regional nela. Margem maior, escala menor, autoridade técnica.</p>
+</div>
+<div class="card">
+<h4>Caminho 3. Operador de TI gerenciada</h4>
+<p>Migrar de venda transacional para serviço recorrente com mensalidade. Cuidar do parque do cliente todo mês. Receita previsível, exige investimento em pessoas e processo.</p>
+</div>
+<div class="card">
+<h4>Caminho 4. Empresa preparada para venda</h4>
+<p>Profissionalizar governança, organizar números, enxugar carteira de marcas, e preparar a operação para virar ativo adquirível. Prazo de 18 a 36 meses até porta de saída.</p>
+</div>
+<div class="card">
+<h4>Caminho 5. Continuidade discreta</h4>
+<p>Continuar como está, com ajustes operacionais menores. Escolha legítima e com consequência previsível: encolhimento gradual em mercado em transição. Sem julgamento, com alerta.</p>
+</div>
+<div class="card">
+<h4>Caminho 6. Híbrido possível</h4>
+<p>Combinar dois caminhos por estágio. Por exemplo, Caminho 1 nos primeiros doze meses (estabilizar), depois Caminho 3 (migrar para serviço). Exige disciplina de transição.</p>
+</div>
+</div>
+
+<h2>Decisões estratégicas pendentes</h2>
+<ul>
+<li>Qual marca lidera o grupo nos próximos três anos. As outras viram canais, marcas-irmãs ou são desligadas.</li>
+<li>Como a Recuperação Judicial é comunicada externamente, e quando.</li>
+<li>Qual cliente a Fonecar quer ser primeira escolha. Hoje, é uma alternativa entre tantas.</li>
+<li>Quem entra no time de liderança fora da família, em que área primeiro.</li>
+<li>Quanto da operação atual se mantém e quanto se reestrutura.</li>
+<li>Onde o caixa de três meses deve ser empregado: em estancar, em virar, ou em preparar saída.</li>
+</ul>
+
+<h2>Parecer estratégico</h2>
+<div class="veredito">
+<div class="veredito-lbl">Síntese</div>
+<p>Sem decidir, a empresa decide por inércia. Em mercado em transição, a inércia conduz ao mesmo destino: ficar para trás. <strong>A escolha estratégica não é luxo; é operação.</strong> O ativo de 35 anos da Fonecar permite escolher entre vários caminhos. O que não permite é seguir sem escolher.</p>
+</div>
+</section>
+
+<!-- Sutilezas removidas a pedido do leitor -->
+<section id="sutil" class="pane" style="display:none">
+
+<h2>15 sutilezas que ninguém está dizendo</h2>
 <ol>
 <li><strong>O nome carrega um morto.</strong> "Fonecar" tem "Fone" dentro. Migração de telefonia para informática, o nome ficou.</li>
 <li><strong>A apresentação tem buraco de 15 anos.</strong> 1989 → 2007 → 2022. O período 2008 a 2021 não tem narrativa.</li>
@@ -808,39 +1708,36 @@ V4 e V7 são sintomas transversais.</div>
 <li><strong>A marca trabalhista pesa no network paralelo.</strong> Ex-funcionário insatisfeito vira contato direto do comprador da próxima revenda.</li>
 </ol>
 
-<h3>15 oportunidades não exploradas</h3>
+<h2>15 oportunidades não exploradas</h2>
 <div class="g3">
-<div class="card-sm"><strong>Especialização em RJ.</strong> "Informática para empresa em recuperação judicial". Nicho protegido.</div>
-<div class="card-sm"><strong>Equipamento recondicionado.</strong> Margem decente, ESG, fluxo de rollout vira produto.</div>
-<div class="card-sm"><strong>Print as a Service.</strong> Pagamento por página. Receita recorrente.</div>
-<div class="card-sm"><strong>CFTV inteligente bairro.</strong> Casa Verde tem centenas de pequenos varejos.</div>
-<div class="card-sm"><strong>Servir o integrador.</strong> Atender empresa de TI pequena.</div>
-<div class="card-sm"><strong>Loja como showroom.</strong> Espaço de teste de equipamento.</div>
-<div class="card-sm"><strong>Marketplace B2B setorial.</strong> Mercado Eletrônico, Bionexo, pregão eletrônico.</div>
-<div class="card-sm"><strong>Conteúdo técnico autoral.</strong> 35 anos contêm casos.</div>
-<div class="card-sm"><strong>Garantia estendida própria.</strong> Captura margem da seguradora.</div>
-<div class="card-sm"><strong>Programa de troca por crédito.</strong> Apple Trade In, Dell Trade In.</div>
-<div class="card-sm"><strong>Posicionar como sobrevivente.</strong> RJ comunicada como capítulo encerrado.</div>
-<div class="card-sm"><strong>Profissionalização visível.</strong> Anunciar entrada de C-level externo.</div>
-<div class="card-sm"><strong>Aliança com fabricante premium.</strong> Status Premier ou Gold com Dell, HP, Lenovo, Cisco.</div>
-<div class="card-sm"><strong>Convênio com associações.</strong> ACSP, ACIA Casa Verde, sindicatos.</div>
-<div class="card-sm"><strong>Curso e treinamento.</strong> Conhecimento técnico vira produto.</div>
+<div class="card-tight card"><strong>Especialização em RJ.</strong> "Informática para empresa em recuperação judicial". Nicho protegido.</div>
+<div class="card-tight card"><strong>Equipamento recondicionado.</strong> Margem decente, sustentabilidade.</div>
+<div class="card-tight card"><strong>Print as a Service.</strong> Pagamento por página. Receita recorrente.</div>
+<div class="card-tight card"><strong>CFTV inteligente bairro.</strong> Casa Verde tem centenas de pequenos varejos.</div>
+<div class="card-tight card"><strong>Servir o integrador.</strong> Atender empresa de TI pequena.</div>
+<div class="card-tight card"><strong>Loja como showroom.</strong> Espaço de teste de equipamento.</div>
+<div class="card-tight card"><strong>Marketplace corporativo setorial.</strong> Mercado Eletrônico, Bionexo, pregão eletrônico.</div>
+<div class="card-tight card"><strong>Conteúdo técnico autoral.</strong> 35 anos contêm casos.</div>
+<div class="card-tight card"><strong>Garantia estendida própria.</strong> Captura margem da seguradora.</div>
+<div class="card-tight card"><strong>Programa de troca por crédito.</strong> Apple Trade In, Dell Trade In.</div>
+<div class="card-tight card"><strong>Posicionar como sobrevivente.</strong> RJ comunicada como capítulo encerrado.</div>
+<div class="card-tight card"><strong>Profissionalização visível.</strong> Anunciar entrada de C-level externo.</div>
+<div class="card-tight card"><strong>Aliança com fabricante premium.</strong> Status Premier ou Gold.</div>
+<div class="card-tight card"><strong>Convênio com associações.</strong> ACSP, ACIA Casa Verde, sindicatos.</div>
+<div class="card-tight card"><strong>Curso e treinamento.</strong> Conhecimento técnico vira produto.</div>
 </div>
 
-<h3>Síntese das três camadas</h3>
+<h2>As três camadas do invisível</h2>
 <div class="g3">
-<div class="card"><h4>Camada simbólica</h4><p>A empresa carrega símbolos de outra era (nome, foto, layout, vocabulário). O custo é audiência reduzida com novo cliente.</p></div>
-<div class="card"><h4>Camada arqueológica</h4><p>A história contada esconde 15 anos. Esses anos contêm a explicação real dos pontos diagnosticados.</p></div>
-<div class="card"><h4>Camada existencial</h4><p>A empresa pode estar viva por inércia, não por escolha. A pergunta "queremos existir, e por quê?" precisa ser respondida.</p></div>
+<div class="card"><h4>Camada simbólica</h4><p>A empresa carrega símbolos de outra era (nome, foto, layout, vocabulário).</p></div>
+<div class="card"><h4>Camada arqueológica</h4><p>A história contada esconde 15 anos. Esses anos contêm a explicação real.</p></div>
+<div class="card"><h4>Camada existencial</h4><p>A empresa pode estar viva por inércia, não por escolha.</p></div>
 </div>
 </section>
 
-<!-- ============ 100 PERGUNTAS ============ -->
-<section id="perg" class="pane">
-<h2>Cem perguntas estratégicas</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Provocações para abrir o próximo ciclo. Pegar três por bloco em conversa de uma hora dá trinta perguntas. As que não respondem são o mapa do próximo trabalho.</p>
-
-<details><summary>Bloco I. Sobre a sobrevivência</summary>
+<!-- 100 PERGUNTAS removidas -->
+<section id="perg" class="pane" style="display:none">
+<details><summary>Bloco I removido</summary>
 <ol>
 <li>Qual é o estado atual e o cronograma exato do plano de Recuperação Judicial?</li>
 <li>Quais credores são prioritários no plano e qual valor?</li>
@@ -872,15 +1769,15 @@ V4 e V7 são sintomas transversais.</div>
 
 <details><summary>Bloco III. Sobre a proposta de valor</summary>
 <ol start="21">
-<li>Por que um cliente B2B trocaria sua revenda atual pela Fonecar? Sem usar "personalizado", "qualidade", "experiência" ou "atendimento".</li>
+<li>Por que um cliente corporativo trocaria sua revenda atual pela Fonecar? Sem usar "personalizado", "qualidade", "experiência" ou "atendimento".</li>
 <li>Em qual categoria a empresa é, comprovadamente, número 1, 2 ou 3 em SP?</li>
-<li>Existe um único produto ou serviço com margem acima de 30%? Qual e por quê?</li>
+<li>Existe um único produto ou serviço com margem acima de 30%?</li>
 <li>O serviço (cabeamento, CFTV, manutenção) é negócio próprio ou complemento?</li>
-<li>A "Fonecar ON" foi um movimento de marca ou de operação? Quem mediu?</li>
+<li>A "Fonecar ON" foi um movimento de marca ou de operação?</li>
 <li>O que a Fonecar pode entregar que KaBuM, Pichau e Officer não conseguem?</li>
 <li>O que a Fonecar entrega hoje que ela própria poderia tirar do portfólio?</li>
 <li>Em quais lugares na jornada do cliente a Fonecar é a melhor escolha objetiva?</li>
-<li>A proposta de valor para B2B é a mesma para B2C?</li>
+<li>A proposta de valor para corporativo é a mesma para consumidor final?</li>
 <li>Quanto vale a marca Fonecar versus KaBuM no momento da decisão?</li>
 </ol>
 </details>
@@ -909,7 +1806,7 @@ V4 e V7 são sintomas transversais.</div>
 <li>Por que amorimshop.com.br não responde mas é citado no rodapé?</li>
 <li>Quanto da receita vem de canal originado online sem intervenção humana?</li>
 <li>Em qual canal a Fonecar é melhor que a média? Em qual é pior?</li>
-<li>Quem é o "dono" do canal digital, com KPI próprio?</li>
+<li>Quem é o "dono" do canal digital, com indicador próprio?</li>
 <li>Por que Instagram tem 867 seguidores depois de 35 anos?</li>
 <li>Em qual canal a empresa se sentiria à vontade publicando o plano de RJ?</li>
 </ol>
@@ -936,9 +1833,9 @@ V4 e V7 são sintomas transversais.</div>
 <li>Por que Amorim Shop tem 2/5 estrelas no Mercado Livre?</li>
 <li>Quem é responsável pela resposta a cada nova reclamação?</li>
 <li>Existe pesquisa de satisfação sistemática?</li>
-<li>Quantos clientes B2B solicitaram troca em 2025?</li>
+<li>Quantos clientes corporativo solicitaram troca em 2025?</li>
 <li>Quanto da receita anual é gasto em retrabalho de pós-venda?</li>
-<li>Existe SLA assinado com cliente B2B?</li>
+<li>Existe compromisso de prazo assinado com cliente corporativo?</li>
 <li>Quantas reclamações se tornaram processo no PROCON ou judicial?</li>
 <li>Quantas vezes o cliente teve que fazer follow-up?</li>
 <li>Como a empresa identifica padrão sistêmico versus caso isolado?</li>
@@ -955,7 +1852,7 @@ V4 e V7 são sintomas transversais.</div>
 <li>Quantos colaboradores conseguiriam descrever a estratégia em uma frase?</li>
 <li>Quem é o segundo na hierarquia de cada área?</li>
 <li>Há plano de carreira documentado?</li>
-<li>O time comercial é especialista em B2B, B2C ou híbrido?</li>
+<li>O time comercial é especialista em corporativo, consumidor final ou híbrido?</li>
 <li>O que faria um colaborador-chave deixar a empresa amanhã?</li>
 </ol>
 </details>
@@ -991,139 +1888,327 @@ V4 e V7 são sintomas transversais.</div>
 </details>
 </section>
 
-<!-- ============ APONTAMENTOS ============ -->
+<!-- ========== APONTAMENTOS ========== -->
 <section id="apont" class="pane">
-<h2>Apontamentos sobre a pesquisa setorial</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">Revisão do diagnóstico à luz da pesquisa <em>"Distribuição e varejo corporativo de TI no Brasil"</em>, com 18 fontes verificadas (ABES/IDC, Brasscom, ABINEE, ABESE, KPMG, IT Forum, Times Brasil, Mercado Livre Negócios e mais).</p>
+<h1>Apontamentos sobre a pesquisa setorial</h1>
+<p class="meta">Revisão à luz da pesquisa "Distribuição e varejo corporativo de TI no Brasil", 18 fontes verificadas.</p>
 
-<div class="cover-block">
-<p class="lbl">VIRADA DE CHAVE APÓS A PESQUISA SETORIAL</p>
-<h2 style="color:#fff;border:none;font-size:22px;margin:8px 0 12px">A Fonecar está exatamente no perfil que a pesquisa identifica como o mais ameaçado: revenda regional na faixa de "limbo silencioso", sem fôlego para virar MSP e sem porte para ser comprada por private equity</h2>
-<p class="sub" style="margin-top:8px">Ao mesmo tempo, o setor está crescendo 18,5% ao ano, com janela de 7,9 milhões de PCs corporativos em troca obrigatória nos próximos 14 meses. A Fonecar tem portfólio que toca cinco categorias em alta. O risco é gigante. A oportunidade é ainda maior. Os dois existem simultaneamente.</p>
+<div class="cover">
+<p class="lbl">VIRADA DE CHAVE</p>
+<h2 style="color:#fff;border:none;font-size:22px;margin:6px 0 12px">A Fonecar está exatamente no perfil que a pesquisa identifica como o mais ameaçado: revenda regional na faixa de "limbo silencioso", sem fôlego para virar operador de TI gerenciada (cuidar do parque do cliente todo mês) e sem porte para ser comprada por fundo de investimento</h2>
+<p class="sub">Ao mesmo tempo, o setor cresce 18,5% ao ano, com janela de 7,9 milhões de PCs corporativos em troca obrigatória nos próximos 14 meses. A Fonecar tem portfólio que toca cinco categorias em alta. O risco é gigante. A oportunidade é ainda maior.</p>
 </div>
 
-<h3>Os números que enquadram</h3>
-
+<h2>Os números que enquadram</h2>
 <div class="g4">
-<div class="card-sm"><strong>US$ 67,8 bi</strong><p class="src">Mercado de TI BR 2025 (+18,5%). ABES/IDC</p></div>
-<div class="card-sm"><strong>US$ 32,5 bi</strong><p class="src">Hardware BR 2025 (+20,6%). ABES/IDC</p></div>
-<div class="card-sm"><strong>7,9 milhões</strong><p class="src">PCs corporativos em troca pelo fim do Windows 10. IDC</p></div>
-<div class="card-sm"><strong>10% para 20%+</strong><p class="src">DaaS no parque corporativo dobra até 2026. IT Forum</p></div>
-<div class="card-sm"><strong>4 milhões</strong><p class="src">Usuários do ML Negócios em 12 meses. Mercado Livre</p></div>
-<div class="card-sm"><strong>340 deals</strong><p class="src">M&A em TI no Brasil em 2025. KPMG</p></div>
-<div class="card-sm"><strong>22%</strong><p class="src">PCs com NPU (IA) em 2025 (era 5% em 2024). IDC</p></div>
-<div class="card-sm"><strong>R$ 14 bi</strong><p class="src">Segurança eletrônica BR 2024 (+16,1%, 64% com IA). ABESE</p></div>
+<div class="card-tight card"><div class="lbl">Mercado de TI BR 2025</div><span class="big-num">US$ 67,8 bi</span><p style="font-size:11px;color:var(--muted);margin:0">+18,5%. ABES/IDC</p></div>
+<div class="card-tight card"><div class="lbl">Hardware</div><span class="big-num">US$ 32,5 bi</span><p style="font-size:11px;color:var(--muted);margin:0">+20,6%. ABES/IDC</p></div>
+<div class="card-tight card"><div class="lbl">PCs em troca obrigatória</div><span class="big-num">7,9 mi</span><p style="font-size:11px;color:var(--muted);margin:0">Fim do Windows 10. IDC</p></div>
+<div class="card-tight card"><div class="lbl">Equipamento por assinatura no parque corporativo</div><span class="big-num">10% → 20%+</span><p style="font-size:11px;color:var(--muted);margin:0">Dobra até 2026. IT Forum</p></div>
+<div class="card-tight card"><div class="lbl">ML Negócios</div><span class="big-num">4 milhões</span><p style="font-size:11px;color:var(--muted);margin:0">Usuários em 12 meses</p></div>
+<div class="card-tight card"><div class="lbl">Fusões e aquisições em TI BR 2025</div><span class="big-num">340 deals</span><p style="font-size:11px;color:var(--muted);margin:0">Lidera setor. KPMG</p></div>
+<div class="card-tight card"><div class="lbl">PCs com NPU (IA)</div><span class="big-num">5% → 22%</span><p style="font-size:11px;color:var(--muted);margin:0">Em 1 ano. IDC</p></div>
+<div class="card-tight card"><div class="lbl">Segurança eletrônica BR</div><span class="big-num">R$ 14 bi</span><p style="font-size:11px;color:var(--muted);margin:0">+16,1%. 64% com IA</p></div>
 </div>
 
-<h3>O que a pesquisa CONFIRMA do diagnóstico</h3>
-<div class="card"><h4>Confirma: o canal médio está espremido</h4><p>Pesquisa: revenda regional pequena perde 2 a 4 pontos de margem ao ano. Em hardware, onde a margem está em 3 a 8%, isso significa zerar.</p></div>
-<div class="card"><h4>Confirma: marketplace B2B virou ameaça real</h4><p>ML Negócios fez 4 milhões de usuários autorizados em 12 meses. Amazon Business em paralelo. KaBuM (Magalu, R$ 5 bi) entrou em B2B.</p></div>
+<h2>O que a pesquisa CONFIRMA do diagnóstico</h2>
+<div class="card"><h4>Confirma: o canal médio está espremido</h4><p>Revenda regional perde 2 a 4 pontos de margem ao ano. Em hardware, onde a margem está em 3 a 8%, isso significa zerar.</p></div>
+<div class="card"><h4>Confirma: marketplace corporativo virou ameaça real</h4><p>ML Negócios fez 4 milhões de usuários em 12 meses.</p></div>
 <div class="card"><h4>Confirma: top reclamações do setor batem com Fonecar</h4><p>Cinco das sete reclamações mais comuns aparecem nas reclamações públicas da Fonecar e Amorim Shop.</p></div>
-<div class="card"><h4>Confirma: M&A está acontecendo</h4><p>340 transações em TI no Brasil em 2025. Múltiplo de 8x a 12x EBITDA em integrador médio.</p></div>
+<div class="card"><h4>Confirma: fusões e aquisições estão acontecendo</h4><p>340 transações em TI no Brasil em 2025. Múltiplo de 8x a 12x lucro operacional em integrador médio.</p></div>
 
-<h3>O que eu SUBESTIMEI no diagnóstico anterior</h3>
-<div class="warn"><h4>Subestimei: a velocidade da migração para serviço</h4><p>Falei em comoditização de longo prazo. A pesquisa mostra: DaaS dobra em 24 meses. Não são "anos". São meses.</p></div>
-<div class="warn"><h4>Subestimei: o tamanho da ameaça do marketplace B2B</h4><p>A revenda média não tem 5 anos para se adaptar. Tem 18 meses.</p></div>
-<div class="warn"><h4>Subestimei: o impacto da reforma tributária CBS/IBS</h4><p>Maior mudança em 30 anos. Quase nenhum integrador médio modelou contrato plurianual considerando o período de duplicidade.</p></div>
-<div class="warn"><h4>Subestimei: o blindspot que cita literalmente a Fonecar</h4><p>A pesquisa identifica como ponto cego do setor: "transição forçada do canal pequeno (até R$ 10 milhões em receita) que não consegue se transformar em MSP".</p></div>
+<h2>O que eu SUBESTIMEI no diagnóstico anterior</h2>
+<div class="warn"><h4>Velocidade da migração para serviço</h4><p>assinatura de equipamento dobra em 24 meses. Não são "anos". São meses.</p></div>
+<div class="warn"><h4>Tamanho da ameaça do marketplace corporativo</h4><p>A revenda média não tem 5 anos para se adaptar. Tem 18 meses.</p></div>
+<div class="warn"><h4>Impacto da reforma tributária CBS/IBS</h4><p>Maior mudança em 30 anos. Quase nenhum integrador médio modelou contrato plurianual considerando o período de duplicidade.</p></div>
+<div class="warn"><h4>O ponto cego que cita literalmente a Fonecar</h4><p>"Transição forçada do canal pequeno (até R$ 10 milhões em receita) que não consegue se transformar em operador de TI gerenciada".</p></div>
 
-<h3>Dez oportunidades novas que aparecem com a pesquisa</h3>
+<h2>Dez oportunidades novas que aparecem</h2>
 <ol>
 <li><strong>Pacote "Troca Windows 10" estruturado</strong> (janela de 14 meses).</li>
-<li><strong>DaaS para microempresa de até 10 dispositivos</strong> (vácuo de mercado nomeado).</li>
-<li><strong>"MSP de bairro"</strong> para PME paulistana de 20 a 200 funcionários.</li>
-<li><strong>Marketplace de DaaS comparativo</strong> (broker de TCO entre Lenovo TruScale, HP DaaS, Dell APEX).</li>
-<li><strong>Logística reversa do DaaS</strong> dos grandes (Stefanini, Sonda, TIVIT).</li>
-<li><strong>Cibersegurança para PME com IA embarcada</strong> (64% dos produtos do mercado já têm).</li>
+<li><strong>Assinatura de equipamento para microempresa de até 10 dispositivos</strong> (vácuo de mercado nomeado).</li>
+<li><strong>"operador de TI gerenciada de bairro"</strong> para PME paulistana de 20 a 200 funcionários.</li>
+<li><strong>Comparador de assinaturas de equipamento</strong> (custo total entre as principais marcas de assinatura: Lenovo, HP, Dell).</li>
+<li><strong>Logística reversa da assinatura de equipamento</strong> dos grandes (Stefanini, Sonda, TIVIT).</li>
+<li><strong>Cibersegurança para PME com IA embarcada</strong>.</li>
 <li><strong>"PC com IA para empresa criativa"</strong> (NPU subiu de 5% para 22%).</li>
-<li><strong>Consultoria de adequação CBS/IBS para PME</strong> (aprende com a própria RJ).</li>
-<li><strong>Revenda de seminovo certificado</strong> (Sinctronics, Reciclo).</li>
-<li><strong>"Capital Anjo de TI" via fintech</strong> (substitui distribuidor médio na função de crédito).</li>
+<li><strong>Consultoria de adequação CBS/IBS para PME</strong>.</li>
+<li><strong>Revenda de seminovo certificado</strong>.</li>
+<li><strong>"Capital Anjo de TI" via fintech</strong>.</li>
 </ol>
 
-<h3>A frase que muda tudo</h3>
 <blockquote>Antes desta pesquisa, o diagnóstico dizia: a Fonecar precisa decidir entre continuar como está e ser uma empresa diferente. Depois desta pesquisa, a frase muda para: <strong>a Fonecar não pode mais escolher continuar como está, porque "continuar como está" deixou de ser opção viável dentro de 18 a 24 meses.</strong></blockquote>
 </section>
 
-<!-- ============ CONTINUIDADE ============ -->
+<!-- ========== CONTINUIDADE ========== -->
 <section id="contin" class="pane">
-<h2>Continuidade: como avançar</h2>
-<p style="font-style:italic;color:#666;margin-bottom:14px">O diagnóstico se transforma em opção de continuidade. Cada serviço amarra um achado dos relatórios. A escolha de avançar é da Fonecar.</p>
+<h1>Continuidade</h1>
+<p class="meta">Seis frentes, uma reunião recorrente e três pilares contínuos.</p>
 
-<h3>Doze frentes de continuidade</h3>
-<div class="g3">
-<div class="card"><h4>1. Diagnóstico interno cultural</h4><p>15 a 25 entrevistas + clima quantitativo. <strong>4 a 6 semanas.</strong></p></div>
-<div class="card"><h4>2. Diagnóstico externo aprofundado</h4><p>30 a 50 entrevistas (cliente ativo, ex-cliente, prospect). NPS estruturado. <strong>6 a 8 semanas.</strong></p></div>
-<div class="card"><h4>3. Design organizacional</h4><p>Organograma, RACI, redesenho de 3 processos centrais. <strong>8 a 12 semanas.</strong></p></div>
-<div class="card"><h4>4. Design estratégico da marca</h4><p>Arquitetura, redesign visual, manual, narrativa. <strong>10 a 14 semanas.</strong></p></div>
-<div class="card"><h4>5. Marketing comportamental</h4><p>Mapa decisório, segmentação, 3 campanhas piloto. <strong>12 a 16 semanas.</strong></p></div>
-<div class="card"><h4>6. Estratégia de ecossistema do grupo</h4><p>Papel de cada marca, fluxo de cliente, decisão. <strong>8 a 10 semanas.</strong></p></div>
-<div class="card"><h4>7. Estratégia de vendas e crescimento</h4><p>ICP, manual, prospecção, CRM mínimo. <strong>10 a 12 semanas.</strong></p></div>
-<div class="card"><h4>8. IA para produtividade e vendas</h4><p>4 automações com IA + treinamento. <strong>6 a 8 semanas.</strong></p></div>
-<div class="card"><h4>9. Pesquisa de mercado e clientes</h4><p>Painel trimestral, inteligência setorial, pesquisa anual. <strong>Contínuo.</strong></p></div>
-<div class="card"><h4>10. Fluxo ponta a ponta</h4><p>Mapa atual e desejado, 30 intervenções, manual operacional. <strong>14 a 18 semanas.</strong></p></div>
-<div class="card"><h4>11. Redesign do negócio</h4><p>4 cenários, BMC novo, plano de transição em 24 meses. <strong>16 a 20 semanas + 12 a 24 meses.</strong></p></div>
-<div class="card"><h4>12. Inteligência de mercado contínua</h4><p>Painel ao vivo, alerta semanal, sinal fraco trimestral. <strong>Contínuo.</strong></p></div>
+<div class="frente-section-title">As seis frentes</div>
+
+<div class="frente">
+<div class="frente-num">01</div>
+<div class="frente-body">
+<div class="frente-title">Escuta de time e cliente</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> falta de evidência interna e externa para decidir.</p>
+<p class="frente-job">"Saber o que time, cliente atual e cliente perdido pensam de verdade."</p>
+<div class="frente-impact"><span class="frente-up">decisão por dado</span><span class="frente-down">saída inesperada e cliente perdido sem aviso</span></div>
+</div>
 </div>
 
-<h3>Item bônus</h3>
-<div class="ok">
-<strong>Conselho Consultivo Estratégico Recorrente.</strong> Reunião mensal de 4 horas com a liderança. Disciplina de governança sem peso de C-level. <strong>Este item é o que faz tudo gerar resultado real.</strong> Sem cadência mensal, projeto vira gaveta.
+<div class="frente">
+<div class="frente-num">02</div>
+<div class="frente-body">
+<div class="frente-title">Estrutura e operação</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> empresa que para quando o sócio para; entrega que depende de herói.</p>
+<p class="frente-job">"Empresa que opera sem depender da liderança em cada decisão."</p>
+<div class="frente-impact"><span class="frente-up">capacidade de delegação e operação previsível</span><span class="frente-down">retrabalho e dependência de pessoa-chave</span></div>
+</div>
 </div>
 
-<h3>Três caminhos sugeridos</h3>
-<div class="g3">
-<div class="card"><h4>Caminho A. Emergência</h4><p><strong>60 a 90 dias.</strong> Itens 8 + 7 (enxuto) + 12 + Conselho. Estancar e organizar.</p></div>
-<div class="card"><h4>Caminho B. Reposicionamento</h4><p><strong>6 meses.</strong> Itens 1 + 2 + 4 + 6 + 12 + Conselho. Empresa com narrativa, marca e arquitetura novas.</p></div>
-<div class="card"><h4>Caminho C. Redesign completo</h4><p><strong>12 a 24 meses.</strong> Item 11 como frente principal, com 1 a 10 dentro, 12 atravessando, Conselho mensal. Empresa nova dentro do CNPJ antigo.</p></div>
+<div class="frente">
+<div class="frente-num">03</div>
+<div class="frente-body">
+<div class="frente-title">Marca e arquitetura do grupo</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> marca genérica e cinco marcas sem papel definido.</p>
+<p class="frente-job">"Explicar em 30 segundos por que a Fonecar."</p>
+<div class="frente-impact"><span class="frente-up">diferenciação e foco</span><span class="frente-down">dispersão e canibalização interna</span></div>
+</div>
 </div>
 
-<h3>Princípios de trabalho</h3>
+<div class="frente">
+<div class="frente-num">04</div>
+<div class="frente-body">
+<div class="frente-title">Geração de demanda</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> marketing sem retorno e venda dependente do humor do vendedor.</p>
+<p class="frente-job">"Funil de vendas previsível por método, não pelo humor do vendedor."</p>
+<div class="frente-impact"><span class="frente-up">receita com previsibilidade</span><span class="frente-down">oportunidade perdida e mídia sem rastro</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">05</div>
+<div class="frente-body">
+<div class="frente-title">Eficiência com Inteligência Artificial</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> capacidade limitada do time, sem como contratar mais gente agora.</p>
+<p class="frente-job">"Aproveitar melhor as horas do time atual."</p>
+<div class="frente-impact"><span class="frente-up">produtividade do time</span><span class="frente-down">tempo gasto em tarefa repetitiva</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">06</div>
+<div class="frente-body">
+<div class="frente-title">Radar de mercado contínuo</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> cegueira competitiva e decisão sem contexto de setor.</p>
+<p class="frente-job">"Saber o que muda no setor antes do concorrente."</p>
+<div class="frente-impact"><span class="frente-up">antecipação de movimento</span><span class="frente-down">reação tardia a mudança</span></div>
+</div>
+</div>
+
+<div class="frente-section-title">Frente integradora</div>
+
+<div class="frente">
+<div class="frente-num">07</div>
+<div class="frente-body">
+<div class="frente-title">Redesign do negócio</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> modelo desencaixado do mercado, que migra para assinatura de equipamento e venda em marketplace para empresa.</p>
+<p class="frente-job">"Empresa nova dentro do CNPJ antigo."</p>
+<div class="frente-impact"><span class="frente-up">capacidade de competir no novo cenário</span><span class="frente-down">risco de obsolescência</span></div>
+</div>
+</div>
+
+<div class="frente-section-title">Reunião estratégica recorrente</div>
+
+<div class="frente">
+<div class="frente-num">★</div>
+<div class="frente-body">
+<div class="frente-title">Encontro mensal de duas horas, com cadência trimestral de planejamento</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> falta de espaço estruturado para decisão estratégica fora do incêndio do dia.</p>
+<p class="frente-job">"Tempo dedicado, todo mês, para discutir a empresa."</p>
+<div class="frente-impact"><span class="frente-up">disciplina de decisão e direção viva</span><span class="frente-down">pauta importante adiada</span></div>
+</div>
+</div>
+
+<div class="frente-section-title">Três pilares de operação contínua</div>
+
+<div class="frente">
+<div class="frente-num">I</div>
+<div class="frente-body">
+<div class="frente-title">Planejamento Estratégico</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> ideia boa em janeiro que morre em março, sem ciclo.</p>
+<p class="frente-job">"Direção viva, em ciclo trimestral."</p>
+<div class="frente-impact"><span class="frente-up">aderência entre intenção e execução</span><span class="frente-down">desvio entre planejado e feito</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">II</div>
+<div class="frente-body">
+<div class="frente-title">Gestão de Resultados</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> resultado visto só no fim do mês, sem tempo de corrigir.</p>
+<p class="frente-job">"Indicador que mostra o problema antes do dinheiro perdido."</p>
+<div class="frente-impact"><span class="frente-up">velocidade de correção</span><span class="frente-down">perda silenciosa por desvio não detectado</span></div>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">III</div>
+<div class="frente-body">
+<div class="frente-title">Governança das Operações</div>
+<p class="frente-resolve"><strong>Minimiza:</strong> operação que depende de pessoa-chave e cumpre só na sorte.</p>
+<p class="frente-job">"Empresa que cumpre o que assina."</p>
+<div class="frente-impact"><span class="frente-up">confiabilidade da operação</span><span class="frente-down">heroísmo individual e risco oculto</span></div>
+</div>
+</div>
+
+<h2>Três caminhos sugeridos</h2>
+
+<div class="frente">
+<div class="frente-num">A</div>
+<div class="frente-body">
+<div class="frente-title">Emergência</div>
+<p class="frente-resolve"><strong>Para:</strong> dono que precisa estancar antes de planejar direção.</p>
+<p class="frente-job"><strong>Mistura:</strong> frentes 04, 05 e 06, com Reunião estratégica recorrente e Pilar II.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">B</div>
+<div class="frente-body">
+<div class="frente-title">Reposicionamento</div>
+<p class="frente-resolve"><strong>Para:</strong> dono que reconhece problema estratégico, não operacional.</p>
+<p class="frente-job"><strong>Mistura:</strong> frentes 01, 03 e 06, com Reunião estratégica recorrente e Pilar I.</p>
+</div>
+</div>
+
+<div class="frente">
+<div class="frente-num">C</div>
+<div class="frente-body">
+<div class="frente-title">Redesign completo</div>
+<p class="frente-resolve"><strong>Para:</strong> dono que decide refazer a empresa enquanto ainda há fôlego.</p>
+<p class="frente-job"><strong>Mistura:</strong> frente 07 como tese principal, com as seis frentes anteriores dentro, Reunião recorrente e os três pilares ativos.</p>
+</div>
+</div>
+
+<h2>Princípios de trabalho</h2>
 <ul>
 <li><strong>Honestidade.</strong> Continuamos dizendo o que ninguém está dizendo.</li>
-<li><strong>Documentação.</strong> Tudo vira documento. Sem dependência permanente.</li>
-<li><strong>Decisão é da Fonecar.</strong> Eu trago opção, dado, provocação.</li>
-<li><strong>Sem entrega cega.</strong> Cada frente tem indicador combinado no início.</li>
+<li><strong>Documentação.</strong> Tudo vira documento. Sem dependência permanente do consultor.</li>
+<li><strong>Decisão é da Fonecar.</strong> A casa traz contexto. O consultor traz opção, dado e provocação.</li>
 <li><strong>Sigilo.</strong> Nada sai.</li>
 </ul>
 
-<h3>Próximos três passos</h3>
+<h2>Próximos passos</h2>
 <ol>
-<li><strong>Decidir qual caminho (A, B ou C).</strong> Reunião de 90 minutos sem custo.</li>
-<li><strong>Combinar escopo, prazo e investimento.</strong> Proposta detalhada em 5 dias.</li>
-<li><strong>Iniciar com pé direito.</strong> Primeira semana já entrega algo concreto.</li>
+<li>Decidir caminho (A, B ou C). Conversa sem custo, com leitura conjunta deste diagnóstico.</li>
+<li>Combinar escopo, ritmo e investimento. Proposta formal.</li>
+<li>Iniciar pela primeira frente acordada.</li>
 </ol>
 
-<div class="qbox">A primeira pergunta, antes de qualquer outra: a Fonecar quer continuar como está, ou quer ser uma empresa diferente? A resposta a essa pergunta define o resto.</div>
+<div class="qbox">A primeira pergunta, antes de qualquer outra: a Fonecar quer continuar como está, ou quer ser uma empresa diferente?</div>
 
+<div class="signoff">
+  <div class="signoff-brand">
+    <svg class="signoff-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-label="Limiar.Co">
+      <path d="M30 3 L52 15.5 L52 44.5 L30 57 L8 44.5 L8 15.5 Z" fill="#3A3A3A"/>
+      <path d="M30 9 L47 18.5 L47 41.5 L30 51 L13 41.5 L13 18.5 Z" fill="#FFFFFF"/>
+      <path d="M30 17 Q21 17 18 22 Q15 26.5 15 30 Q15 33.5 18 38 Q21 43 30 43 Q39 43 42 38 Q45 33.5 45 30 Q45 26.5 42 22 Q39 17 30 17 Z" fill="none" stroke="#1E88E5" stroke-width="3.5"/>
+      <circle cx="30" cy="30" r="5" fill="none" stroke="#00BFD4" stroke-width="2.5"/>
+    </svg>
+    <div class="signoff-wordmark"><span class="lm">limiar</span><span class="co">.co</span></div>
+  </div>
+
+  <div class="signoff-body">
+    <div class="signoff-tag">Somos uma consultoria de estratégia organizacional</div>
+    <p class="signoff-mission">"Navegar o hoje, cultivar o amanhã, juntos."</p>
+    <div class="signoff-contact">
+      <strong>Eric Leite</strong>
+      <span class="sep">·</span>
+      <a href="mailto:eric@limiar.co">eric@limiar.co</a>
+      <span class="sep">·</span>
+      <a href="https://wa.me/5511984568861" target="_blank" rel="noopener">+55 11 98456-8861</a>
+    </div>
+  </div>
+</div>
 </section>
 
-<footer>
-Diagnóstico Estratégico · Grupo Amorim Fonecar · Eric Leite · Abril de 2026 · 18 documentos consolidados
-</footer>
-
-</div>
+</main>
 
 <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" class="top-link" title="Voltar ao topo">Topo</a>
 
+<footer>
+Diagnóstico Rápido · Grupo Amorim Fonecar · Limiar.Co · Abril de 2026
+</footer>
+
 <script>
-function P(id){
-  document.querySelectorAll('.pane').forEach(function(e){e.classList.remove('on')});
-  document.querySelectorAll('.tab').forEach(function(e){e.classList.remove('on')});
-  document.getElementById(id).classList.add('on');
-  if(event && event.currentTarget) event.currentTarget.classList.add('on');
-  window.scrollTo(0,0);
+// Tab navigation
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    var pane = t.getAttribute('data-pane');
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
+    t.classList.add('on');
+    var target = document.getElementById(pane);
+    if (target) target.classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+    // close sidebar on selection (mobile / touch)
+    var sb = document.getElementById('sidebar');
+    if (sb) sb.classList.remove('open');
+  });
+});
+
+// Sidebar toggle (touch / click on trigger for mobile)
+var trigger = document.getElementById('sidebar-trigger');
+var sidebar = document.getElementById('sidebar');
+var pinBtn = document.getElementById('pin-btn');
+
+if (trigger && sidebar) {
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    sidebar.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if (document.body.classList.contains('sidebar-pinned')) return;
+    if (!sidebar.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+      sidebar.classList.remove('open');
+    }
+  });
 }
 
-// Search filter (across panes)
+// Pin / unpin sidebar (persistent in localStorage)
+function setPinTitle(isPinned){
+  if (!pinBtn) return;
+  pinBtn.title = isPinned ? 'Desafixar menu' : 'Fixar menu';
+  pinBtn.setAttribute('aria-label', isPinned ? 'Desafixar menu' : 'Fixar menu');
+}
+try {
+  if (localStorage.getItem('sidebar-pinned') === '1') {
+    document.body.classList.add('sidebar-pinned');
+    setPinTitle(true);
+  }
+} catch(e){}
+if (pinBtn) {
+  pinBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var pinned = document.body.classList.toggle('sidebar-pinned');
+    try { localStorage.setItem('sidebar-pinned', pinned ? '1' : '0'); } catch(e){}
+    setPinTitle(pinned);
+    if (!pinned) sidebar.classList.remove('open');
+  });
+}
+
+// Search filter (across all panes)
 var search = document.getElementById('search');
 if (search) {
   search.addEventListener('input', function(){
     var q = search.value.toLowerCase().trim();
     var panes = document.querySelectorAll('.pane');
     if (!q) {
-      // Restore visibility based on the active tab only
-      panes.forEach(function(p){ if(!p.classList.contains('on')) p.style.display=''; });
+      panes.forEach(function(p){
+        if(!p.classList.contains('on')) p.style.display='';
+      });
       return;
     }
     panes.forEach(function(p){
@@ -1132,6 +2217,21 @@ if (search) {
     });
   });
 }
+
+// Keyboard shortcut: arrow keys to navigate tabs
+document.addEventListener('keydown', function(e){
+  if (e.target === search) return;
+  var tabs = Array.from(document.querySelectorAll('.tab'));
+  var current = tabs.findIndex(function(t){return t.classList.contains('on')});
+  if (e.key === 'ArrowRight' && current < tabs.length-1) {
+    tabs[current+1].click();
+    tabs[current+1].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  }
+  if (e.key === 'ArrowLeft' && current > 0) {
+    tabs[current-1].click();
+    tabs[current-1].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  }
+});
 </script>
 
 </body>
